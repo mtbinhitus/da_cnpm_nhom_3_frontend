@@ -1,0 +1,17 @@
+.header-container{
+    background-color: #fff !important;
+    box-shadow: 10px !important;
+}
+.app
+.branch-container{
+    color: black;
+}
+.header-navbar{
+    margin-left: auto;
+    font-size: .95rem;
+    color: #71869d;
+}
+.signin-btn{
+    margin-left: 10px;
+    border-radius: 25px;
+}

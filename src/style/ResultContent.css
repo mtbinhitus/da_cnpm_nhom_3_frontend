@@ -1,0 +1,6 @@
+.result-score-details{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10 0 10;
+    height: 258px;
+}
