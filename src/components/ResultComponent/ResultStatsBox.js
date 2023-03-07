@@ -11,7 +11,7 @@ const ResultStatsBox = ({ boxType, numberAnswer }) => {
     const MyCard = styled(Card)({
         backgroundColor: "#eff0f5",
         width: "200px",
-        padding: 16,
+        padding: 3,
         textAlign: "start",
         alignItems: "center",
     });

@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import { AppBar, Tabs, Toolbar, Typography, Tab, Button } from "@mui/material";
 import { useState } from "react";
 import "../style/header.css";
@@ -16,8 +17,18 @@ const Header = () => {
                         value={tabIndex}
                         className="header-navbar"
                     >
-                        <Tab index={0} label={"Đề thi"}></Tab>
-                        <Tab index={1} label={"Liên hệ"}></Tab>
+                        <Tab
+                            style={{ textTransform: "none", fontSize: ".95rem", color: "black", fontWeight: "bold" }}
+                            label={"Đề thi"}
+                        ></Tab>
+                        <Tab
+                            style={{ textTransform: "none", fontSize: ".95rem", color: "black", fontWeight: "bold" }}
+                            label={"Thống kê"}
+                        ></Tab>
+                        <Tab
+                            style={{ textTransform: "none", fontSize: ".95rem", color: "black", fontWeight: "bold" }}
+                            label={"Liên hệ"}
+                        ></Tab>
                     </Tabs>
                     <Button className="signin-btn" variant="contained">
                         Đăng nhập

@@ -4,14 +4,11 @@ import ResultContent from "../components/ResultComponent/ResultContent";
 const TestResult = () => {
     return (
         <>
-            <Grid className="" container spacing={2}>
+            <Grid style={{ justifyContent: "center" }} container>
                 <Grid item xs={9}>
-                    <div>
+                    <div style={{ width: "100" }}>
                         <ResultContent />
                     </div>
-                </Grid>
-                <Grid item xs={3}>
-                    <div>hohoho</div>
                 </Grid>
             </Grid>
         </>
