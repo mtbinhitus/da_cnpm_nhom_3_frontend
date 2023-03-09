@@ -1,0 +1,51 @@
+.tag{
+    background-color:#eee;
+    border-radius: 20px;
+    font-weight: 400;
+}
+.tag.name{
+    padding: 3px 10px;
+    font-size: 15px;
+    border-radius: 15px;
+    text-align: left;
+    margin-right: 5px;
+    display: inline-flex;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.practice-content .active{
+    color: blue;
+}
+.practice-test{
+    font-size: 18px;
+}
+.alert-warning{
+    margin-Top: 25px;
+    /* margin-right: 30px;
+    margin-left: 30px; */
+    margin-bottom: 25px;
+    margin-block-start: 25px;
+    background-color: #ffefd8;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .35rem;
+    color: #855a1f;
+    background-color: #ffefd8
+    border-color #ffe8c8;
+    border-radius: 5px;
+}
+.alert-success{
+    margin-Top: 25px;
+    margin-bottom: 25px;
+    margin-block-start: 25px;
+    background-color:#d8f0e2;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .35rem;
+    color: #855a1f;
+    background-color: #ffefd8
+    border-color #c8ead6;
+    border-radius: 5px;
+}
