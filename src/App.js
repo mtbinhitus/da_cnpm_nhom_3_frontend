@@ -7,13 +7,27 @@ import Layout from "./components/Layout";
 import TestResult from "./pages/TestResult";
 import Homepage from "./pages/Homepage";
 import TestList from "./pages/TestList";
+import PracticePage from "./pages/practicePage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
     const auth = useAuth();
     return (
-        <Layout>
-            <TestList />
-        </Layout>
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <Layout>
+                                <TestResult />
+                            </Layout>
+                        }
+                    />
+                    <Route path="/practiceTest" element={<PracticePage />} />
+                </Routes>
+            </BrowserRouter>
+        </>
     );
 }
 export default App;
