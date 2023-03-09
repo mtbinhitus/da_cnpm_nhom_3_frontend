@@ -1,4 +1,23 @@
-const hello = () => {
-    var ad = 1;
-    var ba = "fdsfdsfsdf";
-};
+import React from "react";
+import { Grid } from "@mui/material";
+import HomepageContent from "../components/HomepageComponent/HomepageContent";
+import { Carousel } from "react-bootstrap";
+
+function Homepage() {
+    const perro = "https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp";
+    const perro2 = "https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp";
+
+    return (
+        <>
+            <Grid style={{ justifyContent: "center" }} container>
+                <Grid item xs={9}>
+                    <div style={{ width: "100" }}>
+                        <HomepageContent />
+                    </div>
+                </Grid>
+            </Grid>
+        </>
+    );
+}
+
+export default Homepage;
