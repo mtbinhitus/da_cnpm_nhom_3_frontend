@@ -1,14 +1,9 @@
-import logo from "./logo.svg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import useAuth from "./hooks/useAuth";
-import Protected from "./components/Protected";
-import Public from "./components/Public";
 import Layout from "./components/Layout";
-import TestResult from "./pages/TestResult";
-import Homepage from "./pages/Homepage";
-import TestList from "./pages/TestList";
+import useAuth from "./hooks/useAuth";
 import PracticePage from "./pages/practicePage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TestResult from "./pages/TestResult";
 
 function App() {
     const auth = useAuth();

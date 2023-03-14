@@ -1,6 +1,4 @@
-import { Tab, Tabs } from "@mui/material";
-import React, { useState } from "react";
-import { Card } from "react-bootstrap";
+import React from "react";
 import TopExamList from "../HomepageComponent/TopExamList";
 import SearchListContent from "./SearchListContent";
 import TabContent from "./TabContent";

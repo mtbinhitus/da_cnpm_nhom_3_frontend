@@ -1,7 +1,6 @@
-import { Grid } from "@mui/material";
-import { Button, Card } from "@mui/material";
+import { Card, Grid } from "@mui/material";
 import HeaderContaint from "../components/practiceComponent/HeaderContent";
-import PracticeContent from "../components/practiceComponent/PracticeContent"
+import PracticeContent from "../components/practiceComponent/PracticeContent";
 const practicePage = () => {
     return (
         <>

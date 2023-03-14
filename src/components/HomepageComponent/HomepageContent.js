@@ -1,4 +1,4 @@
-import { Button, Card, Grid } from "@mui/material";
+import { Card } from "@mui/material";
 import React from "react";
 import CarouselContent from "./CarouselContent";
 import TopExamList from "./TopExamList";

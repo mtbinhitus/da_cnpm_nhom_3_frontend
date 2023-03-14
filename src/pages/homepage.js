@@ -1,11 +1,10 @@
-import React from "react";
 import { Grid } from "@mui/material";
+import React from "react";
 import HomepageContent from "../components/HomepageComponent/HomepageContent";
-import { Carousel } from "react-bootstrap";
 
 function Homepage() {
-    const perro = "https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp";
-    const perro2 = "https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp";
+    // const perro = "https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp";
+    // const perro2 = "https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp";
 
     return (
         <>

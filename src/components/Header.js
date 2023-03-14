@@ -1,5 +1,4 @@
-import styled from "@emotion/styled";
-import { AppBar, Tabs, Toolbar, Typography, Tab, Button } from "@mui/material";
+import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
 import "../style/header.css";
 const Header = () => {
