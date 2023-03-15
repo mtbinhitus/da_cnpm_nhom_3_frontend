@@ -1,5 +1,4 @@
-import { Tabs, Tab, Button, Box, Fab } from "@mui/material";
-import styled from "@emotion/styled";
+import { Box, Fab, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 import AnalysisTable from "./AnalysisTable";
 const DetailedAnalysis = () => {

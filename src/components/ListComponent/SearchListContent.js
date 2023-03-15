@@ -1,7 +1,5 @@
-import { Box, Button, InputAdornment, InputLabel, MenuItem, Select, TextField } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { Button } from "@mui/material";
 import React from "react";
-import { FormControl } from "react-bootstrap";
 
 function SearchListContent() {
     const [age, setAge] = React.useState("");

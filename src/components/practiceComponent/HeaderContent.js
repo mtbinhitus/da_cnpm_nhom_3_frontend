@@ -1,6 +1,5 @@
-import { Grid } from "@mui/material";
-import { Button, Card } from "@mui/material";
-import "../../../src/style/practicePage.css"
+import { Button } from "@mui/material";
+import "../../../src/style/practicePage.css";
 const HeaderContaint = () => {
     
     return (

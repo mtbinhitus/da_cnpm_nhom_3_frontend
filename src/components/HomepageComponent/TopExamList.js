@@ -1,9 +1,5 @@
-import { Button, Grid } from "@mui/material";
-import { display } from "@mui/system";
+import { Grid } from "@mui/material";
 import React from "react";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import ExamCard from "../ExamCard";
 
 function TopExamList() {

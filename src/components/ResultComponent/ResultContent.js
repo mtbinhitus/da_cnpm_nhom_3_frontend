@@ -1,11 +1,9 @@
 import { Button, Card } from "@mui/material";
-import ResultScoreBox from "./ResultScoreBox";
 import "../../style/ResultContent.css";
-import ResultStatsBox from "./ResultStatsBox";
-import { fontSize } from "@mui/system";
 import DetailedAnalysis from "./DetailedAnalysis";
-import ResultAnswerItem from "./ResultAnswerItem";
 import ResultAnswerList from "./ResultAnswerList";
+import ResultScoreBox from "./ResultScoreBox";
+import ResultStatsBox from "./ResultStatsBox";
 
 const ResultContent = () => {
     const value = 3;
