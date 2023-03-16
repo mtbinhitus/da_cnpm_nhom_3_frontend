@@ -1,11 +1,8 @@
-import { Button, Card } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import styled from "@emotion/styled";
-import DoneIcon from "@mui/icons-material/Done";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import AutoGraphIcon from "@mui/icons-material/AutoGraph";
+import DoneIcon from "@mui/icons-material/Done";
+import { Card } from "@mui/material";
 
 const ResultStatsBox = ({ boxType, numberAnswer }) => {
     const MyCard = styled(Card)({

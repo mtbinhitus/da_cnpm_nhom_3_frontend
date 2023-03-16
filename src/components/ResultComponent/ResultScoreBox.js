@@ -1,8 +1,8 @@
-import { Button, Card } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import styled from "@emotion/styled";
+import CancelIcon from "@mui/icons-material/Cancel";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
+import { Card } from "@mui/material";
 
 const ResultScoreBox = ({ boxType, numberAnswer }) => {
     var boxName = "";
