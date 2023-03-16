@@ -13,13 +13,13 @@ export default function Question(props) {
         <div>
             <Stack py={2} justifyContent="center" spacing={2}>
                 {props.question.imgUrl.length > 0 && (
-                    <Container sx={{maxWidth: "700px"}}>
+                    <div style={{maxWidth: "700px"}}>
                         <img
                             src={props.question.imgUrl}
                             alt={props.question.questionNumber}
                             loading="lazy"
                         />
-                    </Container>
+                    </div>
                 )}
 
                 <Stack direction="row" pt={1} justifyContent="flex-start" container spacing={2} mt={2}>
