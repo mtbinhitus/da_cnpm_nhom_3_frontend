@@ -1,5 +1,4 @@
 import React from "react";
-import { Typography, Box } from "@mui/material";
 import Question from "./Question";
 
 export default function QuestTab(props) {

@@ -121,9 +121,9 @@ const NavPractice = () => {
         },
 
     ];
-    {listData.map((data) => (
+    listData.map((data) => (
         console.log(data)
-    ))}
+    ))
 
     return (
         <>

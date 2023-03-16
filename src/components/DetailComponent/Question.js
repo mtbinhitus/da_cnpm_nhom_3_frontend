@@ -1,13 +1,9 @@
+import { Container, FormControlLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import React from "react";
 import "../../style/QuestionPage.css";
-import { Stack, Box, Grid, RadioGroup, FormControlLabel, Radio, Typography, Container } from "@mui/material";
 
 export default function Question(props) {
-    const [answer, setAnswer] = React.useState(null);
 
-    const handleChange = (event) => {
-        setAnswer(event.target.answer);
-    };
     console.log(props.question.listOption);
     return (
         <div>

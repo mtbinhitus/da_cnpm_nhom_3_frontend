@@ -1,5 +1,5 @@
+import { Button, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
-import { Typography, Stack, Button, Grid, IconButton } from "@mui/material";
 
 export default function ExamPart(props) {
     console.log(props.part.listQuestion);

@@ -1,7 +1,6 @@
+import { Grid } from "@mui/material";
 import React from "react";
-import { Grid, Card } from "@mui/material";
 import DetailContent from "../components/DetailComponent/DetailContent";
-import { Container } from "@mui/system";
 
 export default function DetailPage() {
     const numberOfParts = 7;

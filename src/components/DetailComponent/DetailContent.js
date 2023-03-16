@@ -1,7 +1,7 @@
-import { React, useState } from "react";
-import { Button, Grid, Card, Typography, Stack } from "@mui/material";
-import QuestionBox from "../DetailComponent/QuestionBox";
+import { Button, Grid, Stack, Typography } from "@mui/material";
+import { React } from "react";
 import AnswerBox from "../DetailComponent/AnswerBox";
+import QuestionBox from "../DetailComponent/QuestionBox";
 
 export default function DetailContent(props) {
     console.log(props);
