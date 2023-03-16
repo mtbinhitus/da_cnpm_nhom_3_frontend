@@ -9,10 +9,13 @@ import DetailPage from "./pages/DetailPage";
 import useAuth from "./hooks/useAuth";
 import PracticePage from "./pages/practicePage";
 import TestResult from "./pages/TestResult";
-import PracticePage from "./pages/practicePage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Protected from "./components/Protected";
+import Public from "./components/Public";
+import { privateRoutes } from "./routes/PrivateRoutes";
+import RequireAuth from "./routes/RequireAuth";
 function App() {
-    const auth = useAuth();
+    // const auth = useAuth();
+    // return auth ? <Protected /> : <Public />;
     return (
         <>
             <BrowserRouter>
@@ -21,11 +24,26 @@ function App() {
                         path="/"
                         element={
                             <Layout>
-                                <TestResult />
+                                <Homepage />
                             </Layout>
                         }
                     />
-                    <Route path="/practiceTest" element={<PracticePage />} />
+                    {privateRoutes.map((route, index) => {
+                        const Page = route.element;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <RequireAuth>
+                                        <Layout>
+                                            <Page />
+                                        </Layout>
+                                    </RequireAuth>
+                                }
+                            />
+                        );
+                    })}
                 </Routes>
             </BrowserRouter>
         </>

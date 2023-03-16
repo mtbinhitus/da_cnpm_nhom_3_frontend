@@ -4,6 +4,7 @@ import Keycloak from "keycloak-js";
 const useAuth = () => {
     const isRun = useRef(false);
     const [isLogin, setLogin] = useState(false);
+    const [token, setToken] = useState();
     useEffect(() => {
         if (isRun.current) return;
         isRun.current = true;
@@ -13,10 +14,10 @@ const useAuth = () => {
             clientId: "spring-keycloak",
         });
         client.init({ onLoad: "login-required" }).then((res) => {
-            console.log(client.token);
             setLogin(true);
+            setToken(client.token);
         });
     }, []);
-    return isLogin;
+    return [isLogin, token];
 };
 export default useAuth;
