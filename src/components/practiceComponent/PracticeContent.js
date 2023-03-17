@@ -18,16 +18,16 @@ const PracticeContent = () => {
                         onChange={(e, value) => setValue(value)}
                         aria-label="basic tabs example"
                     >
-                        <Tab className={value === 0 ? "active" : null} style={{ textTransform: "none", fontSize: "16px", fontWeight: 'bold' }} label="Luyen Tap" />
-                        <Tab className={value && value === 1 ? "active" : null} style={{ textTransform: "none", fontSize: "16px", fontWeight: 'bold' }} label="Lam full test" />
-                        <Tab className={value && value === 2 ? "active" : null} style={{ textTransform: "none", fontSize: "16px", fontWeight: 'bold' }} label="Thao luan" />
+                        <Tab className={value === 0 ? "active" : null} style={{ textTransform: "none", fontSize: "16px", fontWeight: 'bold' }} label="Làm full test" />
+                        <Tab className={value && value === 1 ? "active" : null} style={{ textTransform: "none", fontSize: "16px", fontWeight: 'bold' }} label="Thảo luận" />
+                        {/* <Tab className={value && value === 2 ? "active" : null} style={{ textTransform: "none", fontSize: "16px", fontWeight: 'bold' }} label="Thao luan" /> */}
                     </Tabs>
                 </Box>
                {
                 value===0?
-                <NavPractice/>:
+                <NavTakeTest/>:
                 value===1?
-                <NavTakeTest/>
+                <div></div>
                 :<div></div>
                }
             </div>

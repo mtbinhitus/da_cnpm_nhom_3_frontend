@@ -26,7 +26,7 @@ const Header = () => {
                                 color: "black",
                                 fontWeight: "bold",
                             }}
-                            label={"Home"}
+                            label={"Trang chủ"}
                         ></Tab>
 
                         <Tab

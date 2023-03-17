@@ -4,18 +4,18 @@ import DetailContent from "../components/DetailComponent/DetailContent";
 import { Container } from "@mui/system";
 import { useParams, useNavigate } from "react-router-dom";
 import {
-    getExamById,
+    getExamById,getTopListExam,
 } from "../services/ExamService";
   
 export default function DetailPage() {
     const id = useParams();
     const [detailexam, setDetailexam] = useState();
 
+
     useEffect(() => {
         getExamById(id?.examId).then((res) => {
             setDetailexam(res.body);
-            console.log("DetailPage")
-            console.log(res.body)
+        
         });
     }, []);
 
