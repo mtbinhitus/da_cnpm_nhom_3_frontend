@@ -60,7 +60,7 @@ function ExamCard(props) {
                     </div>
                 </div>
                 <div className="d-grid mt-3">
-                    <Link to={`/exam-detail/${examId}`} style={{ textDecoration: "none" }}>
+                    <Link to={`/exam-detail/${props.id}`} style={{ textDecoration: "none" }}>
                         <Button variant="outlined">
                             <span className="fw-bold">Chi tiết</span>
                         </Button>
