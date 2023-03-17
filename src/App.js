@@ -7,9 +7,13 @@ import Homepage from "./pages/homepage";
 
 import PracticePage from "./pages/practicePage";
 import TestResult from "./pages/TestResult";
-
-
+import Protected from "./components/Protected";
+import Public from "./components/Public";
+import { privateRoutes } from "./routes/PrivateRoutes";
+import RequireAuth from "./routes/RequireAuth";
 function App() {
+    // const auth = useAuth();
+    // return auth ? <Protected /> : <Public />;
     return (
         <>
             <BrowserRouter>
@@ -18,13 +22,26 @@ function App() {
                         path="/"
                         element={
                             <Layout>
-                                <Homepage/>
+                                <Homepage />
                             </Layout>
                         }
                     />
-                    <Route path="/practiceTest" element={<PracticePage />} />
-                    <Route path="/TestResult" element={<TestResult />} />
-                    <Route path="/DetailPage" element={<DetailPage />} />
+                    {privateRoutes.map((route, index) => {
+                        const Page = route.element;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <RequireAuth>
+                                        <Layout>
+                                            <Page />
+                                        </Layout>
+                                    </RequireAuth>
+                                }
+                            />
+                        );
+                    })}
                 </Routes>
             </BrowserRouter>
         </>
