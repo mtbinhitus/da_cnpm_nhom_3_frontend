@@ -1,4 +1,5 @@
 import { Button, Card } from "@mui/material";
+import { Link } from "react-router-dom";
 import "../../style/ResultContent.css";
 import DetailedAnalysis from "./DetailedAnalysis";
 import ResultAnswerList from "./ResultAnswerList";
@@ -7,6 +8,7 @@ import ResultStatsBox from "./ResultStatsBox";
 
 const ResultContent = () => {
     const value = 3;
+    const examId = 1;
     return (
         <>
             <Card style={{ padding: "16px" }}>
@@ -16,9 +18,11 @@ const ResultContent = () => {
                         <Button size="small" variant="contained" style={{ marginRight: "5px" }}>
                             Xem đáp án
                         </Button>
-                        <Button size="small" variant="outlined">
-                            Làm lại bài thi
-                        </Button>
+                        <Link to={`/exam-detail/${examId}`} style={{ textDecoration: "none" }}>
+                            <Button size="small" variant="outlined">
+                                Làm lại bài thi
+                            </Button>
+                        </Link>
                     </div>
 
                     <div className="result-score-details">

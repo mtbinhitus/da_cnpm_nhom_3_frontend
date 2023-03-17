@@ -3,8 +3,10 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function ExamCard(props) {
+    const examId = 1;
     return (
         <div className="card" style={{ backgroundColor: "#f8f9fa" }}>
             <div className="card-body">
@@ -57,10 +59,12 @@ function ExamCard(props) {
                         </span>
                     </div>
                 </div>
-                <div class="d-grid mt-3">
-                    <Button variant="outlined">
-                        <span className="fw-bold">Chi tiết</span>
-                    </Button>
+                <div className="d-grid mt-3">
+                    <Link to={`/exam-detail/${props.id}`} style={{ textDecoration: "none" }}>
+                        <Button variant="outlined">
+                            <span className="fw-bold">Chi tiết</span>
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>

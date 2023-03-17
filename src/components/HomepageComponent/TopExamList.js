@@ -1,8 +1,22 @@
 import { Grid } from "@mui/material";
-import React from "react";
+import { React, useEffect , useState } from "react";
 import ExamCard from "../ExamCard";
+import {
+    getListExam,
+} from "../../services/ExamService";
 
 function TopExamList() {
+
+    const [exams, setExams] = useState();
+    useEffect(() => {
+        getListExam().then((res) => {
+            setExams(res.body);
+            console.log("TopExamList")
+            console.log(res.body)
+        });
+    }, []);
+
+
     const props = [
         {
             name: "TOEIC test 1",
@@ -59,12 +73,13 @@ function TopExamList() {
             question: 120,
         },
     ];
+    if(exams === undefined) return <p>Loading...</p>;
     return (
         <>
             <Grid container spacing={2}>
-                {props.map((value, index) => (
+                {exams.map((value, index) => (
                     <Grid xs={3} item key={index}>
-                        <ExamCard name={value.name} category={value.category} joined={value.joined} cmt={value.cmt} />
+                        <ExamCard name={value.name} category="New academy" joined="1234" cmt="10" id={value.id}/>
                     </Grid>
                 ))}
             </Grid>

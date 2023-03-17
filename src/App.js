@@ -2,16 +2,19 @@ import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout";
 
-import Homepage from "./pages/homepage";
-import TestList from "./pages/TestList";
 import DetailPage from "./pages/DetailPage";
+import Homepage from "./pages/homepage";
 
-import useAuth from "./hooks/useAuth";
 import PracticePage from "./pages/practicePage";
 import TestResult from "./pages/TestResult";
 
+import Protected from "./components/Protected";
+import Public from "./components/Public";
+import { privateRoutes } from "./routes/PrivateRoutes";
+import RequireAuth from "./routes/RequireAuth";
 function App() {
-    const auth = useAuth();
+    // const auth = useAuth();
+    // return auth ? <Protected /> : <Public />;
     return (
         <>
             <BrowserRouter basename={process.env.PUBLIC_URL}>
@@ -20,14 +23,25 @@ function App() {
                             path="/"
                             element={
                                 <Layout>
-                                    <Homepage />
+                                    <Homepage  />
                                 </Layout>
                             }
                         />
-                        <Route path="/practiceTest" element={<PracticePage />} />
-                        <Route path="/TestResult" element={<TestResult />} />
-                        <Route path="/DetailPage" element={<DetailPage />} />
-                    </Routes>
+                        {privateRoutes.map((route, index) => {
+                            const Page = route.element;
+                        return (
+                                <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                     <Layout>
+                                        <Page />
+                                     </Layout>
+                                }
+                            />
+                            );
+                    })}
+                </Routes>
             </BrowserRouter>
         </>
     );

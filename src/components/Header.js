@@ -1,5 +1,6 @@
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "../style/header.css";
 const Header = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -17,6 +18,20 @@ const Header = () => {
                         className="header-navbar"
                     >
                         <Tab
+                            to={"/"}
+                            LinkComponent={NavLink}
+                            style={{
+                                textTransform: "none",
+                                fontSize: ".95rem",
+                                color: "black",
+                                fontWeight: "bold",
+                            }}
+                            label={"Home"}
+                        ></Tab>
+
+                        <Tab
+                            to={"/exams"}
+                            LinkComponent={NavLink}
                             style={{ textTransform: "none", fontSize: ".95rem", color: "black", fontWeight: "bold" }}
                             label={"Đề thi"}
                         ></Tab>

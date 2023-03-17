@@ -2,11 +2,6 @@ import { Button } from "@mui/material";
 import React from "react";
 
 function SearchListContent() {
-    const [age, setAge] = React.useState("");
-
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
     return (
         <div className="pb-0" style={{ paddingTop: "1rem" }}>
             <div className="container pb-0">
