@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Grid, Card } from "@mui/material";
+import { Grid } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import DetailContent from "../components/DetailComponent/DetailContent";
-import { Container } from "@mui/system";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-    getExamById,getTopListExam,
-} from "../services/ExamService";
-  
+import { getExamById } from "../services/ExamService";
+
 export default function DetailPage() {
     const id = useParams();
     const [detailexam, setDetailexam] = useState();
 
-
     useEffect(() => {
         getExamById(id?.examId).then((res) => {
             setDetailexam(res.body);
-        
         });
     }, []);
 
@@ -25,7 +20,7 @@ export default function DetailPage() {
             <Grid style={{ justifyContent: "center" }} container>
                 <Grid item m={2} xs={12}>
                     <div style={{ width: "100" }}>
-                        <DetailContent numberOfParts = {numberOfParts} exam={data} listExam={detailexam} />
+                        <DetailContent numberOfParts={numberOfParts} exam={data} listExam={detailexam} />
                     </div>
                 </Grid>
             </Grid>
@@ -48,21 +43,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 2,
@@ -71,21 +66,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 3,
@@ -94,21 +89,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 4,
@@ -117,21 +112,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 5,
@@ -140,21 +135,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 6,
@@ -163,22 +158,22 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                }
+                            textOption: "D.",
+                        },
+                    ],
+                },
             ],
         },
         {
@@ -191,21 +186,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 8,
@@ -214,21 +209,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 9,
@@ -237,21 +232,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 10,
@@ -260,21 +255,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 11,
@@ -283,21 +278,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 12,
@@ -306,21 +301,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 13,
@@ -329,21 +324,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 14,
@@ -352,21 +347,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 15,
@@ -375,21 +370,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 16,
@@ -398,21 +393,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 17,
@@ -421,21 +416,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 18,
@@ -444,21 +439,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 19,
@@ -467,21 +462,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 20,
@@ -490,21 +485,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 21,
@@ -513,21 +508,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 22,
@@ -536,21 +531,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 23,
@@ -559,21 +554,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 24,
@@ -582,21 +577,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 25,
@@ -605,21 +600,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 26,
@@ -628,21 +623,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 27,
@@ -651,21 +646,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 28,
@@ -674,21 +669,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 29,
@@ -697,21 +692,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 30,
@@ -720,21 +715,21 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
                 {
                     questionNumber: 31,
@@ -743,25 +738,26 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A."
+                            textOption: "A.",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B."
+                            textOption: "B.",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C."
+                            textOption: "C.",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
+                            textOption: "D.",
+                        },
+                    ],
                 },
-            ]
+            ],
         },
-        {  partNumber: 3,
+        {
+            partNumber: 3,
             listQuestion: [
                 {
                     questionNumber: 32,
@@ -770,23 +766,23 @@ const data = {
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A. A move to a new a city"
+                            textOption: "A. A move to a new a city",
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B. A business trip"
+                            textOption: "B. A business trip",
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C. A building tour"
+                            textOption: "C. A building tour",
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D. A meeting with visiting colleagues"
-                        }
-                    ]
+                            textOption: "D. A meeting with visiting colleagues",
+                        },
+                    ],
                 },
-            ]
+            ],
         },
         // { partNumber: 4,
         //     listQuestion: []},
@@ -796,5 +792,5 @@ const data = {
         //     listQuestion: []},
         // { partNumber: 7,
         //     listQuestionF: []}
-    ]
+    ],
 };

@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import Keycloak from "keycloak-js";
+import { useEffect, useRef, useState } from "react";
 
 const useAuth = () => {
     const isRun = useRef(false);

@@ -1,6 +1,6 @@
-import {React,useEffect,useState} from "react";
+import { FormControlLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
+import { React, useEffect, useState } from "react";
 import "../../style/QuestionPage.css";
-import { Stack, Box, Grid, RadioGroup, FormControlLabel, Radio, Typography, Container } from "@mui/material";
 
 export default function Question(props) {
     const [listQuestion, setListQuestion] = useState();

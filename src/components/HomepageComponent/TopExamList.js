@@ -1,9 +1,6 @@
 import { Grid } from "@mui/material";
-import { React, useEffect , useState } from "react";
+import { React } from "react";
 import ExamCard from "../ExamCard";
-import {
-    getListExam,
-} from "../../services/ExamService";
 
 function TopExamList(props) {
 

@@ -1,10 +1,10 @@
 import { Card } from "@mui/material";
-import { React, useEffect , useState } from "react";
+import { React, useEffect, useState } from "react";
+import {
+    getTopListExam
+} from "../../services/ExamService";
 import CarouselContent from "./CarouselContent";
 import TopExamList from "./TopExamList";
-import {
-    getTopListExam,
-} from "../../services/ExamService";
 
 function HomepageContent() {
 

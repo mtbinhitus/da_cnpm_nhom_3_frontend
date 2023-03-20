@@ -1,7 +1,6 @@
-import { React, useState } from "react";
-import { Box, Tabs, Tab, Typography, Button, Container } from "@mui/material";
-import QuestTab from "./QuestTab";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Box, Button, Typography } from "@mui/material";
+import { React, useState } from "react";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;

@@ -1,21 +1,20 @@
-import * as React from "react";
 import { Button } from "@mui/material";
-import "../../../src/style/practicePage.css";
 import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import * as React from "react";
+import { Link, useParams } from "react-router-dom";
+import "../../../src/style/practicePage.css";
 import ChoicePractice from "./ChoicePractice";
-import {Link, useParams, useNavigate } from "react-router-dom";
 
 const NavPractice = () => {
     const [age, setAge] = React.useState("");
     const examId = useParams();
-    console.log("NavPractice")
+    console.log("NavPractice");
 
-    console.log(examId)
-
+    console.log(examId);
 
     const handleChange = (event) => {
         setAge(event.target.value);
