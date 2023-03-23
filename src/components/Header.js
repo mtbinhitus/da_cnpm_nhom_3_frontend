@@ -1,9 +1,16 @@
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink , Link} from "react-router-dom";
+import { useState, useEffect } from "react";
+
 import "../style/header.css";
 const Header = () => {
     const [tabIndex, setTabIndex] = useState(0);
+    let userInfo = JSON.parse(localStorage.getItem("currentUser"));
+    useEffect(()=>{
+        console.log(JSON.parse(localStorage.getItem("currentUser")))
+        userInfo = JSON.parse(localStorage.getItem("currentUser"));
+    },[JSON.parse(localStorage.getItem("currentUser"))])
+
     return (
         <>
             <AppBar position="sticky" className="header-container">
@@ -44,9 +51,21 @@ const Header = () => {
                             label={"Liên hệ"}
                         ></Tab>
                     </Tabs>
-                    <Button className="signin-btn" variant="contained">
-                        Đăng nhập
-                    </Button>
+                    {
+                        userInfo == null?
+                        <Link to={`/login`} style={{ textDecoration: "none" }}>
+                            <Button className="signin-btn" variant="contained" >
+                                Đăng nhập
+                            </Button>
+                        </Link>
+
+                        :
+                        <Button className="signin-btn" variant="contained" >
+                            {userInfo.name}
+                        </Button>
+                    }
+                
+                 
                 </Toolbar>
             </AppBar>
         </>
