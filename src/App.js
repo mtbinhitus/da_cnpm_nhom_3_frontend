@@ -35,11 +35,19 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
+<<<<<<< Updated upstream
                                     <RequireAuth>
                                         <Layout>
                                             <Page />
                                         </Layout>
                                     </RequireAuth>
+=======
+                                    <Layout>
+                                        <RequireAuth>
+                                            <Page />
+                                        </RequireAuth>
+                                    </Layout>
+>>>>>>> Stashed changes
                                 }
                             />
                         );
