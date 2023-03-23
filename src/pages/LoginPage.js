@@ -2,7 +2,6 @@ import { Grid } from "@mui/material";
 import { Card } from "@mui/material";
 import { Button } from "@mui/material";
 import { useState, useEffect } from "react";
-import GoogleIcon from "@mui/icons-material/Google";
 import {GoogleLogin} from 'react-google-login';
 import React from "react";
 import { gapi } from 'gapi-script';
@@ -11,10 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
     const clientId = '768128998994-6ltvdfgdgotov36pbbmqmv4apvjfsor5.apps.googleusercontent.com';
-    const navigate = useNavigate();
-
-    const [email, setEmail] = useState("");   
-    
+    const navigate = useNavigate();    
     const onSuccess = (res) =>{
         localStorage.setItem("currentUser", JSON.stringify(res.profileObj));
         navigate("/")
