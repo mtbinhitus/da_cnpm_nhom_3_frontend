@@ -5,7 +5,6 @@ import ExamPart from "./ExamPart";
 import { Link } from "react-router-dom";
 
 export default function AnswerBox(props) {
-    console.log(props.listPart);
     const examId = 1;
     const examResultId = 1;
     return (

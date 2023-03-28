@@ -114,10 +114,6 @@ const NavPractice = () => {
             },
         },
     ];
-    {
-        listData.map((data) => console.log(data));
-    }
-
     return (
         <>
             <div className="alert-success">

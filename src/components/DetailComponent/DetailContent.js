@@ -5,8 +5,6 @@ import AnswerBox from "../DetailComponent/AnswerBox";
 import { Link } from "react-router-dom";
 
 export default function DetailContent(props) {
-    console.log(props);
-
     return (
         <>
             <Grid container spacing={2} mt={4}>

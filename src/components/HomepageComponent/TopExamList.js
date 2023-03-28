@@ -7,12 +7,8 @@ function TopExamList() {
     const accessToken = localStorage.getItem("token");
     const [exams, setExams] = useState();
     useEffect(() => {
-        console.log(accessToken);
-
         getListExam(accessToken).then((res) => {
             setExams(res.body);
-            console.log("TopExamList");
-            console.log(res.body);
         });
     }, []);
 

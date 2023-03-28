@@ -6,8 +6,6 @@ import NavPractice from './NavPractice'
 const PracticeContent = () => {
     const [value, setValue] = useState(0);
 
-    console.log(value)
-
     return (
         <>
             <div>

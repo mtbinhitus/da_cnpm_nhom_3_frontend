@@ -32,7 +32,6 @@ function a11yProps(index) {
 
 export default function QuestionBox(props) {
     const [value, setValue] = useState(0);
-    console.log(value);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };

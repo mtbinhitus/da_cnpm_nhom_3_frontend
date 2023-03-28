@@ -8,7 +8,6 @@ export default function Question(props) {
     const handleChange = (event) => {
         setAnswer(event.target.answer);
     };
-    console.log(props.question.listOption);
     return (
         <div>
             <Stack py={2} justifyContent="center" spacing={2}>
