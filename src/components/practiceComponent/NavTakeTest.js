@@ -1,10 +1,10 @@
-import { Button } from "@mui/material";
-import "../../../src/style/practicePage.css";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
+import "../../../src/style/practicePage.css";
 
 const NavTakeTest = () => {
-    const examId = 1;
+    const examId = useParams();
     return (
         <>
             <div className="alert-warning">
@@ -19,7 +19,7 @@ const NavTakeTest = () => {
                     </span>
                 </div>
             </div>
-            <Link to={`/exam-detail/${examId}/start`} style={{ textDecoration: "none" }}>
+            <Link to={`/exam-detail/${examId.examId}/start`} style={{ textDecoration: "none" }}>
                 <Button
                     size="small"
                     variant="contained"

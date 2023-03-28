@@ -1,7 +1,6 @@
-import { React, useState } from "react";
-import { Box, Tabs, Tab, Typography, Button, Container } from "@mui/material";
-import QuestTab from "./QuestTab";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { Box, Button, Typography } from "@mui/material";
+import { React, useState } from "react";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -36,9 +35,10 @@ export default function QuestionBox(props) {
         setValue(newValue);
     };
 
+    if (props.listExam === undefined) return <p>Loading...</p>;
     return (
         <div>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     {props.listPart.map((value, index) => (
                         <Tab label={"Part " + value.partNumber} key={index} {...a11yProps(index)} />
@@ -47,9 +47,9 @@ export default function QuestionBox(props) {
             </Box>
             {props.listPart.map((item, index) => (
                 <TabPanel value={value} index={index}>
-                    <QuestTab key={index} listQuestion={item.listQuestion} />
+                    <QuestTab key={index} listQuestion={item.listQuestion} listExam={props.listExam} />
                 </TabPanel>
-            ))}
+            ))} */}
             <div style={{ display: "flex", justifyContent: "flex-end" }} maxWidth="sm">
                 <Button variant="text" endIcon={<NavigateNextIcon />}>Tiếp theo</Button>
             </div>

@@ -1,11 +1,11 @@
-import {AppBar, Button, Tab, Tabs, Toolbar, Typography} from "@mui/material";
+import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import Dropdown from 'react-bootstrap/Dropdown';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 import {useEffect, useState} from "react";
-import {Link, NavLink} from "react-router-dom";
 import "../style/header.css";
 
 const Header = () => {
@@ -47,7 +47,7 @@ const Header = () => {
                                 color: "black",
                                 fontWeight: "bold",
                             }}
-                            label={"Home"}
+                            label={"Trang chủ"}
                         ></Tab>
 
                         <Tab

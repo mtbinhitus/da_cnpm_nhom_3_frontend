@@ -1,10 +1,9 @@
 import React from "react";
-import { Typography, Stack, Button, Grid, IconButton } from "@mui/material";
 
 export default function ExamPart(props) {
     return (
         <div>
-            <Stack justifyContent="center" spacing={2}>
+            {/* <Stack justifyContent="center" spacing={2}>
                 <Typography alignSelf="flex-start" variant="h6">
                     Part {props.part.partNumber}
                 </Typography>
@@ -17,7 +16,7 @@ export default function ExamPart(props) {
                         </Grid>
                     ))}
                 </Grid>
-            </Stack>
+            </Stack> */}
         </div>
     );
 }
