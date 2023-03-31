@@ -33,9 +33,11 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                     <Layout>
-                                        <Page />
-                                     </Layout>
+                                    <Layout>
+                                        <RequireAuth>
+                                            <Page />
+                                        </RequireAuth>
+                                    </Layout>
                                 }
                             />
                         );
