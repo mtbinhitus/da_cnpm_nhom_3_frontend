@@ -7,6 +7,7 @@ import UploadExamContent from "../components/ExamCreationComponent/UploadExamCon
 import cloneDeep from "lodash/cloneDeep";
 import QuestionCluster from "../components/ExamCreationComponent/QuestionCluster";
 import DynamicQuestionCluster from "../components/ExamCreationComponent/DynamicQuestionCluster";
+import QuestionModel from "../models/question";
 
 const ExamCreationPage = () => {
     const examName = "New academy";
@@ -16,7 +17,20 @@ const ExamCreationPage = () => {
         questionClusters: [
             {
                 id: 1,
-                questions: [1],
+                questions: [
+                    {
+                        id: 1,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                    },
+                ],
             },
         ],
         size: 1,
@@ -26,7 +40,20 @@ const ExamCreationPage = () => {
         questionClusters: [
             {
                 id: 1,
-                questions: [1],
+                questions: [
+                    {
+                        id: 1,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                    },
+                ],
             },
         ],
         size: 1,
@@ -36,7 +63,47 @@ const ExamCreationPage = () => {
         questionClusters: [
             {
                 id: 1,
-                questions: [1, 2, 3],
+                questions: [
+                    {
+                        id: 1,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                        questionContent: "",
+                    },
+                    {
+                        id: 2,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                        questionContent: "",
+                    },
+                    {
+                        id: 3,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                        questionContent: "",
+                    },
+                ],
             },
         ],
         size: 3,
@@ -46,17 +113,70 @@ const ExamCreationPage = () => {
         questionClusters: [
             {
                 id: 1,
-                questions: [1, 2, 3],
+                questions: [
+                    {
+                        id: 1,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                        questionContent: "",
+                    },
+                    {
+                        id: 2,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                        questionContent: "",
+                    },
+                    {
+                        id: 3,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                        questionContent: "",
+                    },
+                ],
             },
         ],
         size: 3,
-        type: "part1",
+        type: "part4",
     });
     const [part5List, setPart5List] = useState({
         questionClusters: [
             {
                 id: 1,
-                questions: [1],
+                questions: [
+                    {
+                        id: 1,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                    },
+                ],
             },
         ],
         size: 1,
@@ -66,7 +186,21 @@ const ExamCreationPage = () => {
         questionClusters: [
             {
                 id: 1,
-                questions: [1],
+                questions: [
+                    {
+                        id: 1,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                        questionContent: "",
+                    },
+                ],
             },
         ],
         size: 1,
@@ -76,7 +210,21 @@ const ExamCreationPage = () => {
         questionClusters: [
             {
                 id: 1,
-                questions: [1],
+                questions: [
+                    {
+                        id: 1,
+                        options: {
+                            a: "",
+                            b: "",
+                            c: "",
+                            d: "",
+                        },
+                        correctOption: "",
+                        explain: "",
+                        material: "",
+                        questionContent: "",
+                    },
+                ],
             },
         ],
         size: 1,
@@ -85,7 +233,7 @@ const ExamCreationPage = () => {
     const addSingleQuestion = (clone) => {
         clone.questionClusters.push({
             id: clone.questionClusters.length + 1,
-            questions: [clone.questionClusters.length + 1],
+            questions: [QuestionModel(clone.questionClusters.length + 1, "", "", "", "", "", "")],
         });
         clone.size = clone.size + 1;
     };
@@ -97,7 +245,11 @@ const ExamCreationPage = () => {
             id: indexCluster + 1,
             questions: [],
         });
-        clone.questionClusters[indexCluster].questions.push(indexQuestion, indexQuestion + 1, indexQuestion + 2);
+        clone.questionClusters[indexCluster].questions.push(
+            QuestionModel(indexQuestion, "", "", "", "", "", ""),
+            QuestionModel(indexQuestion + 1, "", "", "", "", "", ""),
+            QuestionModel(indexQuestion + 2, "", "", "", "", "", ""),
+        );
         clone.size = clone.size + 3;
     };
     const addDynamicQuestionCluster = (clone) => {
@@ -107,7 +259,7 @@ const ExamCreationPage = () => {
             id: indexCluster + 1,
             questions: [],
         });
-        clone.questionClusters[indexCluster].questions.push(clone.size + 1);
+        clone.questionClusters[indexCluster].questions.push(QuestionModel(clone.size + 1, "", "", "", "", "", ""));
         clone.size = clone.size + 1;
     };
 
@@ -148,13 +300,24 @@ const ExamCreationPage = () => {
     const handleChange = (event, value) => {
         setSeletedPart(value);
     };
+
+    const saveList = (singleQList, setFunc) => {
+        var clone = cloneDeep(singleQList);
+        setFunc(clone);
+    };
+
     const showPart = (seletedPart) => {
         switch (seletedPart) {
             case "1":
                 // code block
                 return (
                     <>
-                        <UploadExamContent singleQList={part1List} addFunc={addQuestionComponet} setFunc={setPart1List}>
+                        <UploadExamContent
+                            singleQList={cloneDeep(part1List)}
+                            addFunc={addQuestionComponet}
+                            setFunc={setPart1List}
+                            saveList={saveList}
+                        >
                             <Part1Question />
                         </UploadExamContent>
                     </>
@@ -164,7 +327,12 @@ const ExamCreationPage = () => {
                 // code block
                 return (
                     <>
-                        <UploadExamContent singleQList={part2List} addFunc={addQuestionComponet} setFunc={setPart2List}>
+                        <UploadExamContent
+                            singleQList={cloneDeep(part2List)}
+                            addFunc={addQuestionComponet}
+                            setFunc={setPart2List}
+                            saveList={saveList}
+                        >
                             <Part2Question />
                         </UploadExamContent>
                     </>
@@ -173,7 +341,12 @@ const ExamCreationPage = () => {
                 // code block
                 return (
                     <>
-                        <UploadExamContent singleQList={part3List} addFunc={addQuestionComponet} setFunc={setPart3List}>
+                        <UploadExamContent
+                            singleQList={cloneDeep(part3List)}
+                            addFunc={addQuestionComponet}
+                            setFunc={setPart3List}
+                            saveList={saveList}
+                        >
                             <QuestionCluster />
                         </UploadExamContent>
                     </>
@@ -182,7 +355,12 @@ const ExamCreationPage = () => {
                 // code block
                 return (
                     <>
-                        <UploadExamContent singleQList={part4List} addFunc={addQuestionComponet} setFunc={setPart4List}>
+                        <UploadExamContent
+                            singleQList={cloneDeep(part4List)}
+                            addFunc={addQuestionComponet}
+                            setFunc={setPart4List}
+                            saveList={saveList}
+                        >
                             <QuestionCluster />
                         </UploadExamContent>
                     </>
@@ -191,7 +369,12 @@ const ExamCreationPage = () => {
                 // code block
                 return (
                     <>
-                        <UploadExamContent singleQList={part5List} addFunc={addQuestionComponet} setFunc={setPart5List}>
+                        <UploadExamContent
+                            singleQList={cloneDeep(part5List)}
+                            addFunc={addQuestionComponet}
+                            setFunc={setPart5List}
+                            saveList={saveList}
+                        >
                             <Part2Question />
                         </UploadExamContent>
                     </>
@@ -201,10 +384,11 @@ const ExamCreationPage = () => {
                 return (
                     <>
                         <UploadExamContent
-                            singleQList={part6List}
+                            singleQList={cloneDeep(part6List)}
                             addFunc={addQuestionComponet}
                             setFunc={setPart6List}
                             setNumberQ={setNumberQuestion}
+                            saveList={saveList}
                         >
                             <DynamicQuestionCluster />
                         </UploadExamContent>
@@ -215,10 +399,11 @@ const ExamCreationPage = () => {
                 return (
                     <>
                         <UploadExamContent
-                            singleQList={part7List}
+                            singleQList={cloneDeep(part7List)}
                             addFunc={addQuestionComponet}
                             setFunc={setPart7List}
                             setNumberQ={setNumberQuestion}
+                            saveList={saveList}
                         >
                             <DynamicQuestionCluster />
                         </UploadExamContent>

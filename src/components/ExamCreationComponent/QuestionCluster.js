@@ -4,7 +4,7 @@ import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import Part3Question from "./Part3Question";
 
-const QuestionCluster = ({ index }) => {
+const QuestionCluster = ({ index, question }) => {
     const part3Index = index * 2 + (index - 2);
     const uploader = Uploader({
         apiKey: `${process.env.REACT_APP_FILE_PICKER_KEY}`,
@@ -19,12 +19,12 @@ const QuestionCluster = ({ index }) => {
     };
     return (
         <>
-            <Part3Question index={part3Index}></Part3Question>
+            <Part3Question index={part3Index} question={question} indexInCluster={0}></Part3Question>
             <hr className="mt-3 mb-3" />
-            <Part3Question index={part3Index + 1}></Part3Question>
+            <Part3Question index={part3Index + 1} question={question} indexInCluster={1}></Part3Question>
             <hr className="mt-3 mb-3" />
 
-            <Part3Question index={part3Index + 2}></Part3Question>
+            <Part3Question index={part3Index + 2} question={question} indexInCluster={2}></Part3Question>
             <hr className="mt-3 mb-3" />
 
             <div>

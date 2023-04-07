@@ -1,15 +1,18 @@
 import { SafetyDividerOutlined } from "@mui/icons-material";
 import { Button, Divider } from "@mui/material";
-import { cloneDeep } from "lodash";
 import { UploadDropzone } from "react-uploader";
 import { Uploader } from "uploader";
 import Part3Question from "./Part3Question";
+import QuestionModel from "../../models/question";
+import { useState } from "react";
+import cloneDeep from "lodash";
 
-const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ }) => {
-    const part3Index = index * 2 + (index - 2);
+const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ, question }) => {
+    var cloneList = cloneDeep(singleQList);
     const uploader = Uploader({
         apiKey: `${process.env.REACT_APP_FILE_PICKER_KEY}`,
     });
+
     const options = {
         multi: false,
         styles: {
@@ -20,8 +23,8 @@ const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ }) => 
     };
 
     const addQuestion = (questionList) => {
-        var clone = cloneDeep(questionList);
-        clone.questionClusters[index - 1].questions.push(clone.size + 1);
+        var clone = questionList;
+        clone.questionClusters[index - 1].questions.push(QuestionModel(clone.size + 1, "", "", "", "", "", ""));
         clone.size = clone.size + 1;
         setNumberQ(clone.size);
         setFunc(clone);
@@ -40,8 +43,13 @@ const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ }) => 
             </div>
             <hr className="mt-3 mb-3" />
             {singleQList.questionClusters[index - 1].questions.map((value, indexArray) => (
-                <div key={value}>
-                    <Part3Question index={value}></Part3Question>
+                <div key={indexArray}>
+                    {console.log(indexArray)}
+                    <Part3Question
+                        index={cloneList.size}
+                        question={question}
+                        indexInCluster={indexArray}
+                    ></Part3Question>
                     <hr className="mt-3 mb-3" />
                 </div>
             ))}
