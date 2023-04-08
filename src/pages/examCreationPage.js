@@ -8,228 +8,27 @@ import cloneDeep from "lodash/cloneDeep";
 import QuestionCluster from "../components/ExamCreationComponent/QuestionCluster";
 import DynamicQuestionCluster from "../components/ExamCreationComponent/DynamicQuestionCluster";
 import QuestionModel from "../models/question";
+import Part1ListModel from "../models/part1List";
+import Part2ListModel from "../models/part2List";
+import Part3ListModel from "../models/part3List";
+import Part4ListModel from "../models/part4List";
+import Part5ListModel from "../models/part5List";
+import Part6ListModel from "../models/part6List";
+import Part7ListModel from "../models/part7List";
+import ExamModel from "../models/exam";
 
 const ExamCreationPage = () => {
     const examName = "New academy";
+    const [isSave, setIsSave] = useState(false);
     const [seletedPart, setSeletedPart] = useState("1");
     const [numberQuestion, setNumberQuestion] = useState(1);
-    const [part1List, setPart1List] = useState({
-        questionClusters: [
-            {
-                id: 1,
-                questions: [
-                    {
-                        id: 1,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                    },
-                ],
-            },
-        ],
-        size: 1,
-        type: "part1",
-    });
-    const [part2List, setPart2List] = useState({
-        questionClusters: [
-            {
-                id: 1,
-                questions: [
-                    {
-                        id: 1,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                    },
-                ],
-            },
-        ],
-        size: 1,
-        type: "part2",
-    });
-    const [part3List, setPart3List] = useState({
-        questionClusters: [
-            {
-                id: 1,
-                questions: [
-                    {
-                        id: 1,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                        questionContent: "",
-                    },
-                    {
-                        id: 2,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                        questionContent: "",
-                    },
-                    {
-                        id: 3,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                        questionContent: "",
-                    },
-                ],
-            },
-        ],
-        size: 3,
-        type: "part3",
-    });
-    const [part4List, setPart4List] = useState({
-        questionClusters: [
-            {
-                id: 1,
-                questions: [
-                    {
-                        id: 1,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                        questionContent: "",
-                    },
-                    {
-                        id: 2,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                        questionContent: "",
-                    },
-                    {
-                        id: 3,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                        questionContent: "",
-                    },
-                ],
-            },
-        ],
-        size: 3,
-        type: "part4",
-    });
-    const [part5List, setPart5List] = useState({
-        questionClusters: [
-            {
-                id: 1,
-                questions: [
-                    {
-                        id: 1,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                    },
-                ],
-            },
-        ],
-        size: 1,
-        type: "part5",
-    });
-    const [part6List, setPart6List] = useState({
-        questionClusters: [
-            {
-                id: 1,
-                questions: [
-                    {
-                        id: 1,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                        questionContent: "",
-                    },
-                ],
-            },
-        ],
-        size: 1,
-        type: "part6",
-    });
-    const [part7List, setPart7List] = useState({
-        questionClusters: [
-            {
-                id: 1,
-                questions: [
-                    {
-                        id: 1,
-                        options: {
-                            a: "",
-                            b: "",
-                            c: "",
-                            d: "",
-                        },
-                        correctOption: "",
-                        explain: "",
-                        material: "",
-                        questionContent: "",
-                    },
-                ],
-            },
-        ],
-        size: 1,
-        type: "part7",
-    });
+    const [part1List, setPart1List] = useState(Part1ListModel());
+    const [part2List, setPart2List] = useState(Part2ListModel());
+    const [part3List, setPart3List] = useState(Part3ListModel());
+    const [part4List, setPart4List] = useState(Part4ListModel());
+    const [part5List, setPart5List] = useState(Part5ListModel());
+    const [part6List, setPart6List] = useState(Part6ListModel());
+    const [part7List, setPart7List] = useState(Part7ListModel());
     const addSingleQuestion = (clone) => {
         clone.questionClusters.push({
             id: clone.questionClusters.length + 1,
@@ -411,6 +210,12 @@ const ExamCreationPage = () => {
                 );
         }
     };
+
+    const submitExam = () => {
+        const exam = ExamModel(part1List, part2List, part3List, part4List, part5List, part6List, part7List);
+        console.log(exam);
+    };
+
     return (
         <>
             <Grid style={{ justifyContent: "center" }} container>
@@ -496,6 +301,18 @@ const ExamCreationPage = () => {
                             <div className="d-flex justify-content-between align-items-center">
                                 <div>Tổng câu hỏi {numberQuestion}</div>
                                 <Button variant="contained">Phần tiếp theo</Button>
+                            </div>
+                        </Card>
+                        <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
+                            <div className="d-flex justify-content-center align-items-center">
+                                <Button
+                                    variant="contained"
+                                    onClick={(e) => {
+                                        submitExam();
+                                    }}
+                                >
+                                    Nộp đề
+                                </Button>
                             </div>
                         </Card>
                     </div>

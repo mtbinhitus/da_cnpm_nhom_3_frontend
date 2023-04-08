@@ -7,7 +7,7 @@ import QuestionModel from "../../models/question";
 import { useState } from "react";
 import cloneDeep from "lodash";
 
-const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ, question }) => {
+const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ, question, increaseCount }) => {
     var cloneList = cloneDeep(singleQList);
     const uploader = Uploader({
         apiKey: `${process.env.REACT_APP_FILE_PICKER_KEY}`,
@@ -45,11 +45,7 @@ const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ, quest
             {singleQList.questionClusters[index - 1].questions.map((value, indexArray) => (
                 <div key={indexArray}>
                     {console.log(indexArray)}
-                    <Part3Question
-                        index={cloneList.size}
-                        question={question}
-                        indexInCluster={indexArray}
-                    ></Part3Question>
+                    <Part3Question index={value.id} question={question} indexInCluster={indexArray}></Part3Question>
                     <hr className="mt-3 mb-3" />
                 </div>
             ))}

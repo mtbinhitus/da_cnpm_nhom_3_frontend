@@ -4,6 +4,7 @@ import Part1Question from "./Part1Question";
 import { set } from "immutable";
 
 const UploadExamContent = ({ children, singleQList, addFunc, setFunc, setNumberQ, saveList }) => {
+    var count = 0;
     const handleKeyofList = () => {
         switch (singleQList.type) {
             case "part1":
@@ -27,16 +28,46 @@ const UploadExamContent = ({ children, singleQList, addFunc, setFunc, setNumberQ
                 return 147;
         }
     };
+    const checkPart = () => {
+        switch (singleQList.type) {
+            case "part1":
+                return false;
+            case "part2":
+                // code block
+                return false;
+            case "part3":
+                // code block
+                return false;
+            case "part4":
+                return false;
+            case "part5":
+                // code block
+                return false;
+            case "part6":
+                return true;
+            case "part7":
+                return true;
+        }
+    };
+    const increaseCount = () => {
+        count++;
+        return count;
+    };
     return (
         <>
             {singleQList.questionClusters.map((value, index) => (
-                <Card key={index + handleKeyofList()} variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
+                <Card
+                    key={index + handleKeyofList()}
+                    variant="outlined"
+                    style={{ padding: "16px", marginTop: "16px", backgroundColor: "#ECF9FF" }}
+                >
                     {React.cloneElement(children, {
                         index: index + 1,
                         singleQList: singleQList,
                         setFunc: setFunc,
                         setNumberQ: setNumberQ,
                         question: value,
+                        increaseCount: increaseCount,
                     })}
                 </Card>
             ))}
