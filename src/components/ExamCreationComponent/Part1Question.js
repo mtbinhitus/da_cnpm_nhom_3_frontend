@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton, UploadDropzone } from "react-uploader";
 import QuestionModel from "../../models/question";
+// import { Dropzone, FileMosaic } from "@files-ui/react";
+import React, { useCallback } from "react";
+import Dropzone from "react-dropzone";
+import { useDropzone } from "react-dropzone";
 
 const Part1Question = ({ index, question, setFunc }) => {
     const [optionA, setOptionA] = useState(question.questions[0].options.a);
@@ -12,6 +16,17 @@ const Part1Question = ({ index, question, setFunc }) => {
     const [optionD, setOptionD] = useState(question.questions[0].options.d);
     const [correctOption, setCorrectOption] = useState(question.questions[0].correctOption);
     const [explain, setExplain] = useState(question.questions[0].explain);
+    const [files, setFiles] = useState([]);
+
+    const onDrop = useCallback((acceptedFiles) => {
+        // Do something with the files
+    }, []);
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+    const updateFiles = (incommingFiles) => {
+        // incommingFiles[0]?.name = "hello.jpg";
+        setFiles(incommingFiles);
+    };
 
     const uploader = Uploader({
         apiKey: `${process.env.REACT_APP_FILE_PICKER_KEY}`,
@@ -148,13 +163,11 @@ const Part1Question = ({ index, question, setFunc }) => {
                     </FormControl>
                 </Grid>
                 <Grid item xs={6}>
-                    <UploadDropzone
-                        uploader={uploader}
-                        options={options}
-                        onUpdate={(files) => alert(files.map((x) => x.fileUrl).join("\n"))}
-                        width="100%"
-                        height="100%"
-                    />
+                    <Dropzone onChange={updateFiles} value={files}>
+                        {files.map((file) => (
+                            <FileMosaic {...file} preview />
+                        ))}
+                    </Dropzone>
                 </Grid>
             </Grid>
         </>
