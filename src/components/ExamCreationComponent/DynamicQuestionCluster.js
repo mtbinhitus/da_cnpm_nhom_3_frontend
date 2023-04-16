@@ -5,23 +5,48 @@ import { Uploader } from "uploader";
 import Part3Question from "./Part3Question";
 import QuestionModel from "../../models/question";
 import { useState } from "react";
-import cloneDeep from "lodash";
+import cloneDeep from "lodash/cloneDeep";
+import { Dropzone, FileMosaic } from "@files-ui/react";
 
-const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ, question, increaseCount }) => {
-    var cloneList = cloneDeep(singleQList);
-    const uploader = Uploader({
-        apiKey: `${process.env.REACT_APP_FILE_PICKER_KEY}`,
-    });
+const DynamicQuestionCluster = ({
+    index,
+    singleQList,
+    setFunc,
+    setNumberQ,
+    question,
+    increaseCount,
+    files,
+    setFiles,
+    part,
+    previewFile,
+    setPreviewFile,
+}) => {
+    const [fileList, setFileList] = useState([]);
 
-    const options = {
-        multi: false,
-        styles: {
-            fontSizes: {
-                base: 14,
-            },
-        },
+    const updateFiles = (incommingFiles) => {
+        // incommingFiles[0]?.name = "hello.jpg";
+        var previewClone = cloneDeep(previewFile);
+        if (part === "part6") previewClone.part6.push(incommingFiles);
+        else previewClone.part7.push(incommingFiles);
+        setPreviewFile(previewClone);
+        console.log(files);
+        var clone = cloneDeep(files);
+        for (let i = 0; i < incommingFiles.length; i++) {
+            const nameFile = `${part}_${index}_${i}`;
+            var newFile = new File([incommingFiles[i].file], nameFile, { type: incommingFiles[i].type });
+            const duplicateIndex = clone.findIndex((e) => e.name == nameFile);
+            console.log(duplicateIndex);
+            if (duplicateIndex === -1) {
+                clone.push(newFile);
+            } else {
+                clone[duplicateIndex] = newFile;
+                break;
+            }
+            // const newFile = new File([incommingFiles[0].file.slice()], "newFileName.txt", { type: incommingFiles[0].file.type });
+        }
+        setFiles(clone);
+        console.log(clone);
     };
-
     const addQuestion = (questionList) => {
         var clone = questionList;
         clone.questionClusters[index - 1].questions.push(QuestionModel(clone.size + 1, "", "", "", "", "", ""));
@@ -33,18 +58,15 @@ const DynamicQuestionCluster = ({ index, singleQList, setFunc, setNumberQ, quest
     return (
         <>
             <div>
-                <UploadDropzone
-                    uploader={uploader}
-                    options={options}
-                    onUpdate={(files) => alert(files.map((x) => x.fileUrl).join("\n"))}
-                    width="100%"
-                    height="150px"
-                />
+                <Dropzone onChange={updateFiles} value={files}>
+                    {part === "part6"
+                        ? previewFile.part6[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)
+                        : previewFile.part7[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)}
+                </Dropzone>
             </div>
             <hr className="mt-3 mb-3" />
             {singleQList.questionClusters[index - 1].questions.map((value, indexArray) => (
                 <div key={indexArray}>
-                    {console.log(indexArray)}
                     <Part3Question index={value.id} question={question} indexInCluster={indexArray}></Part3Question>
                     <hr className="mt-3 mb-3" />
                 </div>

@@ -3,7 +3,18 @@ import React, { useState } from "react";
 import Part1Question from "./Part1Question";
 import { set } from "immutable";
 
-const UploadExamContent = ({ children, singleQList, addFunc, setFunc, setNumberQ, saveList }) => {
+const UploadExamContent = ({
+    children,
+    singleQList,
+    addFunc,
+    setFunc,
+    setNumberQ,
+    saveList,
+    files,
+    setFiles,
+    previewFile,
+    setPreviewFile,
+}) => {
     var count = 0;
     const handleKeyofList = () => {
         switch (singleQList.type) {
@@ -68,6 +79,11 @@ const UploadExamContent = ({ children, singleQList, addFunc, setFunc, setNumberQ
                         setNumberQ: setNumberQ,
                         question: value,
                         increaseCount: increaseCount,
+                        files: files,
+                        setFiles: setFiles,
+                        part: singleQList.type,
+                        previewFile: previewFile,
+                        setPreviewFile: setPreviewFile,
                     })}
                 </Card>
             ))}

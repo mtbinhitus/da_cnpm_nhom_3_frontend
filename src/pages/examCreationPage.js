@@ -29,6 +29,11 @@ const ExamCreationPage = () => {
     const [part5List, setPart5List] = useState(Part5ListModel());
     const [part6List, setPart6List] = useState(Part6ListModel());
     const [part7List, setPart7List] = useState(Part7ListModel());
+    const [files, setFiles] = useState([]);
+    const [previewFile, setPreviewFile] = useState({ part1: [], part3: [], part4: [], part6: [], part7: [] });
+
+    const formData = new FormData();
+
     const addSingleQuestion = (clone) => {
         clone.questionClusters.push({
             id: clone.questionClusters.length + 1,
@@ -116,6 +121,10 @@ const ExamCreationPage = () => {
                             addFunc={addQuestionComponet}
                             setFunc={setPart1List}
                             saveList={saveList}
+                            files={files}
+                            setFiles={setFiles}
+                            previewFile={previewFile}
+                            setPreviewFile={setPreviewFile}
                         >
                             <Part1Question />
                         </UploadExamContent>
@@ -145,6 +154,10 @@ const ExamCreationPage = () => {
                             addFunc={addQuestionComponet}
                             setFunc={setPart3List}
                             saveList={saveList}
+                            files={files}
+                            setFiles={setFiles}
+                            previewFile={previewFile}
+                            setPreviewFile={setPreviewFile}
                         >
                             <QuestionCluster />
                         </UploadExamContent>
@@ -159,6 +172,10 @@ const ExamCreationPage = () => {
                             addFunc={addQuestionComponet}
                             setFunc={setPart4List}
                             saveList={saveList}
+                            files={files}
+                            setFiles={setFiles}
+                            previewFile={previewFile}
+                            setPreviewFile={setPreviewFile}
                         >
                             <QuestionCluster />
                         </UploadExamContent>
@@ -188,6 +205,10 @@ const ExamCreationPage = () => {
                             setFunc={setPart6List}
                             setNumberQ={setNumberQuestion}
                             saveList={saveList}
+                            files={files}
+                            setFiles={setFiles}
+                            previewFile={previewFile}
+                            setPreviewFile={setPreviewFile}
                         >
                             <DynamicQuestionCluster />
                         </UploadExamContent>
@@ -203,6 +224,10 @@ const ExamCreationPage = () => {
                             setFunc={setPart7List}
                             setNumberQ={setNumberQuestion}
                             saveList={saveList}
+                            files={files}
+                            setFiles={setFiles}
+                            previewFile={previewFile}
+                            setPreviewFile={setPreviewFile}
                         >
                             <DynamicQuestionCluster />
                         </UploadExamContent>
