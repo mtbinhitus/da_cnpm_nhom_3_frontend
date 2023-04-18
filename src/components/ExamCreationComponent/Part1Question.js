@@ -4,67 +4,61 @@ import { useEffect, useState } from "react";
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton, UploadDropzone } from "react-uploader";
 import QuestionModel from "../../models/question";
-import { Dropzone, FileMosaic } from "@files-ui/react";
+import { Dropzone, FileMosaic, uploadFile } from "@files-ui/react";
 import React, { useCallback } from "react";
 import cloneDeep from "lodash/cloneDeep";
+import FormData from "form-data";
+import uploadFileFunc from "../../services/upload-file";
 
 // import Dropzone from "react-dropzone";
 // import { useDropzone } from "react-dropzone";
 
-const Part1Question = ({ index, question, setFunc, files, setFiles, part, previewFile, setPreviewFile }) => {
+const Part1Question = ({ index, question, setFunc, part, previewFile, setPreviewFile, singleQList }) => {
     const [optionA, setOptionA] = useState(question.questions[0].options.a);
     const [optionB, setOptionB] = useState(question.questions[0].options.b);
     const [optionC, setOptionC] = useState(question.questions[0].options.c);
     const [optionD, setOptionD] = useState(question.questions[0].options.d);
     const [correctOption, setCorrectOption] = useState(question.questions[0].correctOption);
     const [explain, setExplain] = useState(question.questions[0].explain);
-    const [fileList, setFileList] = useState([]);
+    const [materialUrl, setMaterialUrl] = useState();
 
-    const onDrop = useCallback((acceptedFiles) => {
-        // Do something with the files
-    }, []);
-    // const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
-
-    const updateFiles = (incommingFiles) => {
+    const updateFiles = async (incommingFiles) => {
         // incommingFiles[0]?.name = "hello.jpg";
         var previewClone = cloneDeep(previewFile);
-        previewClone.part1.push(incommingFiles);
+        if (typeof previewClone.part1[index - 1] === "undefined") previewClone.part1.push(incommingFiles);
+        else previewClone.part1[index - 1] = incommingFiles;
         setPreviewFile(previewClone);
-        // console.log(incommingFiles);
-        var clone = cloneDeep(files);
+        console.log(incommingFiles);
+        var imageUrl = [];
         for (let i = 0; i < incommingFiles.length; i++) {
             const nameFile = `${part}_${index}_${i}`;
             var newFile = new File([incommingFiles[i].file], nameFile, { type: incommingFiles[i].type });
-            const duplicateIndex = clone.findIndex((e) => e.name == nameFile);
-            console.log(duplicateIndex);
-            if (duplicateIndex === -1) {
-                clone.push(newFile);
-            } else {
-                clone[duplicateIndex] = newFile;
-                break;
-            }
-            // const newFile = new File([incommingFiles[0].file.slice()], "newFileName.txt", { type: incommingFiles[0].file.type });
+            const url = await uploadFileFunc(newFile);
+            if (typeof url !== "undefined") imageUrl.push(url);
+            console.log(url);
         }
-        console.log(clone);
-        setFiles(clone);
-
-        // console.log(newFile);
-        // const filess = [];
-        // filess.push(newFile);
-        // console.log(filess.findIndex((e) => e.name == "newFileName.txt"));
-
-        // for (let i = 0; i < incommingFiles.length; i++) {
-        //     filesInfo.files.findIndex((e) => e.name)
-        // }
+        setMaterialUrl(imageUrl);
     };
 
     console.log();
     const updateDetailQuestion = () => {
         question.questions[0] = QuestionModel(index, optionA, optionB, optionC, optionD, correctOption, explain, null);
+        var clone = cloneDeep(singleQList);
+        setFunc(clone);
     };
     useEffect(() => {
         updateDetailQuestion();
     }, [optionA, optionB, optionC, optionD, correctOption, explain]);
+
+    const updateFilesUrl = () => {
+        var clone = cloneDeep(singleQList);
+        clone.questionClusters[index - 1].material = materialUrl;
+        setFunc(clone);
+    };
+
+    useEffect(() => {
+        updateFilesUrl();
+    }, [materialUrl]);
     return (
         <>
             <div className="d-flex justify-content-between">
@@ -187,7 +181,7 @@ const Part1Question = ({ index, question, setFunc, files, setFiles, part, previe
                     </FormControl>
                 </Grid>
                 <Grid item xs={6}>
-                    <Dropzone onChange={updateFiles} value={files}>
+                    <Dropzone key={index} accept="image/*" maxFiles={1} onChange={updateFiles}>
                         {previewFile.part1[index - 1]?.map((file, i) => (
                             <FileMosaic key={i} {...file} preview />
                         ))}

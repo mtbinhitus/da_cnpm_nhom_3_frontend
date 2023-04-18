@@ -13,7 +13,6 @@ const Part3ListModel = () => ({
                     },
                     correctOption: "",
                     explain: "",
-                    material: "",
                     questionContent: "",
                 },
                 {
@@ -26,7 +25,6 @@ const Part3ListModel = () => ({
                     },
                     correctOption: "",
                     explain: "",
-                    material: "",
                     questionContent: "",
                 },
                 {
@@ -39,10 +37,10 @@ const Part3ListModel = () => ({
                     },
                     correctOption: "",
                     explain: "",
-                    material: "",
                     questionContent: "",
                 },
             ],
+            material: "",
         },
     ],
     size: 3,

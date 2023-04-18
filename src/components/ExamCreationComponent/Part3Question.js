@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton, UploadDropzone } from "react-uploader";
 import QuestionModel from "../../models/question";
+import cloneDeep from "lodash/cloneDeep";
 
-const Part3Question = ({ index, question, indexInCluster, files, setFiles, part }) => {
+const Part3Question = ({ index, question, indexInCluster, files, setFiles, part, singleQList, setFunc }) => {
     const [optionA, setOptionA] = useState(question.questions[indexInCluster].options.a);
     const [optionB, setOptionB] = useState(question.questions[indexInCluster].options.b);
     const [optionC, setOptionC] = useState(question.questions[indexInCluster].options.c);
@@ -29,6 +30,8 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part 
             explain,
             questionContent,
         );
+        var clone = cloneDeep(singleQList);
+        setFunc(clone);
     };
     useEffect(() => {
         updateDetailQuestion();

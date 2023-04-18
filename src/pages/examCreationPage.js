@@ -16,6 +16,8 @@ import Part5ListModel from "../models/part5List";
 import Part6ListModel from "../models/part6List";
 import Part7ListModel from "../models/part7List";
 import ExamModel from "../models/exam";
+import { Dropzone, FileMosaic, uploadFile } from "@files-ui/react";
+import uploadFileFunc from "../services/upload-file";
 
 const ExamCreationPage = () => {
     const examName = "New academy";
@@ -29,8 +31,9 @@ const ExamCreationPage = () => {
     const [part5List, setPart5List] = useState(Part5ListModel());
     const [part6List, setPart6List] = useState(Part6ListModel());
     const [part7List, setPart7List] = useState(Part7ListModel());
-    const [files, setFiles] = useState([]);
     const [previewFile, setPreviewFile] = useState({ part1: [], part3: [], part4: [], part6: [], part7: [] });
+    const [soundFile, setSoundFile] = useState([]);
+    const [materialUrl, setMaterialUrl] = useState();
 
     const formData = new FormData();
 
@@ -121,8 +124,6 @@ const ExamCreationPage = () => {
                             addFunc={addQuestionComponet}
                             setFunc={setPart1List}
                             saveList={saveList}
-                            files={files}
-                            setFiles={setFiles}
                             previewFile={previewFile}
                             setPreviewFile={setPreviewFile}
                         >
@@ -154,8 +155,6 @@ const ExamCreationPage = () => {
                             addFunc={addQuestionComponet}
                             setFunc={setPart3List}
                             saveList={saveList}
-                            files={files}
-                            setFiles={setFiles}
                             previewFile={previewFile}
                             setPreviewFile={setPreviewFile}
                         >
@@ -172,8 +171,6 @@ const ExamCreationPage = () => {
                             addFunc={addQuestionComponet}
                             setFunc={setPart4List}
                             saveList={saveList}
-                            files={files}
-                            setFiles={setFiles}
                             previewFile={previewFile}
                             setPreviewFile={setPreviewFile}
                         >
@@ -205,8 +202,6 @@ const ExamCreationPage = () => {
                             setFunc={setPart6List}
                             setNumberQ={setNumberQuestion}
                             saveList={saveList}
-                            files={files}
-                            setFiles={setFiles}
                             previewFile={previewFile}
                             setPreviewFile={setPreviewFile}
                         >
@@ -224,8 +219,6 @@ const ExamCreationPage = () => {
                             setFunc={setPart7List}
                             setNumberQ={setNumberQuestion}
                             saveList={saveList}
-                            files={files}
-                            setFiles={setFiles}
                             previewFile={previewFile}
                             setPreviewFile={setPreviewFile}
                         >
@@ -236,8 +229,31 @@ const ExamCreationPage = () => {
         }
     };
 
+    const updateFiles = async (incommingFiles) => {
+        // incommingFiles[0]?.name = "hello.jpg";
+        var cloneAudioFile = cloneDeep(incommingFiles);
+        setSoundFile(cloneAudioFile);
+        console.log(incommingFiles);
+        var audioUrl;
+        for (let i = 0; i < incommingFiles.length; i++) {
+            const fileName = `audio`;
+            var newFile = new File([incommingFiles[i].file], fileName, { type: incommingFiles[i].type });
+            const url = await uploadFileFunc(newFile, "audio");
+            if (typeof url !== "undefined") setMaterialUrl(url);
+        }
+    };
+
     const submitExam = () => {
-        const exam = ExamModel(part1List, part2List, part3List, part4List, part5List, part6List, part7List);
+        const exam = ExamModel(
+            part1List,
+            part2List,
+            part3List,
+            part4List,
+            part5List,
+            part6List,
+            part7List,
+            materialUrl,
+        );
         console.log(exam);
     };
 
@@ -248,6 +264,18 @@ const ExamCreationPage = () => {
                     <div style={{ width: "100" }}>
                         <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
                             <div>Tạo đề thi mới</div>
+                            <div>
+                                <Dropzone
+                                    label="Drop your listening file here !"
+                                    accept="audio/*"
+                                    maxFiles={1}
+                                    onChange={updateFiles}
+                                >
+                                    {soundFile.map((file, i) => (
+                                        <FileMosaic key={i} {...file} preview />
+                                    ))}
+                                </Dropzone>
+                            </div>
                         </Card>
                         <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
                             <div>{examName}</div>

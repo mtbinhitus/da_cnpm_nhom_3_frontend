@@ -7,6 +7,8 @@ import QuestionModel from "../../models/question";
 import { useState } from "react";
 import cloneDeep from "lodash/cloneDeep";
 import { Dropzone, FileMosaic } from "@files-ui/react";
+import uploadFileFunc from "../../services/upload-file";
+import { useEffect } from "react";
 
 const DynamicQuestionCluster = ({
     index,
@@ -15,37 +17,33 @@ const DynamicQuestionCluster = ({
     setNumberQ,
     question,
     increaseCount,
-    files,
-    setFiles,
     part,
     previewFile,
     setPreviewFile,
 }) => {
-    const [fileList, setFileList] = useState([]);
+    const [materialUrl, setMaterialUrl] = useState();
 
-    const updateFiles = (incommingFiles) => {
+    const updateFiles = async (incommingFiles) => {
         // incommingFiles[0]?.name = "hello.jpg";
         var previewClone = cloneDeep(previewFile);
-        if (part === "part6") previewClone.part6.push(incommingFiles);
-        else previewClone.part7.push(incommingFiles);
+        if (part === "part6") {
+            if (typeof previewClone.part6[index - 1] === "undefined") previewClone.part6.push(incommingFiles);
+            else previewClone.part6[index - 1] = incommingFiles;
+        } else {
+            if (typeof previewClone.part7[index - 1] === "undefined") previewClone.part7.push(incommingFiles);
+            else previewClone.part7[index - 1] = incommingFiles;
+        }
         setPreviewFile(previewClone);
-        console.log(files);
-        var clone = cloneDeep(files);
+        var imageUrl = [];
         for (let i = 0; i < incommingFiles.length; i++) {
             const nameFile = `${part}_${index}_${i}`;
             var newFile = new File([incommingFiles[i].file], nameFile, { type: incommingFiles[i].type });
-            const duplicateIndex = clone.findIndex((e) => e.name == nameFile);
-            console.log(duplicateIndex);
-            if (duplicateIndex === -1) {
-                clone.push(newFile);
-            } else {
-                clone[duplicateIndex] = newFile;
-                break;
-            }
+            const url = await uploadFileFunc(newFile);
+            if (typeof url !== "undefined") imageUrl.push(url);
+            console.log(url);
             // const newFile = new File([incommingFiles[0].file.slice()], "newFileName.txt", { type: incommingFiles[0].file.type });
         }
-        setFiles(clone);
-        console.log(clone);
+        setMaterialUrl(imageUrl);
     };
     const addQuestion = (questionList) => {
         var clone = questionList;
@@ -55,10 +53,21 @@ const DynamicQuestionCluster = ({
         setFunc(clone);
     };
 
+    const updateFilesUrl = () => {
+        var clone = cloneDeep(singleQList);
+        clone.questionClusters[index - 1].material = materialUrl;
+        console.log(previewFile);
+        setFunc(clone);
+    };
+
+    useEffect(() => {
+        updateFilesUrl();
+    }, [materialUrl]);
+
     return (
         <>
             <div>
-                <Dropzone onChange={updateFiles} value={files}>
+                <Dropzone onChange={updateFiles}>
                     {part === "part6"
                         ? previewFile.part6[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)
                         : previewFile.part7[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)}
@@ -67,7 +76,13 @@ const DynamicQuestionCluster = ({
             <hr className="mt-3 mb-3" />
             {singleQList.questionClusters[index - 1].questions.map((value, indexArray) => (
                 <div key={indexArray}>
-                    <Part3Question index={value.id} question={question} indexInCluster={indexArray}></Part3Question>
+                    <Part3Question
+                        singleQList={singleQList}
+                        setFunc={setFunc}
+                        index={value.id}
+                        question={question}
+                        indexInCluster={indexArray}
+                    ></Part3Question>
                     <hr className="mt-3 mb-3" />
                 </div>
             ))}

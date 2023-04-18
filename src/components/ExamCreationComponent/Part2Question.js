@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { Uploader } from "uploader"; // Installed by "react-uploader".
 import { UploadButton, UploadDropzone } from "react-uploader";
 import QuestionModel from "../../models/question";
+import cloneDeep from "lodash/cloneDeep";
 
-const Part2Question = ({ index, question }) => {
+const Part2Question = ({ index, question, singleQList, setFunc }) => {
     const [optionA, setOptionA] = useState(question.questions[0].options.a);
     const [optionB, setOptionB] = useState(question.questions[0].options.b);
     const [optionC, setOptionC] = useState(question.questions[0].options.c);
@@ -14,6 +15,8 @@ const Part2Question = ({ index, question }) => {
     const [explain, setExplain] = useState(question.questions[0].explain);
     const updateDetailQuestion = () => {
         question.questions[0] = QuestionModel(index, optionA, optionB, optionC, optionD, correctOption, explain, null);
+        var clone = cloneDeep(singleQList);
+        setFunc(clone);
     };
     useEffect(() => {
         updateDetailQuestion();

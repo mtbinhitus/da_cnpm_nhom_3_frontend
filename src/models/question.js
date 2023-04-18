@@ -9,7 +9,6 @@ const QuestionModel = (id, a, b, c, d, correct, explain, questionContent) => {
         },
         correctOption: correct,
         explain: explain,
-        material: "",
         questionContent: questionContent,
     };
 };

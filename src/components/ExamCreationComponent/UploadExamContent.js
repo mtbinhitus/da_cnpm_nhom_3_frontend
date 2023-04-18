@@ -10,8 +10,6 @@ const UploadExamContent = ({
     setFunc,
     setNumberQ,
     saveList,
-    files,
-    setFiles,
     previewFile,
     setPreviewFile,
 }) => {
@@ -79,8 +77,6 @@ const UploadExamContent = ({
                         setNumberQ: setNumberQ,
                         question: value,
                         increaseCount: increaseCount,
-                        files: files,
-                        setFiles: setFiles,
                         part: singleQList.type,
                         previewFile: previewFile,
                         setPreviewFile: setPreviewFile,
