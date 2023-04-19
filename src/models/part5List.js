@@ -15,7 +15,7 @@ const Part5ListModel = () => ({
                     explain: "",
                 },
             ],
-            material: "",
+            material: [],
         },
     ],
     size: 1,

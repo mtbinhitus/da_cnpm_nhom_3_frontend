@@ -18,6 +18,7 @@ import Part7ListModel from "../models/part7List";
 import ExamModel from "../models/exam";
 import { Dropzone, FileMosaic, uploadFile } from "@files-ui/react";
 import uploadFileFunc from "../services/upload-file";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ExamCreationPage = () => {
     const examName = "New academy";
@@ -34,7 +35,8 @@ const ExamCreationPage = () => {
     const [previewFile, setPreviewFile] = useState({ part1: [], part3: [], part4: [], part6: [], part7: [] });
     const [soundFile, setSoundFile] = useState([]);
     const [materialUrl, setMaterialUrl] = useState();
-
+    const location = useLocation();
+    const navigate = useNavigate();
     const formData = new FormData();
 
     const addSingleQuestion = (clone) => {
@@ -243,8 +245,10 @@ const ExamCreationPage = () => {
         }
     };
 
-    const submitExam = () => {
+    const submitExam = async () => {
+        console.log(part1List);
         const exam = ExamModel(
+            location.state.examId,
             part1List,
             part2List,
             part3List,
@@ -254,6 +258,17 @@ const ExamCreationPage = () => {
             part7List,
             materialUrl,
         );
+        const res = await fetch("http://localhost:8080/exam/questionCrt", {
+            method: "post",
+            body: JSON.stringify(exam),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+        });
+        const resJson = await res.json();
+        console.log(resJson);
+        if (resJson.code === 200) navigate("/admin/exams");
+
         console.log(exam);
     };
 
@@ -264,7 +279,7 @@ const ExamCreationPage = () => {
                     <div style={{ width: "100" }}>
                         <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
                             <div>Tạo đề thi mới</div>
-                            <div>
+                            <div className="mt-3">
                                 <Dropzone
                                     label="Drop your listening file here !"
                                     accept="audio/*"
@@ -278,7 +293,7 @@ const ExamCreationPage = () => {
                             </div>
                         </Card>
                         <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
-                            <div>{examName}</div>
+                            <div>Đề thi {location.state?.examName}</div>
                             <div className="part-group-btn" style={{ marginTop: "16px" }}>
                                 <ToggleButtonGroup
                                     color="primary"

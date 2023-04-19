@@ -40,7 +40,7 @@ const Part4ListModel = () => ({
                     questionContent: "",
                 },
             ],
-            material: "",
+            material: [],
         },
     ],
     size: 3,

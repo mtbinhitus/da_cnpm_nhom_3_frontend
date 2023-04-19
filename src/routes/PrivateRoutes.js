@@ -10,8 +10,8 @@ const privateRoutes = [
     { path: "/exam-detail/:examId/start", element: DetailPage },
     { path: "/exam-detail/:examId/results/:examResultId", element: TestResult },
     { path: "/exams", element: TestList },
-    { path: "/exam-creation", element: ExamCreationPage },
     { path: "/admin/exams", element: ManageExam },
+    { path: "/admin/exams/:examId", element: ExamCreationPage },
 ];
 
 export { privateRoutes };

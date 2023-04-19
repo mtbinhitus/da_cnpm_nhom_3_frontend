@@ -1,4 +1,5 @@
-const ExamModel = (part1List, part2List, part3List, part4List, part5List, part6List, part7List, audioUrl) => ({
+const ExamModel = (id, part1List, part2List, part3List, part4List, part5List, part6List, part7List, audioUrl) => ({
+    examId: id,
     part1: part1List,
     part2: part2List,
     part3: part3List,

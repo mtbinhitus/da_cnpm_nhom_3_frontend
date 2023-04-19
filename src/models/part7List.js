@@ -16,7 +16,7 @@ const Part7ListModel = () => ({
                     questionContent: "",
                 },
             ],
-            material: "",
+            material: [],
         },
     ],
     size: 1,
