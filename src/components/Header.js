@@ -1,5 +1,4 @@
 import { AppBar, Button, Tab, Tabs, Toolbar, Typography } from "@mui/material";
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import useAuth from "../hooks/useAuth";
@@ -8,7 +7,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 import DropdownButton from "react-bootstrap/DropdownButton";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../style/header.css";
 
 import Keycloak from "keycloak-js";
