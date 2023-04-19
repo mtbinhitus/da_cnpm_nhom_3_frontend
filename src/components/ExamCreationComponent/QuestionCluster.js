@@ -50,6 +50,13 @@ const QuestionCluster = ({ index, question, part, previewFile, setPreviewFile, s
 
     return (
         <>
+            <div>
+                <Dropzone onChange={updateFiles}>
+                    {part === "part3"
+                        ? previewFile.part3[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)
+                        : previewFile.part4[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)}
+                </Dropzone>
+            </div>
             <Part3Question
                 singleQList={singleQList}
                 setFunc={setFunc}
@@ -75,14 +82,6 @@ const QuestionCluster = ({ index, question, part, previewFile, setPreviewFile, s
                 indexInCluster={2}
             ></Part3Question>
             <hr className="mt-3 mb-3" />
-
-            <div>
-                <Dropzone onChange={updateFiles}>
-                    {part === "part3"
-                        ? previewFile.part3[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)
-                        : previewFile.part4[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)}
-                </Dropzone>
-            </div>
         </>
     );
 };
