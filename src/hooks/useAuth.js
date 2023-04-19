@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
 import Keycloak from "keycloak-js";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 const useAuth = () => {
-    const refreshThreshold = 5 * 60 * 1000;
     const isRun = useRef(false);
     const [isLogin, setLogin] = useState(false);
     const [render, setRender] = useState(false);
@@ -15,37 +15,11 @@ const useAuth = () => {
             realm: "auth-toeic",
             clientId: "spring-keycloak",
         });
-        {
-            if (localStorage.getItem("token")) {
-                client.init({onLoad: "check-sso"}).then(
-                    authenticated => {
-                        if (authenticated) {
-                            localStorage.setItem("token", client.token);
-                            setInterval(async () => {
-                                const refreshed= await client.updateToken(60);
-                                if(refreshed){
-                                    const newToken = client.token;
-                                    setToken(newToken);
-                                    localStorage.setItem("token", newToken);
-                                }
-                            }, 30000); // check every 10 seconds
-                        }
-                    }
-                )
-                setLogin(true);
-            } else {
-                client.init({onLoad: "login-required"}).then((res) => {
-                    localStorage.setItem("username", client.idTokenParsed.preferred_username)
-                    localStorage.setItem("id_token", client.idToken)
-                    setLogin(true);
-                    localStorage.setItem("token", client.token);
-                    setToken(client.token);
-
-                });
-            }
-
-        }
-    }, [render]);
+        client.init({ onLoad: "login-required" }).then((res) => {
+            setLogin(true);
+            setToken(client.token);
+        });
+    }, []);
     return [isLogin, token];
 };
 export default useAuth;
