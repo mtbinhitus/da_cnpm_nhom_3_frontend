@@ -7,6 +7,8 @@ const useAuth = () => {
     const [isLogin, setLogin] = useState(false);
     const [render, setRender] = useState(false);
     const [token, setToken] = useState();
+    const authContext = useContext(AuthContext);
+
     useEffect(() => {
         if (isRun.current) return;
         isRun.current = true;
@@ -15,10 +17,12 @@ const useAuth = () => {
             realm: "auth-toeic",
             clientId: "spring-keycloak",
         });
-        client.init({ onLoad: "login-required" }).then((res) => {
-            setLogin(true);
-            setToken(client.token);
-        });
+        if (authContext.auth === null)
+            client.init({ onLoad: "login-required" }).then((res) => {
+                setLogin(true);
+                setToken(client.token);
+                authContext.addClient(client);
+            });
     }, []);
     return [isLogin, token];
 };
