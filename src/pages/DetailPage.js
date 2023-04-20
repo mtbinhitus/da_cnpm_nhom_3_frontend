@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Card } from "@mui/material";
-import DetailContent from "../components/DetailComponent/DetailContent";
+import DetailContent from "../components/DetailComponent-v2/DetailContent";
 import { Container } from "@mui/system";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -25,7 +25,7 @@ export default function DetailPage() {
             <Grid style={{ justifyContent: "center" }} container>
                 <Grid item m={2} xs={12}>
                     <div style={{ width: "100" }}>
-                        <DetailContent numberOfParts = {numberOfParts} exam={data} listExam={detailexam} />
+                        <DetailContent numberOfParts = {numberOfParts} exam={data} />
                     </div>
                 </Grid>
             </Grid>
