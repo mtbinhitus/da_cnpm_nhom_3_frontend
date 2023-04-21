@@ -19,6 +19,9 @@ import ExamModel from "../models/exam";
 import { Dropzone, FileMosaic, uploadFile } from "@files-ui/react";
 import uploadFileFunc from "../services/upload-file";
 import { useLocation, useNavigate } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
+import request from "../utils/request";
+import Swal from "sweetalert2";
 
 const ExamCreationPage = () => {
     const examName = "New academy";
@@ -38,11 +41,13 @@ const ExamCreationPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const formData = new FormData();
+    const [loading, setLoading] = useState(false);
 
     const addSingleQuestion = (clone) => {
         clone.questionClusters.push({
             id: clone.questionClusters.length + 1,
             questions: [QuestionModel(clone.questionClusters.length + 1, "", "", "", "", "", "")],
+            material: [],
         });
         clone.size = clone.size + 1;
     };
@@ -53,6 +58,7 @@ const ExamCreationPage = () => {
         clone.questionClusters.push({
             id: indexCluster + 1,
             questions: [],
+            material: [],
         });
         clone.questionClusters[indexCluster].questions.push(
             QuestionModel(indexQuestion, "", "", "", "", "", ""),
@@ -67,6 +73,7 @@ const ExamCreationPage = () => {
         clone.questionClusters.push({
             id: indexCluster + 1,
             questions: [],
+            material: [],
         });
         clone.questionClusters[indexCluster].questions.push(QuestionModel(clone.size + 1, "", "", "", "", "", ""));
         clone.size = clone.size + 1;
@@ -247,6 +254,7 @@ const ExamCreationPage = () => {
 
     const submitExam = async () => {
         console.log(part1List);
+        setLoading(true);
         const exam = ExamModel(
             location.state.examId,
             part1List,
@@ -258,19 +266,35 @@ const ExamCreationPage = () => {
             part7List,
             materialUrl,
         );
-        const res = await fetch("http://localhost:8080/exam/questionCrt", {
-            method: "post",
-            body: JSON.stringify(exam),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            },
-        });
-        const resJson = await res.json();
-        console.log(resJson);
-        if (resJson.code === 200) navigate("/admin/exams");
+        const res = await request.post("exam/questionCrt", JSON.stringify(exam));
+        // const resJson = await res.json();
+        console.log(res);
+        setLoading(false);
+        if (res.data.code === 200) {
+            navigate("/admin/exams");
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
 
         console.log(exam);
     };
+
+    if (loading === true)
+        return (
+            <LoadingOutlined
+                style={{
+                    fontSize: "60px",
+                    color: "#0C5182",
+                    display: "flex",
+                    justifyContent: "center",
+                    marginBottom: "30px",
+                }}
+            />
+        );
 
     return (
         <>

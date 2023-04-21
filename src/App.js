@@ -36,9 +36,9 @@ function App() {
                                 path={route.path}
                                 element={
                                     <Layout>
-                                        {/* <RequireAuth> */}
-                                        <Page />
-                                        {/* </RequireAuth> */}
+                                        <RequireAuth>
+                                            <Page />
+                                        </RequireAuth>
                                     </Layout>
                                 }
                             />

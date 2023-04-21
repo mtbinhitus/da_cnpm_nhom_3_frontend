@@ -19,7 +19,7 @@
     "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
     "form-data": "^4.0.0",
-    "keycloak-js": "^21.0.1",
+    "keycloak-js": "^15.0.2",
     "lodash": "^4.17.21",
     "prettier": "^2.8.4",
     "react": "^18.2.0",
