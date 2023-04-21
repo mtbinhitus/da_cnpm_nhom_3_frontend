@@ -15,7 +15,7 @@ export default function Question(props) {
     return (
         <div>
             <Stack py={2} justifyContent="center" spacing={2}>
-                {/* {props.question.imgUrl.length > 0 && (
+                {props.question.imgUrl.length > 0 && (
                     <Container sx={{maxWidth: "700px"}}>
                         <img
                             src={props.question.imgUrl}
@@ -23,7 +23,7 @@ export default function Question(props) {
                             loading="lazy"
                         />
                     </Container>
-                )} */}
+                )}
                 {
                     props.listExam.map((value,item)=>(
                         <Stack direction="row" pt={1} justifyContent="flex-start" container spacing={2} mt={2}>

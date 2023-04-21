@@ -11,13 +11,13 @@ export default function DetailPage() {
     const id = useParams();
     const [detailexam, setDetailexam] = useState();
 
-    useEffect(() => {
-        getExamById(id?.examId).then((res) => {
-            setDetailexam(res.body);
-            console.log("DetailPage")
-            console.log(res.body)
-        });
-    }, []);
+    // useEffect(() => {
+    //     getExamById(id?.examId).then((res) => {
+    //         setDetailexam(res.body);
+    //         console.log("DetailPage")
+    //         console.log(res.body)
+    //     });
+    // }, []);
 
     const numberOfParts = 7;
     return (
@@ -275,490 +275,7 @@ const data = {
                             textOption: "D."
                         }
                     ]
-                },
-                {
-                    questionNumber: 11,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 12,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 13,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 14,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 15,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 16,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 17,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 18,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 19,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 20,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 21,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 22,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 23,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 24,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 25,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 26,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 27,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 28,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 29,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 30,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
-                {
-                    questionNumber: 31,
-                    imgUrl: "",
-                    questionText: "",
-                    listOption: [
-                        {
-                            optionNumber: 1,
-                            textOption: "A."
-                        },
-                        {
-                            optionNumber: 2,
-                            textOption: "B."
-                        },
-                        {
-                            optionNumber: 3,
-                            textOption: "C."
-                        },
-                        {
-                            optionNumber: 4,
-                            textOption: "D."
-                        }
-                    ]
-                },
+                }
             ]
         },
         {  partNumber: 3,
@@ -786,15 +303,272 @@ const data = {
                         }
                     ]
                 },
+                {
+                    questionNumber: 33,
+                    imgUrl: "",
+                    questionText: "What is the woman preparing for?",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. A move to a new a city"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. A business trip"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. A building tour"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. A meeting with visiting colleagues"
+                        }
+                    ]
+                },
+                {
+                    questionNumber: 34,
+                    imgUrl: "",
+                    questionText: "What is the woman preparing for?",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. A move to a new a city"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. A business trip"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. A building tour"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. A meeting with visiting colleagues"
+                        }
+                    ]
+                },
             ]
         },
-        // { partNumber: 4,
-        //     listQuestion: []},
-        // { partNumber: 5,
-        //     listQuestion: []},
-        // { partNumber: 6,
-        //     listQuestion: []},
-        // { partNumber: 7,
-        //     listQuestionF: []}
+        { partNumber: 4,
+            listQuestion: [
+                {
+                    questionNumber: 71,
+                    imgUrl: "",
+                    questionText: "What kind of business is the speaker most likely calling?",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. A hair salon"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. An insurance company"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. A car dealership"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. An eye doctor's office"
+                        }
+                    ]
+                },
+            ]},
+        { partNumber: 5,
+            listQuestion: [
+                {
+                    questionNumber: 101,
+                    imgUrl: "",
+                    questionText: "Mougey Fine Gifts is known for its large range of _____ goods.",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. regional"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. regionally"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. region"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. regions"
+                        }
+                    ]
+                },
+            ]},
+        { partNumber: 6,
+            listQuestion: [
+                {
+                    questionNumber: 131,
+                    imgUrl: "",
+                    questionText: "",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. serve"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. served"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. server"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. service"
+                        }
+                    ]
+                },
+                {
+                    questionNumber: 132,
+                    imgUrl: "",
+                    questionText: "",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. serve"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. served"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. server"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. service"
+                        }
+                    ]
+                },
+                {
+                    questionNumber: 133,
+                    imgUrl: "",
+                    questionText: "",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. serve"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. served"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. server"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. service"
+                        }
+                    ]
+                },
+                {
+                    questionNumber: 134,
+                    imgUrl: "",
+                    questionText: "",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. serve"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. served"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. server"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. service"
+                        }
+                    ]
+                },
+            ]},
+        { partNumber: 7,
+            listQuestionF: [
+                {
+                    questionNumber: 147,
+                    imgUrl: "",
+                    questionText: "Mougey Fine Gifts is known for its large range of _____ goods.",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. regional"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. regionally"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. region"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. regions"
+                        }
+                    ]
+                },
+                {
+                    questionNumber: 148,
+                    imgUrl: "",
+                    questionText: "Mougey Fine Gifts is known for its large range of _____ goods.",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. regional"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. regionally"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. region"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. regions"
+                        }
+                    ]
+                },
+                {
+                    questionNumber: 149,
+                    imgUrl: "",
+                    questionText: "Mougey Fine Gifts is known for its large range of _____ goods.",
+                    listOption: [
+                        {
+                            optionNumber: 1,
+                            textOption: "A. regional"
+                        },
+                        {
+                            optionNumber: 2,
+                            textOption: "B. regionally"
+                        },
+                        {
+                            optionNumber: 3,
+                            textOption: "C. region"
+                        },
+                        {
+                            optionNumber: 4,
+                            textOption: "D. regions"
+                        }
+                    ]
+                },
+            ]}
     ]
 };
