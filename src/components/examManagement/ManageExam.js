@@ -18,7 +18,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import CreateExam from "./createExam/CreateExam";
 import {getCollections, getListExam} from "../../services/ExamService";
 import { LoadingOutlined} from "@ant-design/icons";
-
+import { NavLink, useNavigate } from "react-router-dom";
 
 function ManageExam() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -26,6 +26,11 @@ function ManageExam() {
     const [colections, setColections] = useState([]);
     const [loading, setLoading] = useState(false);
     const [renderPage, setRenderPage] = useState(false);
+    const navigate = useNavigate();
+    // const role = localStorage.getItem("role");
+    // console.log("TestRole")
+    // console.log(role)
+    
 
     const [page, setPage] = useState(0);
     const handleChange = (event, value) => {
@@ -35,6 +40,9 @@ function ManageExam() {
     };
 
     useEffect(() => {
+        if (!localStorage.getItem("role").includes('admin')) {
+            navigate("/");
+        }
         getListExam(page).then((res) => {
             setExams(res.body);
             setLoading(false)

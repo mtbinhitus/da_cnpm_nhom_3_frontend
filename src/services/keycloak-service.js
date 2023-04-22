@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import * as Keycloak from "keycloak-js";
+import jwt_decode from "jwt-decode";
 
 const initKeycloak = (authContext) => {
     let initOptions = {
@@ -12,11 +13,6 @@ const initKeycloak = (authContext) => {
     const client = Keycloak(initOptions);
     console.log(client);
     if (authContext.auth === null) {
-        // client.init({ onLoad: "login-required" }).then((res) => {
-        //     setLogin(true);
-        //     setToken(client.token);
-        //     authContext.addClient(client);
-        // });
         client
             .init({ onLoad: initOptions.onLoad })
             .success((auth) => {
@@ -25,15 +21,15 @@ const initKeycloak = (authContext) => {
                 } else {
                     console.info("Authenticated");
                 }
-
                 localStorage.setItem("bearer-token", client.token);
                 localStorage.setItem("refresh-token", client.refreshToken);
                 localStorage.setItem("token", client.token);
 
+                var decoded = jwt_decode(client.token);
+                localStorage.setItem("role",decoded.realm_access.roles);
+            
+
                 authContext.addClient(client);
-
-                console.log(client.token);
-
                 setInterval(() => {
                     client
                         .updateToken(70)

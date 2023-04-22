@@ -43,6 +43,10 @@ const ExamCreationPage = () => {
     const formData = new FormData();
     const [loading, setLoading] = useState(false);
 
+    if (!localStorage.getItem("role").includes('admin')) {
+        navigate("/");
+    }
+
     const addSingleQuestion = (clone) => {
         clone.questionClusters.push({
             id: clone.questionClusters.length + 1,
