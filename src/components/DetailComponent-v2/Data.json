@@ -1,0 +1,411 @@
+{
+    "code": 200,
+    "body": {
+        "part1": [
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837306/nt/mlcnbxxqhp213twydqo3.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "Cái này là gì a",
+                        "options": [
+                            "1",
+                            "2",
+                            "3",
+                            "4"
+                        ],
+                        "id": 1
+                    }
+                ]
+            },
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837306/nt/mlcnbxxqhp213twydqo3.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "Cái này là gì",
+                        "options": [
+                            "1",
+                            "2",
+                            "3",
+                            "4"
+                        ],
+                        "id": 2
+                    }
+                ]
+            }
+        ],
+        "part2": [
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837306/nt/mlcnbxxqhp213twydqo3.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "part 2.1",
+                        "options": [
+                            "5",
+                            "6",
+                            "7",
+                            "8"
+                        ],
+                        "id": 7
+                    },
+                    {
+                        "question": "part 2.2",
+                        "options": [
+                            "9",
+                            "10",
+                            "11",
+                            "12"
+                        ],
+                        "id": 8
+                    }
+                ]
+            },
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837306/nt/mlcnbxxqhp213twydqo3.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "part 2.1",
+                        "options": [
+                            "5",
+                            "6",
+                            "7",
+                            "8"
+                        ],
+                        "id": 32
+                    },
+                    {
+                        "question": "part 2.2",
+                        "options": [
+                            "9",
+                            "10",
+                            "11",
+                            "12"
+                        ],
+                        "id": 33
+                    }
+                ]
+            }
+        ],
+        "part3": [
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837342/nt/tchr6pox9lbj5rnzf1gd.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "part 3.1",
+                        "options": [
+                            "13",
+                            "14",
+                            "15",
+                            "16"
+                        ],
+                        "id": 71
+                    },
+                    {
+                        "question": "part 3.2",
+                        "options": [
+                            "17",
+                            "18",
+                            "19",
+                            "20"
+                        ],
+                        "id": 72
+                    },
+                    {
+                        "question": "part 3.3",
+                        "options": [
+                            "21",
+                            "22",
+                            "23",
+                            "24"
+                        ],
+                        "id": 73
+                    }
+                ]
+            },
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837342/nt/tchr6pox9lbj5rnzf1gd.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "part 3.1",
+                        "options": [
+                            "13",
+                            "14",
+                            "15",
+                            "16"
+                        ],
+                        "id": 101
+                    },
+                    {
+                        "question": "part 3.2",
+                        "options": [
+                            "17",
+                            "18",
+                            "19",
+                            "20"
+                        ],
+                        "id": 102
+                    },
+                    {
+                        "question": "part 3.3",
+                        "options": [
+                            "21",
+                            "22",
+                            "23",
+                            "24"
+                        ],
+                        "id": 103
+                    }
+                ]
+            }
+        ],
+        "part4": [
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837354/nt/i8dvwzef6oj8wu4greqj.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "fdsa",
+                        "options": [
+                            "fdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 13
+                    },
+                    {
+                        "question": "fdsa",
+                        "options": [
+                            "fdsafdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 14
+                    },
+                    {
+                        "question": "fdsafsda",
+                        "options": [
+                            "fdsafsad",
+                            "fdsafsd",
+                            "fdsafsda",
+                            "fdsfsda"
+                        ],
+                        "id": 15
+                    }
+                ]
+            },
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837354/nt/i8dvwzef6oj8wu4greqj.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "fdsa",
+                        "options": [
+                            "fdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 16
+                    },
+                    {
+                        "question": "fdsa",
+                        "options": [
+                            "fdsafdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 17
+                    },
+                    {
+                        "question": "fdsafsda",
+                        "options": [
+                            "fdsafsad",
+                            "fdsafsd",
+                            "fdsafsda",
+                            "fdsfsda"
+                        ],
+                        "id": 18
+                    }
+                ]
+            }
+        ],
+        "part5": [
+            {
+                "materials": [],
+                "questions": [
+                    {
+                        "question": null,
+                        "options": [
+                            "fdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 19
+                    }
+                ]
+            },
+            {
+                "materials": [],
+                "questions": [
+                    {
+                        "question": null,
+                        "options": [
+                            "fdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 20
+                    }
+                ]
+            }
+        ],
+        "part6": [
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837233/nt/qqm2xn0qxjje2gtuidjv.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "fdssafd",
+                        "options": [
+                            "fdsafsda",
+                            "fdsafsad",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 21
+                    }
+                ]
+            },
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837211/nt/hfucankyusw7ql7w01ov.jpg",
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837212/nt/oiytq9n6eire8bpmqyzh.jpg",
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837212/nt/lunxnoyit6e4dbc4jkv6.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "fdsa",
+                        "options": [
+                            "fdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fsda"
+                        ],
+                        "id": 22
+                    },
+                    {
+                        "question": "fsdafdsa",
+                        "options": [
+                            "fdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 23
+                    }
+                ]
+            },
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837233/nt/qqm2xn0qxjje2gtuidjv.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "fdssafd",
+                        "options": [
+                            "fdsafsda",
+                            "fdsafsad",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 24
+                    }
+                ]
+            },
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837211/nt/hfucankyusw7ql7w01ov.jpg",
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837212/nt/oiytq9n6eire8bpmqyzh.jpg",
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837212/nt/lunxnoyit6e4dbc4jkv6.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "fdsa",
+                        "options": [
+                            "fdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fsda"
+                        ],
+                        "id": 25
+                    },
+                    {
+                        "question": "fsdafdsa",
+                        "options": [
+                            "fdsa",
+                            "fdsa",
+                            "fdsa",
+                            "fdsa"
+                        ],
+                        "id": 26
+                    }
+                ]
+            }
+        ],
+        "part7": [
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837245/nt/d3tslvwlr4pbpozhxsxs.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "fdsafsda",
+                        "options": [
+                            "fdsaf",
+                            "fdsa",
+                            "fdsa",
+                            "f"
+                        ],
+                        "id": 27
+                    }
+                ]
+            },
+            {
+                "materials": [
+                    "https://res.cloudinary.com/qweqweqwe123123/image/upload/v1681837245/nt/d3tslvwlr4pbpozhxsxs.jpg"
+                ],
+                "questions": [
+                    {
+                        "question": "fdsafsda",
+                        "options": [
+                            "fdsaf",
+                            "fdsa",
+                            "fdsa",
+                            "f"
+                        ],
+                        "id": 28
+                    }
+                ]
+            }
+        ]
+    }
+}
