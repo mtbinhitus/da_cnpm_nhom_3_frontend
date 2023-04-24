@@ -1,5 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Card, Box, Typography, Button } from "@mui/material";
+import {
+    Grid,
+    Card,
+    Box,
+    Typography,
+    Button,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    Slide,
+    IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { Link, useParams } from "react-router-dom";
 import { Stack } from "@mui/system";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
@@ -19,6 +33,10 @@ const STATUS = {
     STOPPED: "Stopped",
 };
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
 export default function DetailContent(props) {
     const [loading, setLoading] = useState(true);
     const [selectedPart, setSelectedPart] = useState(1);
@@ -29,6 +47,7 @@ export default function DetailContent(props) {
     const [time, setTime] = useState(3);
     const [next, setNext] = useState(NEXT.STARTED);
     const [end, setEnd] = useState(STATUS.STARTED);
+    const [open, setOpen] = useState(false);
     const examId = useParams();
     const examResultId = 1;
     console.log(props.exam);
@@ -49,7 +68,7 @@ export default function DetailContent(props) {
         await props.exam.part1.forEach((item) => {
             console.log(item);
             item.questions.forEach((question) => {
-                answerSheet.push({ part: "part1", id: question.id, answer: "", index: i });
+                answerSheet.push({ part: 1, id: question.id, answer: "", index: i });
                 question.index = i;
                 i = i + 1;
             });
@@ -59,7 +78,7 @@ export default function DetailContent(props) {
         await props.exam.part2.forEach((item) => {
             console.log(item);
             item.questions.forEach((question) => {
-                answerSheet.push({ part: "part2", id: question.id, answer: "", index: i });
+                answerSheet.push({ part: 2, id: question.id, answer: "", index: i });
                 question.index = i;
                 i = i + 1;
             });
@@ -69,7 +88,7 @@ export default function DetailContent(props) {
         await props.exam.part3.forEach((item) => {
             console.log(item);
             item.questions.forEach((question) => {
-                answerSheet.push({ part: "part3", id: question.id, answer: "", index: i });
+                answerSheet.push({ part: 3, id: question.id, answer: "", index: i });
                 question.index = i;
                 i = i + 1;
             });
@@ -79,7 +98,7 @@ export default function DetailContent(props) {
         await props.exam.part4.forEach((item) => {
             console.log(item);
             item.questions.forEach((question) => {
-                answerSheet.push({ part: "part4", id: question.id, answer: "", index: i });
+                answerSheet.push({ part: 4, id: question.id, answer: "", index: i });
                 question.index = i;
                 i = i + 1;
             });
@@ -89,7 +108,7 @@ export default function DetailContent(props) {
         await props.exam.part5.forEach((item) => {
             console.log(item);
             item.questions.forEach((question) => {
-                answerSheet.push({ part: "part5", id: question.id, answer: "", index: i });
+                answerSheet.push({ part: 5, id: question.id, answer: "", index: i });
                 question.index = i;
                 i = i + 1;
             });
@@ -99,7 +118,7 @@ export default function DetailContent(props) {
         await props.exam.part6.forEach((item) => {
             console.log(item);
             item.questions.forEach((question) => {
-                answerSheet.push({ part: "part6", id: question.id, answer: "", index: i });
+                answerSheet.push({ part: 6, id: question.id, answer: "", index: i });
                 question.index = i;
                 i = i + 1;
             });
@@ -109,7 +128,7 @@ export default function DetailContent(props) {
         await props.exam.part7.forEach((item) => {
             console.log(item);
             item.questions.forEach((question) => {
-                answerSheet.push({ part: "part7", id: question.id, answer: "", index: i });
+                answerSheet.push({ part: 7, id: question.id, answer: "", index: i });
                 question.index = i;
                 i = i + 1;
             });
@@ -312,6 +331,24 @@ export default function DetailContent(props) {
 
     const handleSubmit = (event) => {
         console.log(answerSheet);
+    };
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const goToQuestion = async (event, value) => {
+        console.log(value);
+        const part = await findPartByOffset(value.part);
+        const count = await findQuestionByOffset(part, value.index);
+        const res = await showQuestion(value.part, value.index);
+        console.log(count);
+        setSelectedPart(value.part);
+        setSelectedQuestion(count.questions[count.questions.length - 1].index);
     }
 
     return (
@@ -322,7 +359,10 @@ export default function DetailContent(props) {
                         PART {selectedPart}
                     </Typography>
                     <Stack direction="row" spacing={4} alignItems="center" justifyContent="center">
-                        <Link to={`/exam-detail/${examId.examId}/results/${examResultId}`} style={{ textDecoration: "none" }}>
+                        <Link
+                            to={`/exam-detail/${examId.examId}/results/${examResultId}`}
+                            style={{ textDecoration: "none" }}
+                        >
                             <Button variant="contained" onClick={handleSubmit} color="primary">
                                 Nộp Bài
                             </Button>
@@ -339,7 +379,52 @@ export default function DetailContent(props) {
                         </Grid>
                         <Grid item xs={6} md={6}>
                             <Stack direction="row" spacing={4} alignItems="center" justifyContent="flex-end">
-                                <Button variant="outlined">Review answer</Button>
+                                <Button variant="outlined" onClick={handleClickOpen}>
+                                    Review answer
+                                </Button>
+                                <Dialog
+                                    open={open}
+                                    TransitionComponent={Transition}
+                                    keepMounted
+                                    onClose={handleClose}
+                                    aria-describedby="alert-dialog-slide-description"
+                                >
+                                    <DialogTitle>
+                                        {"ANSWER SHEET"}
+                                        <IconButton
+                                            aria-label="close"
+                                            onClick={handleClose}
+                                            sx={{
+                                                position: "absolute",
+                                                right: 8,
+                                                top: 8,
+                                                color: "ffffff",
+                                            }}
+                                        >
+                                            <CloseIcon />
+                                        </IconButton>
+                                    </DialogTitle>
+                                    <DialogContent>
+                                        <Grid container justifyContent="flex-start" spacing={2}>
+                                            {answerSheet.map((value, index) => (
+                                                <Grid key={value.id} xs={1} sm={1} lg={1} item>
+                                                    <Button
+                                                        variant={value.answer === "" ? "outlined" : "contained"}
+                                                        sx={{ minWidth: "28px", height: "25px", width: "28px" }}
+                                                        onClick={(event) => goToQuestion(event, value)}
+                                                    >
+                                                        {value.index}
+                                                    </Button>
+                                                </Grid>
+                                            ))}
+                                        </Grid>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={handleClose}>Disagree</Button>
+                                        <Button onClick={handleClose}>Agree</Button>
+                                    </DialogActions>
+                                </Dialog>
+
                                 {next === NEXT.STARTED ? (
                                     <Button variant="contained" onClick={nextQuestion} endIcon={<NavigateNextIcon />}>
                                         Câu tiếp theo
