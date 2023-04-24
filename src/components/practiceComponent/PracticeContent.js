@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
-import '../../style/practicePage.css';
+import '../../style/PracticePage.css';
 import NavTakeTest from './NavTakeTest';
 
 const PracticeContent = () => {

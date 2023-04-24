@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
-import '../../style/practicePage.css';
+import '../../style/PracticePage.css';
 
 const HeaderContaint = () => {
     return (

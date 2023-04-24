@@ -1,5 +1,5 @@
 import Checkbox from '@mui/material/Checkbox';
-import '../../../src/style/practicePage.css';
+import '../../style/PracticePage.css';
 const ChoicePractice = (props) => {
     return (
         <>

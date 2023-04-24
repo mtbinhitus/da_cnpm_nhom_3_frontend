@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import * as React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import '../../../src/style/practicePage.css';
+import '../../style/PracticePage.css';
 import ChoicePractice from './ChoicePractice';
 
 const NavPractice = () => {

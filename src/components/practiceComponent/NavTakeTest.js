@@ -2,7 +2,7 @@ import React from 'react';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import { Button } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
-import '../../style/practicePage.css';
+import '../../style/PracticePage.css';
 
 const NavTakeTest = () => {
     const examId = useParams();
