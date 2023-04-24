@@ -1,5 +1,5 @@
-import React from "react";
-import Question from "./Question";
+import React from 'react';
+import Question from './Question';
 
 export default function QuestTab(props) {
     if (props.listExam === undefined) return <p>Loading...</p>;

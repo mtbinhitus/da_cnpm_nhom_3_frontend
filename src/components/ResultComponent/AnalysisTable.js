@@ -1,27 +1,29 @@
-import styled from "@emotion/styled";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import React from 'react';
+import styled from '@emotion/styled';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
-const AnalysisTable = ({ data }) => {
+const AnalysisTable = () => {
     const MyColName = styled(TableCell)({
-        fontSize: "16px",
-        fontWeight: "bold",
+        fontSize: '16px',
+        fontWeight: 'bold',
     });
     const MyTableCell = styled(TableCell)({
-        fontSize: "16px",
+        fontSize: '16px',
     });
+
     const tempDate = [
         {
             id: 1,
-            part: "part 1",
-            name: "Tranh tả người",
+            part: 'part 1',
+            name: 'Tranh tả người',
             correct: 4,
             inCorrrect: 3,
             skipped: 5,
         },
         {
             id: 2,
-            part: "part 1",
-            name: "Tranh tả vật",
+            part: 'part 1',
+            name: 'Tranh tả vật',
             correct: 4,
             inCorrrect: 3,
             skipped: 5,
@@ -43,7 +45,7 @@ const AnalysisTable = ({ data }) => {
                     </TableHead>
                     <TableBody>
                         {tempDate.map((row) => (
-                            <TableRow key={row.id} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+                            <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                 <MyTableCell component="th" scope="row">
                                     [{row.part}] {row.name}
                                 </MyTableCell>

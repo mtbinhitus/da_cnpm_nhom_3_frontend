@@ -1,21 +1,21 @@
 const uploadFileFunc = async (file, type) => {
     try {
         const data = new FormData();
-        data.append("file", file);
-        data.append("upload_preset", "nt-phase1");
-        data.append("cloud_name", "qweqweqwe123123");
-        var url;
+        data.append('file', file);
+        data.append('upload_preset', 'nt-phase1');
+        data.append('cloud_name', 'qweqweqwe123123');
+        let url;
         switch (type) {
-            case "audio":
-                url = "https://api.cloudinary.com/v1_1/qweqweqwe123123/video/upload";
+            case 'audio':
+                url = 'https://api.cloudinary.com/v1_1/qweqweqwe123123/video/upload';
                 break;
 
             default:
-                url = "https://api.cloudinary.com/v1_1/qweqweqwe123123/image/upload";
+                url = 'https://api.cloudinary.com/v1_1/qweqweqwe123123/image/upload';
                 break;
         }
         const response = await fetch(url, {
-            method: "post",
+            method: 'post',
             body: data,
         });
         const resJson = await response.json();
@@ -26,5 +26,6 @@ const uploadFileFunc = async (file, type) => {
     } catch (error) {
         console.error(error);
     }
+    return null;
 };
 export default uploadFileFunc;

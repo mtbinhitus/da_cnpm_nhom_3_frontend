@@ -1,52 +1,42 @@
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Layout from "./components/Layout";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
+import Layout from './components/Layout';
+import Homepage from './pages/Homepage';
+import privateRoutes from './routes/PrivateRoutes';
+import RequireAuth from './routes/RequireAuth';
 
-import Homepage from "./pages/homepage";
-import TestList from "./pages/TestList";
-import DetailPage from "./pages/DetailPage";
-
-import useAuth from "./hooks/useAuth";
-import PracticePage from "./pages/practicePage";
-import TestResult from "./pages/TestResult";
-
-import Protected from "./components/Protected";
-import Public from "./components/Public";
-import { privateRoutes } from "./routes/PrivateRoutes";
-import RequireAuth from "./routes/RequireAuth";
 function App() {
     // const auth = useAuth();
     // return auth ? <Protected /> : <Public />;
     return (
         <>
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
-                    <Routes>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <Layout>
+                            <Homepage />
+                        </Layout>
+                    }
+                />
+                {privateRoutes.map((route, index) => {
+                    const Page = route.element;
+                    return (
                         <Route
-                            path="/"
+                            key={index}
+                            path={route.path}
                             element={
                                 <Layout>
-                                    <Homepage  />
+                                    <RequireAuth>
+                                        <Page />
+                                    </RequireAuth>
                                 </Layout>
                             }
                         />
-                        {privateRoutes.map((route, index) => {
-                            const Page = route.element;
-                        return (
-                                <Route
-                                key={index}
-                                path={route.path}
-                                element={
-                                    <Layout>
-                                        <RequireAuth>
-                                            <Page />
-                                        </RequireAuth>
-                                    </Layout>
-                                }
-                            />
-                            );
-                    })}
-                </Routes>
-            </BrowserRouter>
+                    );
+                })}
+            </Routes>
         </>
     );
 }

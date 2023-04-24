@@ -1,32 +1,31 @@
-import { switchCase } from "@babel/types";
-import { Button, ButtonGroup, Card, Grid, ToggleButton, ToggleButtonGroup } from "@mui/material";
-import { useState } from "react";
-import Part1Question from "../components/ExamCreationComponent/Part1Question";
-import Part2Question from "../components/ExamCreationComponent/Part2Question";
-import UploadExamContent from "../components/ExamCreationComponent/UploadExamContent";
-import cloneDeep from "lodash/cloneDeep";
-import QuestionCluster from "../components/ExamCreationComponent/QuestionCluster";
-import DynamicQuestionCluster from "../components/ExamCreationComponent/DynamicQuestionCluster";
-import QuestionModel from "../models/question";
-import Part1ListModel from "../models/part1List";
-import Part2ListModel from "../models/part2List";
-import Part3ListModel from "../models/part3List";
-import Part4ListModel from "../models/part4List";
-import Part5ListModel from "../models/part5List";
-import Part6ListModel from "../models/part6List";
-import Part7ListModel from "../models/part7List";
-import ExamModel from "../models/exam";
-import { Dropzone, FileMosaic, uploadFile } from "@files-ui/react";
-import uploadFileFunc from "../services/upload-file";
-import { useLocation, useNavigate } from "react-router-dom";
-import { LoadingOutlined } from "@ant-design/icons";
-import request from "../utils/request";
-import Swal from "sweetalert2";
+import React, { useState } from 'react';
+import { Button, Card, Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Dropzone, FileMosaic } from '@files-ui/react';
+import cloneDeep from 'lodash/cloneDeep';
+import Swal from 'sweetalert2';
+import { LoadingOutlined } from '@ant-design/icons';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import uploadFileFunc from '../services/uploadFile';
+import request from '../utils/request';
+import ExamModel from '../models/exam';
+
+import QuestionCluster from '../components/ExamCreationComponent/QuestionCluster';
+import DynamicQuestionCluster from '../components/ExamCreationComponent/DynamicQuestionCluster';
+import Part1Question from '../components/ExamCreationComponent/Part1Question';
+import Part2Question from '../components/ExamCreationComponent/Part2Question';
+import UploadExamContent from '../components/ExamCreationComponent/UploadExamContent';
+import QuestionModel from '../models/question';
+import Part1ListModel from '../models/part1List';
+import Part2ListModel from '../models/part2List';
+import Part3ListModel from '../models/part3List';
+import Part4ListModel from '../models/part4List';
+import Part5ListModel from '../models/part5List';
+import Part6ListModel from '../models/part6List';
+import Part7ListModel from '../models/part7List';
 
 const ExamCreationPage = () => {
-    const examName = "New academy";
-    const [isSave, setIsSave] = useState(false);
-    const [seletedPart, setSeletedPart] = useState("1");
+    const [seletedPart, setSeletedPart] = useState('1');
     const [numberQuestion, setNumberQuestion] = useState(1);
     const [part1List, setPart1List] = useState(Part1ListModel());
     const [part2List, setPart2List] = useState(Part2ListModel());
@@ -40,20 +39,19 @@ const ExamCreationPage = () => {
     const [materialUrl, setMaterialUrl] = useState();
     const location = useLocation();
     const navigate = useNavigate();
-    const formData = new FormData();
     const [loading, setLoading] = useState(false);
 
-    if (!localStorage.getItem("role").includes('admin')) {
-        navigate("/");
+    if (!localStorage.getItem('role').includes('admin')) {
+        navigate('/');
     }
 
     const addSingleQuestion = (clone) => {
         clone.questionClusters.push({
             id: clone.questionClusters.length + 1,
-            questions: [QuestionModel(clone.questionClusters.length + 1, "", "", "", "", "", "")],
+            questions: [QuestionModel(clone.questionClusters.length + 1, '', '', '', '', '', '')],
             material: [],
         });
-        clone.size = clone.size + 1;
+        clone.size += 1;
     };
 
     const addFixedQuestionCluster = (clone) => {
@@ -65,53 +63,54 @@ const ExamCreationPage = () => {
             material: [],
         });
         clone.questionClusters[indexCluster].questions.push(
-            QuestionModel(indexQuestion, "", "", "", "", "", ""),
-            QuestionModel(indexQuestion + 1, "", "", "", "", "", ""),
-            QuestionModel(indexQuestion + 2, "", "", "", "", "", ""),
+            QuestionModel(indexQuestion, '', '', '', '', '', ''),
+            QuestionModel(indexQuestion + 1, '', '', '', '', '', ''),
+            QuestionModel(indexQuestion + 2, '', '', '', '', '', ''),
         );
-        clone.size = clone.size + 3;
+        clone.size += 3;
     };
     const addDynamicQuestionCluster = (clone) => {
         const indexCluster = clone.questionClusters.length;
-        const indexQuestion = (indexCluster + 1) * 2 + (indexCluster - 2 + 1);
         clone.questionClusters.push({
             id: indexCluster + 1,
             questions: [],
             material: [],
         });
-        clone.questionClusters[indexCluster].questions.push(QuestionModel(clone.size + 1, "", "", "", "", "", ""));
-        clone.size = clone.size + 1;
+        clone.questionClusters[indexCluster].questions.push(QuestionModel(clone.size + 1, '', '', '', '', '', ''));
+        clone.size += 1;
     };
 
     const addQuestionComponet = (array, setFunc) => {
-        var clone = cloneDeep(array);
+        const clone = cloneDeep(array);
         switch (clone.type) {
-            case "part1":
+            case 'part1':
                 addSingleQuestion(clone);
                 break;
-            case "part2":
+            case 'part2':
                 // code block
                 addSingleQuestion(clone);
                 break;
-            case "part3":
+            case 'part3':
                 // code block
                 addFixedQuestionCluster(clone);
                 break;
-            case "part4":
+            case 'part4':
                 // code block
                 addFixedQuestionCluster(clone);
                 break;
-            case "part5":
+            case 'part5':
                 // code block
                 addSingleQuestion(clone);
 
                 break;
-            case "part6":
+            case 'part6':
                 addDynamicQuestionCluster(clone);
                 break;
 
-            case "part7":
+            case 'part7':
                 addDynamicQuestionCluster(clone);
+                break;
+            default:
                 break;
         }
         setNumberQuestion(clone.size);
@@ -122,13 +121,13 @@ const ExamCreationPage = () => {
     };
 
     const saveList = (singleQList, setFunc) => {
-        var clone = cloneDeep(singleQList);
+        const clone = cloneDeep(singleQList);
         setFunc(clone);
     };
 
-    const showPart = (seletedPart) => {
-        switch (seletedPart) {
-            case "1":
+    const showPart = (part) => {
+        switch (part) {
+            case '1':
                 // code block
                 return (
                     <>
@@ -145,7 +144,7 @@ const ExamCreationPage = () => {
                     </>
                 );
 
-            case "2":
+            case '2':
                 // code block
                 return (
                     <>
@@ -159,7 +158,7 @@ const ExamCreationPage = () => {
                         </UploadExamContent>
                     </>
                 );
-            case "3":
+            case '3':
                 // code block
                 return (
                     <>
@@ -175,7 +174,7 @@ const ExamCreationPage = () => {
                         </UploadExamContent>
                     </>
                 );
-            case "4":
+            case '4':
                 // code block
                 return (
                     <>
@@ -191,7 +190,7 @@ const ExamCreationPage = () => {
                         </UploadExamContent>
                     </>
                 );
-            case "5":
+            case '5':
                 // code block
                 return (
                     <>
@@ -205,7 +204,7 @@ const ExamCreationPage = () => {
                         </UploadExamContent>
                     </>
                 );
-            case "6":
+            case '6':
                 // code block
                 return (
                     <>
@@ -222,7 +221,7 @@ const ExamCreationPage = () => {
                         </UploadExamContent>
                     </>
                 );
-            case "7":
+            case '7':
                 // code block
                 return (
                     <>
@@ -239,20 +238,23 @@ const ExamCreationPage = () => {
                         </UploadExamContent>
                     </>
                 );
+            default:
+                break;
         }
+        return null;
     };
 
     const updateFiles = async (incommingFiles) => {
         // incommingFiles[0]?.name = "hello.jpg";
-        var cloneAudioFile = cloneDeep(incommingFiles);
+        const cloneAudioFile = cloneDeep(incommingFiles);
         setSoundFile(cloneAudioFile);
         console.log(incommingFiles);
-        var audioUrl;
+        /* eslint-disable no-await-in-loop */
         for (let i = 0; i < incommingFiles.length; i++) {
             const fileName = `audio`;
-            var newFile = new File([incommingFiles[i].file], fileName, { type: incommingFiles[i].type });
-            const url = await uploadFileFunc(newFile, "audio");
-            if (typeof url !== "undefined") setMaterialUrl(url);
+            const newFile = new File([incommingFiles[i].file], fileName, { type: incommingFiles[i].type });
+            const url = await uploadFileFunc(newFile, 'audio');
+            if (typeof url !== 'undefined') setMaterialUrl(url);
         }
     };
 
@@ -270,15 +272,15 @@ const ExamCreationPage = () => {
             part7List,
             materialUrl,
         );
-        const res = await request.post("exam/questionCrt", JSON.stringify(exam));
+        const res = await request.post('exam/questionCrt', JSON.stringify(exam));
         // const resJson = await res.json();
         console.log(res);
         setLoading(false);
         if (res.data.code === 200) {
-            navigate("/admin/exams");
+            navigate('/admin/exams');
             Swal.fire({
-                position: "center",
-                icon: "success",
+                position: 'center',
+                icon: 'success',
                 showConfirmButton: false,
                 timer: 1500,
             });
@@ -291,21 +293,21 @@ const ExamCreationPage = () => {
         return (
             <LoadingOutlined
                 style={{
-                    fontSize: "60px",
-                    color: "#0C5182",
-                    display: "flex",
-                    justifyContent: "center",
-                    marginBottom: "30px",
+                    fontSize: '60px',
+                    color: '#0C5182',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginBottom: '30px',
                 }}
             />
         );
 
     return (
         <>
-            <Grid style={{ justifyContent: "center" }} container>
+            <Grid style={{ justifyContent: 'center' }} container>
                 <Grid item xs={9}>
-                    <div style={{ width: "100" }}>
-                        <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
+                    <div style={{ width: '100' }}>
+                        <Card variant="outlined" style={{ padding: '16px', marginTop: '16px' }}>
                             <div>Tạo đề thi mới</div>
                             <div className="mt-3">
                                 <Dropzone
@@ -320,9 +322,9 @@ const ExamCreationPage = () => {
                                 </Dropzone>
                             </div>
                         </Card>
-                        <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
+                        <Card variant="outlined" style={{ padding: '16px', marginTop: '16px' }}>
                             <div>Đề thi {location.state?.examName}</div>
-                            <div className="part-group-btn" style={{ marginTop: "16px" }}>
+                            <div className="part-group-btn" style={{ marginTop: '16px' }}>
                                 <ToggleButtonGroup
                                     color="primary"
                                     value={seletedPart}
@@ -332,23 +334,23 @@ const ExamCreationPage = () => {
                                     aria-label="Platform"
                                 >
                                     <ToggleButton
-                                        onClick={(e) => setNumberQuestion(part1List.size)}
+                                        onClick={() => setNumberQuestion(part1List.size)}
                                         className="part-selection-btn"
                                         color="primary"
                                         value="1"
                                     >
-                                        Part 1
+                                        Phần 1
                                     </ToggleButton>
                                     <ToggleButton
-                                        onClick={(e) => setNumberQuestion(part2List.size)}
+                                        onClick={() => setNumberQuestion(part2List.size)}
                                         className="part-selection-btn"
                                         color="primary"
                                         value="2"
                                     >
-                                        Part 2
+                                        Phần 2
                                     </ToggleButton>
                                     <ToggleButton
-                                        onClick={(e) => setNumberQuestion(part3List.size)}
+                                        onClick={() => setNumberQuestion(part3List.size)}
                                         className="part-selection-btn"
                                         color="primary"
                                         value="3"
@@ -356,54 +358,53 @@ const ExamCreationPage = () => {
                                         Part 3
                                     </ToggleButton>
                                     <ToggleButton
-                                        onClick={(e) => setNumberQuestion(part4List.size)}
+                                        onClick={() => setNumberQuestion(part4List.size)}
                                         className="part-selection-btn"
                                         color="primary"
                                         value="4"
                                     >
-                                        Part 4
+                                        Phần 4
                                     </ToggleButton>
                                     <ToggleButton
-                                        onClick={(e) => setNumberQuestion(part5List.size)}
+                                        onClick={() => setNumberQuestion(part5List.size)}
                                         className="part-selection-btn"
                                         color="primary"
                                         value="5"
                                     >
-                                        Part 5
+                                        Phần 5
                                     </ToggleButton>
                                     <ToggleButton
-                                        onClick={(e) => setNumberQuestion(part6List.size)}
+                                        onClick={() => setNumberQuestion(part6List.size)}
                                         className="part-selection-btn"
                                         color="primary"
                                         value="6"
                                     >
-                                        Part 6
+                                        Phần 6
                                     </ToggleButton>
                                     <ToggleButton
-                                        onClick={(e) => setNumberQuestion(part7List.size)}
+                                        onClick={() => setNumberQuestion(part7List.size)}
                                         className="part-selection-btn"
                                         color="primary"
                                         value="7"
                                     >
-                                        Part 7
+                                        Phần 7
                                     </ToggleButton>
                                 </ToggleButtonGroup>
                             </div>
                         </Card>
-                        <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
+                        <Card variant="outlined" style={{ padding: '16px', marginTop: '16px' }}>
                             <div>{showPart(seletedPart)}</div>
                         </Card>
-                        <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
+                        <Card variant="outlined" style={{ padding: '16px', marginTop: '16px' }}>
                             <div className="d-flex justify-content-between align-items-center">
-                                <div>Tổng câu hỏi {numberQuestion}</div>
-                                <Button variant="contained">Phần tiếp theo</Button>
+                                <div>Tổng câu hỏi của {numberQuestion}</div>
                             </div>
                         </Card>
-                        <Card variant="outlined" style={{ padding: "16px", marginTop: "16px" }}>
+                        <Card variant="outlined" style={{ padding: '16px', marginTop: '16px' }}>
                             <div className="d-flex justify-content-center align-items-center">
                                 <Button
                                     variant="contained"
-                                    onClick={(e) => {
+                                    onClick={() => {
                                         submitExam();
                                     }}
                                 >

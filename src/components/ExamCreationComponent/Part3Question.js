@@ -1,12 +1,10 @@
-import { FormControlLabel, Grid, IconButton, Radio, RadioGroup, FormControl, TextField } from "@mui/material";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { useEffect, useState } from "react";
-import { Uploader } from "uploader"; // Installed by "react-uploader".
-import { UploadButton, UploadDropzone } from "react-uploader";
-import QuestionModel from "../../models/question";
-import cloneDeep from "lodash/cloneDeep";
+import React, { useEffect, useState } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
+import { FormControlLabel, Grid, IconButton, Radio, RadioGroup, FormControl, TextField } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import QuestionModel from '../../models/question';
 
-const Part3Question = ({ index, question, indexInCluster, files, setFiles, part, singleQList, setFunc }) => {
+const Part3Question = ({ index, question, indexInCluster, singleQList, setFunc }) => {
     const [optionA, setOptionA] = useState(question.questions[indexInCluster].options.a);
     const [optionB, setOptionB] = useState(question.questions[indexInCluster].options.b);
     const [optionC, setOptionC] = useState(question.questions[indexInCluster].options.c);
@@ -14,10 +12,6 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part,
     const [correctOption, setCorrectOption] = useState(question.questions[indexInCluster].correctOption);
     const [explain, setExplain] = useState(question.questions[indexInCluster].explain);
     const [questionContent, setQuestionContent] = useState(question.questions[indexInCluster].questionContent);
-
-    useEffect(() => {
-        updateDetailQuestion();
-    }, []);
 
     const updateDetailQuestion = () => {
         question.questions[indexInCluster] = QuestionModel(
@@ -30,24 +24,27 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part,
             explain,
             questionContent,
         );
-        var clone = cloneDeep(singleQList);
+        const clone = cloneDeep(singleQList);
         setFunc(clone);
     };
+    useEffect(() => {
+        updateDetailQuestion();
+    }, []);
     useEffect(() => {
         updateDetailQuestion();
     }, [optionA, optionB, optionC, optionD, correctOption, explain]);
     return (
         <>
             <div className="d-flex justify-content-between">
-                <div>No. {index}</div>
+                <div>Câu {index}</div>
                 <IconButton size="medium" color="error">
                     <HighlightOffIcon></HighlightOffIcon>
                 </IconButton>
             </div>
-            <div>Question</div>
+            <div>Câu hỏi</div>
             <div>
                 <TextField
-                    style={{ marginTop: "7px", width: "100%" }}
+                    style={{ marginTop: '7px', width: '100%' }}
                     id="outlined-basic"
                     size="small"
                     label=""
@@ -60,7 +57,7 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part,
             </div>
             <Grid container spacing={2}>
                 <Grid item xs={6}>
-                    <div>Option</div>
+                    <div>Lựa chọn</div>
                     <FormControl>
                         <Grid container columnSpacing={3}>
                             <Grid item xs={1}>
@@ -70,50 +67,50 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part,
                                     name="radio-buttons-group"
                                 >
                                     <FormControlLabel
-                                        style={{ marginTop: "5px" }}
+                                        style={{ marginTop: '5px' }}
                                         value="a"
                                         control={<Radio />}
                                         label="a"
-                                        key={"a"}
-                                        onClick={(e) => {
-                                            setCorrectOption("a");
+                                        key={'a'}
+                                        onClick={() => {
+                                            setCorrectOption('a');
                                         }}
                                     />
                                     <FormControlLabel
-                                        style={{ marginTop: "5px" }}
+                                        style={{ marginTop: '5px' }}
                                         value="b"
                                         control={<Radio />}
                                         label="b"
-                                        key={"b"}
-                                        onClick={(e) => {
-                                            setCorrectOption("b");
+                                        key={'b'}
+                                        onClick={() => {
+                                            setCorrectOption('b');
                                         }}
                                     />
                                     <FormControlLabel
-                                        style={{ marginTop: "5px" }}
+                                        style={{ marginTop: '5px' }}
                                         value="c"
                                         control={<Radio />}
                                         label="c"
-                                        key={"c"}
-                                        onClick={(e) => {
-                                            setCorrectOption("c");
+                                        key={'c'}
+                                        onClick={() => {
+                                            setCorrectOption('c');
                                         }}
                                     />
                                     <FormControlLabel
-                                        style={{ marginTop: "5px" }}
+                                        style={{ marginTop: '5px' }}
                                         value="d"
-                                        key={"d"}
+                                        key={'d'}
                                         control={<Radio />}
                                         label="d"
-                                        onClick={(e) => {
-                                            setCorrectOption("d");
+                                        onClick={() => {
+                                            setCorrectOption('d');
                                         }}
                                     />
                                 </RadioGroup>
                             </Grid>
                             <Grid item xs={11}>
                                 <TextField
-                                    style={{ marginTop: "7px", width: "100%" }}
+                                    style={{ marginTop: '7px', width: '100%' }}
                                     id="outlined-basic"
                                     size="small"
                                     label=""
@@ -124,7 +121,7 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part,
                                     }}
                                 />
                                 <TextField
-                                    style={{ marginTop: "7px", width: "100%" }}
+                                    style={{ marginTop: '7px', width: '100%' }}
                                     id="outlined-basic"
                                     size="small"
                                     label=""
@@ -135,7 +132,7 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part,
                                     }}
                                 />
                                 <TextField
-                                    style={{ marginTop: "7px", width: "100%" }}
+                                    style={{ marginTop: '7px', width: '100%' }}
                                     id="outlined-basic"
                                     size="small"
                                     label=""
@@ -146,7 +143,7 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part,
                                     }}
                                 />
                                 <TextField
-                                    style={{ marginTop: "7px", width: "100%" }}
+                                    style={{ marginTop: '7px', width: '100%' }}
                                     id="outlined-basic"
                                     size="small"
                                     label=""
@@ -161,7 +158,7 @@ const Part3Question = ({ index, question, indexInCluster, files, setFiles, part,
                     </FormControl>
                 </Grid>
                 <Grid item xs={6}>
-                    <div className="mt-2 mb-2">Explain</div>
+                    <div className="mt-2 mb-2">Giải thích</div>
                     <TextField
                         className="w-100"
                         id="standard-multiline-flexible"

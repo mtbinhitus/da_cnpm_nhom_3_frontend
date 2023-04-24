@@ -1,8 +1,8 @@
 const Protected = () => {
-   return (
-      <>
-         <div>Protected</div>
-      </>
-   );
+    return (
+        <>
+            <div>Protected</div>
+        </>
+    );
 };
 export default Protected;
