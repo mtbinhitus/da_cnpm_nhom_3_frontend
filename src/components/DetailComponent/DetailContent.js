@@ -1,13 +1,10 @@
-import { React, useState } from "react";
-import { Button, Grid, Card, Typography, Stack } from "@mui/material";
-import QuestionBox from "../DetailComponent/QuestionBox";
-import AnswerBox from "../DetailComponent/AnswerBox";
+import { Button, Grid, Stack, Typography } from "@mui/material";
+import { React } from "react";
 import { Link } from "react-router-dom";
+import AnswerBox from "../DetailComponent/AnswerBox";
 import Question from "./Question";
 
 export default function DetailContent(props) {
-    console.log("DetailContent")
-    console.log(props.listExam)
 
     if (props.listExam === undefined) return <p>Loading...</p>;
     return (

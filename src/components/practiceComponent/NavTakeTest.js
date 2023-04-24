@@ -1,7 +1,7 @@
-import { Button } from "@mui/material";
-import "../../../src/style/practicePage.css";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import {Link, useParams, useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
+import "../../../src/style/practicePage.css";
 
 const NavTakeTest = () => {
     const examId = useParams();

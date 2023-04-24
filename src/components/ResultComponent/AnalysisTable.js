@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { TableContainer, Table, TableCell, TableRow, TableBody, TableHead } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
 const AnalysisTable = ({ data }) => {
     const MyColName = styled(TableCell)({

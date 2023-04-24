@@ -1,6 +1,6 @@
-import {React,useEffect,useState} from "react";
+import { FormControlLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
+import { React, useEffect, useState } from "react";
 import "../../style/QuestionPage.css";
-import { Stack, Box, Grid, RadioGroup, FormControlLabel, Radio, Typography, Container } from "@mui/material";
 
 export default function Question(props) {
     const [listQuestion, setListQuestion] = useState();
@@ -10,7 +10,7 @@ export default function Question(props) {
         setListQuestion(props.listExam)
     }, [props.listExam]);
 
-   
+
     if (props.listExam === undefined) return <p>Loading...</p>;
     return (
         <div>
@@ -34,7 +34,7 @@ export default function Question(props) {
                             {value.question.length > 0 && (
                                 <Typography variant="subtitle1">{value.question}</Typography>
                             )}
-    
+
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
                                 defaultValue={0}
@@ -52,7 +52,7 @@ export default function Question(props) {
                     </Stack>
                     ))
                 }
-              
+
             </Stack>
         </div>
     );

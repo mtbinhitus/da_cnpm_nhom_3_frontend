@@ -1,10 +1,7 @@
 import Checkbox from '@mui/material/Checkbox';
 import "../../../src/style/practicePage.css"
 const ChoicePractice = (props) => {
-    console.log("hưhwhw")
-    console.log(props.list)
-
-    return (
+  return (
         <>
            <Checkbox  defaultChecked color="default"  style={{margin: 0}}/>
            <span style={{ fontSize: "18px" }}>{props?.name}</span>

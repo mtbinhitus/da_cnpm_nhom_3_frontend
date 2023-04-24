@@ -2,9 +2,11 @@ import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout";
 
-import DetailPage from "./pages/DetailPage";
 import Homepage from "./pages/homepage";
+import TestList from "./pages/TestList";
+import DetailPage from "./pages/DetailPage";
 
+import useAuth from "./hooks/useAuth";
 import PracticePage from "./pages/practicePage";
 import TestResult from "./pages/TestResult";
 
@@ -34,9 +36,11 @@ function App() {
                                 key={index}
                                 path={route.path}
                                 element={
-                                     <Layout>
-                                        <Page />
-                                     </Layout>
+                                    <Layout>
+                                        <RequireAuth>
+                                            <Page />
+                                        </RequireAuth>
+                                    </Layout>
                                 }
                             />
                             );

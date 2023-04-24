@@ -1,6 +1,6 @@
-import "../../style/ResultAnswerItem.scss";
-import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
+import DoneIcon from "@mui/icons-material/Done";
+import "../../style/ResultAnswerItem.scss";
 const ResultAnswerItem = ({ questionNumber, keyAnswer, examineeAnswer }) => {
     return (
         <>

@@ -1,12 +1,11 @@
-import React from "react";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import { Button } from "@mui/material";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function ExamCard(props) {
-    const examId = 1;
     return (
         <div className="card" style={{ backgroundColor: "#f8f9fa" }}>
             <div className="card-body">

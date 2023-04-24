@@ -1,22 +1,19 @@
-import { useEffect, useRef, useState } from "react";
-import Keycloak from "keycloak-js";
+import * as Keycloak from "keycloak-js";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+import initKeycloak from "../services/keycloak-service";
 
 const useAuth = () => {
     const isRun = useRef(false);
     const [isLogin, setLogin] = useState(false);
+    const [render, setRender] = useState(false);
     const [token, setToken] = useState();
+    const authContext = useContext(AuthContext);
+
     useEffect(() => {
         if (isRun.current) return;
         isRun.current = true;
-        const client = new Keycloak({
-            url: "http://localhost:8081/",
-            realm: "auth-toeic",
-            clientId: "spring-keycloak",
-        });
-        client.init({ onLoad: "login-required" }).then((res) => {
-            setLogin(true);
-            setToken(client.token);
-        });
+        initKeycloak(authContext);
     }, []);
     return [isLogin, token];
 };

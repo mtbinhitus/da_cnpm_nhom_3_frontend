@@ -12,13 +12,13 @@ function SearchListContent() {
                         <div className="col-8">
                             <input
                                 type="text"
-                                class="form-control"
+                                className="form-control"
                                 id="exampleFormControlInput1"
                                 placeholder="Nhập từ khoá bạn muốn tìm kiếm: tên đề, câu hỏi,..."
                             />
                         </div>
                         <div className="col-4">
-                            <select class="form-select form-select-md" aria-label=".form-select-sm example">
+                            <select className="form-select form-select-md" aria-label=".form-select-sm example">
                                 <option selected>Chọn bộ đề thi</option>
                                 <option value="1">ETS TOEIC 2022</option>
                                 <option value="2">ETS TOEIC 2021</option>
