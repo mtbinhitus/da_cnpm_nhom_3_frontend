@@ -1,10 +1,8 @@
-import { FormControlLabel, Grid, IconButton, Radio, RadioGroup, FormControl, TextField } from "@mui/material";
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { useEffect, useState } from "react";
-import { Uploader } from "uploader"; // Installed by "react-uploader".
-import { UploadButton, UploadDropzone } from "react-uploader";
-import QuestionModel from "../../models/question";
-import cloneDeep from "lodash/cloneDeep";
+import React, { useEffect, useState } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
+import { FormControlLabel, Grid, IconButton, Radio, RadioGroup, FormControl, TextField } from '@mui/material';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import QuestionModel from '../../models/question';
 
 const Part2Question = ({ index, question, singleQList, setFunc }) => {
     const [optionA, setOptionA] = useState(question.questions[0].options.a);
@@ -15,23 +13,24 @@ const Part2Question = ({ index, question, singleQList, setFunc }) => {
     const [explain, setExplain] = useState(question.questions[0].explain);
     const updateDetailQuestion = () => {
         question.questions[0] = QuestionModel(index, optionA, optionB, optionC, optionD, correctOption, explain, null);
-        var clone = cloneDeep(singleQList);
+        const clone = cloneDeep(singleQList);
         setFunc(clone);
     };
+
     useEffect(() => {
         updateDetailQuestion();
     }, [optionA, optionB, optionC, optionD, correctOption, explain]);
     return (
         <>
             <div className="d-flex justify-content-between">
-                <div>No. {index}</div>
+                <div>Câu {index}</div>
                 <IconButton size="medium" color="error">
                     <HighlightOffIcon></HighlightOffIcon>
                 </IconButton>
             </div>
             <Grid container spacing={2}>
                 <Grid item xs={6}>
-                    <div>Option</div>
+                    <div>Lựa chọn</div>
                     <FormControl>
                         <Grid container columnSpacing={3} rowSpacing={10}>
                             <Grid item xs={1}>
@@ -41,50 +40,50 @@ const Part2Question = ({ index, question, singleQList, setFunc }) => {
                                     name="radio-buttons-group"
                                 >
                                     <FormControlLabel
-                                        style={{ marginTop: "5px" }}
+                                        style={{ marginTop: '5px' }}
                                         value="a"
-                                        key={"a"}
+                                        key={'a'}
                                         control={<Radio />}
                                         label="a"
-                                        onClick={(e) => {
-                                            setCorrectOption("a");
+                                        onClick={() => {
+                                            setCorrectOption('a');
                                         }}
                                     />
                                     <FormControlLabel
-                                        style={{ marginTop: "5px" }}
+                                        style={{ marginTop: '5px' }}
                                         value="b"
-                                        key={"b"}
+                                        key={'b'}
                                         control={<Radio />}
                                         label="b"
-                                        onClick={(e) => {
-                                            setCorrectOption("b");
+                                        onClick={() => {
+                                            setCorrectOption('b');
                                         }}
                                     />
                                     <FormControlLabel
-                                        style={{ marginTop: "5px" }}
+                                        style={{ marginTop: '5px' }}
                                         value="c"
-                                        key={"c"}
+                                        key={'c'}
                                         control={<Radio />}
                                         label="c"
-                                        onClick={(e) => {
-                                            setCorrectOption("c");
+                                        onClick={() => {
+                                            setCorrectOption('c');
                                         }}
                                     />
                                     <FormControlLabel
-                                        style={{ marginTop: "5px" }}
+                                        style={{ marginTop: '5px' }}
                                         value="d"
                                         control={<Radio />}
                                         label="d"
-                                        key={"d"}
-                                        onClick={(e) => {
-                                            setCorrectOption("d");
+                                        key={'d'}
+                                        onClick={() => {
+                                            setCorrectOption('d');
                                         }}
                                     />
                                 </RadioGroup>
                             </Grid>
                             <Grid item xs={11}>
                                 <TextField
-                                    style={{ marginTop: "7px", width: "100%" }}
+                                    style={{ marginTop: '7px', width: '100%' }}
                                     id="outlined-basic"
                                     value={optionA}
                                     size="small"
@@ -95,7 +94,7 @@ const Part2Question = ({ index, question, singleQList, setFunc }) => {
                                     }}
                                 />
                                 <TextField
-                                    style={{ marginTop: "7px", width: "100%" }}
+                                    style={{ marginTop: '7px', width: '100%' }}
                                     id="outlined-basic"
                                     value={optionB}
                                     size="small"
@@ -106,7 +105,7 @@ const Part2Question = ({ index, question, singleQList, setFunc }) => {
                                     }}
                                 />
                                 <TextField
-                                    style={{ marginTop: "7px", width: "100%" }}
+                                    style={{ marginTop: '7px', width: '100%' }}
                                     id="outlined-basic"
                                     size="small"
                                     value={optionC}
@@ -117,7 +116,7 @@ const Part2Question = ({ index, question, singleQList, setFunc }) => {
                                     }}
                                 />
                                 <TextField
-                                    style={{ marginTop: "7px", width: "100%" }}
+                                    style={{ marginTop: '7px', width: '100%' }}
                                     id="outlined-basic"
                                     size="small"
                                     value={optionD}
@@ -132,7 +131,7 @@ const Part2Question = ({ index, question, singleQList, setFunc }) => {
                     </FormControl>
                 </Grid>
                 <Grid item xs={6}>
-                    <div className="mt-2 mb-2">Explain</div>
+                    <div className="mt-2 mb-2">Giải thích</div>
                     <TextField
                         className="w-100"
                         id="standard-multiline-flexible"

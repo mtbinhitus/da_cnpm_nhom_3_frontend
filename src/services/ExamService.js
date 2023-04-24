@@ -1,9 +1,8 @@
-import axios from "axios";
-import request from "../utils/request";
+import request from '../utils/request';
 
 export async function getExamById(id) {
     const response = await request
-        .get("/exam/detail/" + id, {})
+        .get(`/exam/detail/${id}`, {})
         .then((res) => {
             return res.data;
         })
@@ -12,9 +11,10 @@ export async function getExamById(id) {
         });
     return response;
 }
+
 export async function getListExam(page) {
     const response = await request
-        .get(`/exam/all?page=` + page + "&limit=4", {
+        .get(`/exam/all?page=${page}&limit=4`, {
             // headers: {
             //     Authorization: `Bearer ${token}`,
             // },
@@ -40,7 +40,7 @@ export async function getTopListExam() {
 }
 export async function getTopListExamId(id) {
     const response = await request
-        .get(`/exam/detail/` + id)
+        .get(`/exam/detail/${id}`)
         .then((res) => {
             return res.data;
         })
@@ -52,7 +52,7 @@ export async function getTopListExamId(id) {
 
 export async function getCollections() {
     const response = await request
-        .get("/collection" , {})
+        .get('/collection', {})
         .then((res) => {
             return res.data;
         })
@@ -63,31 +63,29 @@ export async function getCollections() {
 }
 export async function createCollection(name) {
     return await request.post(
-        "/collection",
+        '/collection',
         {
-            name: name,
+            name,
         },
         {
             headers: {
-                "Content-type": "application/json; charset=UTF-8",
+                'Content-type': 'application/json; charset=UTF-8',
             },
-        }
+        },
     );
 }
-export async function createExam(id,name) {
+export async function createExam(id, name) {
     return await request.post(
-        "/exam",
+        '/exam',
         {
-            collectionId:id,
-            name: name,
-            questionList: []
+            collectionId: id,
+            name,
+            questionList: [],
         },
         {
             headers: {
-                "Content-type": "application/json; charset=UTF-8",
+                'Content-type': 'application/json; charset=UTF-8',
             },
-        }
+        },
     );
 }
-
-

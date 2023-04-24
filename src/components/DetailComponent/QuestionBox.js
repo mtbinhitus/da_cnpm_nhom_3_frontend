@@ -1,6 +1,6 @@
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import { Box, Button, Typography } from "@mui/material";
-import { React, useState } from "react";
+import { Box, Button, Typography } from '@mui/material';
+import { React, useState } from 'react';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -25,7 +25,7 @@ function TabPanel(props) {
 function a11yProps(index) {
     return {
         id: `simple-tab-${index}`,
-        "aria-controls": `simple-tabpanel-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
     };
 }
 
@@ -50,8 +50,10 @@ export default function QuestionBox(props) {
                     <QuestTab key={index} listQuestion={item.listQuestion} listExam={props.listExam} />
                 </TabPanel>
             ))} */}
-            <div style={{ display: "flex", justifyContent: "flex-end" }} maxWidth="sm">
-                <Button variant="text" endIcon={<NavigateNextIcon />}>Tiếp theo</Button>
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }} maxWidth="sm">
+                <Button variant="text" endIcon={<NavigateNextIcon />}>
+                    Tiếp theo
+                </Button>
             </div>
         </div>
     );

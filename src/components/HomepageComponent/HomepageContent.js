@@ -1,20 +1,17 @@
-import { Card } from "@mui/material";
-import { React, useEffect, useState } from "react";
-import {
-    getTopListExam
-} from "../../services/ExamService";
-import CarouselContent from "./CarouselContent";
-import TopExamList from "./TopExamList";
+import { Card } from '@mui/material';
+import { React, useEffect, useState } from 'react';
+import { getTopListExam } from '../../services/examService';
+import CarouselContent from './CarouselContent';
+import TopExamList from './TopExamList';
 
 function HomepageContent() {
-
     const [exams, setExams] = useState();
-    
+
     useEffect(() => {
         getTopListExam().then((res) => {
             setExams(res.body);
-            console.log("HomepageContent")
-            console.log(res.body)
+            console.log('HomepageContent');
+            console.log(res.body);
         });
     }, []);
 
@@ -22,8 +19,8 @@ function HomepageContent() {
     return (
         <>
             <CarouselContent />
-            <Card style={{ padding: "16px" }}>
-                <h2 style={{ fontSize: "1.8rem", marginBottom: "16px", fontWeight: "500", textAlign: "center" }}>
+            <Card style={{ padding: '16px' }}>
+                <h2 style={{ fontSize: '1.8rem', marginBottom: '16px', fontWeight: '500', textAlign: 'center' }}>
                     Đề thi mới nhất
                 </h2>
                 <div>

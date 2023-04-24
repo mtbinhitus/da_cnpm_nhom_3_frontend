@@ -1,14 +1,10 @@
-import { SafetyDividerOutlined } from "@mui/icons-material";
-import { Button, Divider } from "@mui/material";
-import { UploadDropzone } from "react-uploader";
-import { Uploader } from "uploader";
-import Part3Question from "./Part3Question";
-import QuestionModel from "../../models/question";
-import { useState } from "react";
-import cloneDeep from "lodash/cloneDeep";
-import { Dropzone, FileMosaic } from "@files-ui/react";
-import uploadFileFunc from "../../services/upload-file";
-import { useEffect } from "react";
+import React, { useEffect, useState } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
+import { Dropzone, FileMosaic } from '@files-ui/react';
+import { Button } from '@mui/material';
+import Part3Question from './Part3Question';
+import QuestionModel from '../../models/question';
+import uploadFileFunc from '../../services/uploadFile';
 
 const DynamicQuestionCluster = ({
     index,
@@ -16,7 +12,6 @@ const DynamicQuestionCluster = ({
     setFunc,
     setNumberQ,
     question,
-    increaseCount,
     part,
     previewFile,
     setPreviewFile,
@@ -25,38 +20,40 @@ const DynamicQuestionCluster = ({
 
     const updateFiles = async (incommingFiles) => {
         // incommingFiles[0]?.name = "hello.jpg";
-        var previewClone = cloneDeep(previewFile);
-        if (part === "part6") {
-            if (typeof previewClone.part6[index - 1] === "undefined") previewClone.part6.push(incommingFiles);
+        const previewClone = cloneDeep(previewFile);
+        if (part === 'part6') {
+            if (typeof previewClone.part6[index - 1] === 'undefined') previewClone.part6.push(incommingFiles);
             else previewClone.part6[index - 1] = incommingFiles;
         } else {
-            if (typeof previewClone.part7[index - 1] === "undefined") previewClone.part7.push(incommingFiles);
+            if (typeof previewClone.part7[index - 1] === 'undefined') previewClone.part7.push(incommingFiles);
             else previewClone.part7[index - 1] = incommingFiles;
         }
         setPreviewFile(previewClone);
-        var imageUrl = [];
+        const imageUrl = [];
+        /* eslint-disable no-await-in-loop */
         for (let i = 0; i < incommingFiles.length; i++) {
             const nameFile = `${part}_${index}_${i}`;
-            var newFile = new File([incommingFiles[i].file], nameFile, { type: incommingFiles[i].type });
+            const newFile = new File([incommingFiles[i].file], nameFile, { type: incommingFiles[i].type });
             const url = await uploadFileFunc(newFile);
-            if (typeof url !== "undefined") imageUrl.push(url);
+            if (typeof url !== 'undefined') imageUrl.push(url);
             console.log(url);
             // const newFile = new File([incommingFiles[0].file.slice()], "newFileName.txt", { type: incommingFiles[0].file.type });
         }
+        /* eslint-enable no-await-in-loop */
         setMaterialUrl(imageUrl);
     };
+
     const addQuestion = (questionList) => {
-        var clone = questionList;
-        clone.questionClusters[index - 1].questions.push(QuestionModel(clone.size + 1, "", "", "", "", "", ""));
-        clone.size = clone.size + 1;
+        const clone = questionList;
+        clone.questionClusters[index - 1].questions.push(QuestionModel(clone.size + 1, '', '', '', '', '', ''));
+        clone.size += 1;
         setNumberQ(clone.size);
         setFunc(clone);
     };
 
     const updateFilesUrl = () => {
-        var clone = cloneDeep(singleQList);
+        const clone = cloneDeep(singleQList);
         clone.questionClusters[index - 1].material = materialUrl;
-        console.log(previewFile);
         setFunc(clone);
     };
 
@@ -68,7 +65,7 @@ const DynamicQuestionCluster = ({
         <>
             <div>
                 <Dropzone onChange={updateFiles}>
-                    {part === "part6"
+                    {part === 'part6'
                         ? previewFile.part6[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)
                         : previewFile.part7[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)}
                 </Dropzone>
@@ -90,7 +87,7 @@ const DynamicQuestionCluster = ({
                 <Button
                     className="mt-10 w-100"
                     variant="contained"
-                    onClick={(e) => {
+                    onClick={() => {
                         addQuestion(singleQList);
                     }}
                 >

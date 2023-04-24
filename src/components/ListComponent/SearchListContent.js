@@ -1,9 +1,9 @@
-import { Button } from "@mui/material";
-import React from "react";
+import { Button } from '@mui/material';
+import React from 'react';
 
 function SearchListContent() {
     return (
-        <div className="pb-0" style={{ paddingTop: "1rem" }}>
+        <div className="pb-0" style={{ paddingTop: '1rem' }}>
             <div className="container pb-0">
                 <div className="row">
                     <h1>Thư viện đề thi</h1>
@@ -27,7 +27,7 @@ function SearchListContent() {
                         </div>
                     </div>
                     <div className="col-3">
-                        <Button style={{ width: "100px" }} variant="contained">
+                        <Button style={{ width: '100px' }} variant="contained">
                             Tìm kiếm
                         </Button>
                     </div>

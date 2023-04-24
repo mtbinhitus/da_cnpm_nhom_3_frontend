@@ -1,26 +1,26 @@
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
-import { Button } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
+import { Button } from '@mui/material';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function ExamCard(props) {
     return (
-        <div className="card" style={{ backgroundColor: "#f8f9fa" }}>
+        <div className="card" style={{ backgroundColor: '#f8f9fa' }}>
             <div className="card-body">
-                <h2 className="card-title" style={{ fontSize: "1.02rem", fontWeight: "600" }}>
+                <h2 className="card-title" style={{ fontSize: '1.02rem', fontWeight: '600' }}>
                     {props.name}
                 </h2>
                 <div>
                     <div>
                         <span
                             style={{
-                                display: "inline-block",
-                                fontSize: ".9rem",
-                                color: "#677788",
+                                display: 'inline-block',
+                                fontSize: '.9rem',
+                                color: '#677788',
                                 fontWeight: 500,
-                                lineHeight: "1.4",
+                                lineHeight: '1.4',
                             }}
                         >
                             Bộ đề thi: {props.category}
@@ -29,11 +29,11 @@ function ExamCard(props) {
                     <div>
                         <span
                             style={{
-                                display: "inline-block",
-                                fontSize: ".9rem",
-                                color: "#677788",
+                                display: 'inline-block',
+                                fontSize: '.9rem',
+                                color: '#677788',
                                 fontWeight: 500,
-                                lineHeight: "1.4",
+                                lineHeight: '1.4',
                             }}
                         >
                             <AccessTimeIcon />
@@ -47,11 +47,11 @@ function ExamCard(props) {
                     <div>
                         <span
                             style={{
-                                display: "inline-block",
-                                fontSize: ".9rem",
-                                color: "#677788",
+                                display: 'inline-block',
+                                fontSize: '.9rem',
+                                color: '#677788',
                                 fontWeight: 500,
-                                lineHeight: "1.4",
+                                lineHeight: '1.4',
                             }}
                         >
                             <span> 7 phần thi | 120 câu hỏi</span>
@@ -59,7 +59,7 @@ function ExamCard(props) {
                     </div>
                 </div>
                 <div className="d-grid mt-3">
-                    <Link to={`/exam-detail/${props.id}`} style={{ textDecoration: "none" }}>
+                    <Link to={`/exam-detail/${props.id}`} style={{ textDecoration: 'none' }}>
                         <Button variant="outlined">
                             <span className="fw-bold">Chi tiết</span>
                         </Button>

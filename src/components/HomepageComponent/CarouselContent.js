@@ -1,5 +1,5 @@
-import React from "react";
-import { Carousel } from "react-bootstrap";
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
 
 function CarouselContent() {
     return (
@@ -10,7 +10,7 @@ function CarouselContent() {
                         className="d-block"
                         src="https://easyeducation.vn/wp-content/uploads/2021/03/easy-edu-bi-quyet-luyen-thi-toeic-cho-nguoi-moi-bat-dau.png"
                         alt="First slide"
-                        style={{ width: "1200px", height: "500px" }}
+                        style={{ width: '1200px', height: '500px' }}
                     />
                     <Carousel.Caption className="text-black">
                         {/* <h3>First slide label</h3>
@@ -22,7 +22,7 @@ function CarouselContent() {
                         className="d-block"
                         src="https://e4life.vn/wp-content/uploads/2021/08/khoa-hoc-luyen-thi-toeic-online-4Life-English-Center.jpg"
                         alt="Second slide"
-                        style={{ width: "1000px", height: "500px" }}
+                        style={{ width: '1000px', height: '500px' }}
                     />
                     <Carousel.Caption>
                         {/* <h3>Second slide label</h3>

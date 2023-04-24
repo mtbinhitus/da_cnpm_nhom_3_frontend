@@ -1,176 +1,151 @@
-import { Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import DetailContent from "../components/DetailComponent/DetailContent";
-import { getExamById } from "../services/ExamService";
+import { Grid } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import DetailContent from '../components/DetailComponent/DetailContent';
+import { getExamById } from '../services/examService';
 
-export default function DetailPage() {
-    const id = useParams();
-    const [detailexam, setDetailexam] = useState();
-
-    useEffect(() => {
-        getExamById(id?.examId).then((res) => {
-            setDetailexam(res.body);
-        });
-    }, []);
-
-    const numberOfParts = 7;
-    return (
-        <>
-            <Grid style={{ justifyContent: "center" }} container>
-                <Grid item m={2} xs={12}>
-                    <div style={{ width: "100" }}>
-                        <DetailContent numberOfParts={numberOfParts} exam={data} listExam={detailexam} />
-                    </div>
-                </Grid>
-            </Grid>
-        </>
-    );
-}
-
-// Data ảo
 const data = {
-    examName: "ETS TOEIC 2022 Test 1",
-    examCol: "TS TOEIC 2022",
+    examName: 'ETS TOEIC 2022 Test 1',
+    examCol: 'TS TOEIC 2022',
     listPart: [
         {
             partNumber: 1,
             listQuestion: [
                 {
                     questionNumber: 1,
-                    questionText: "",
-                    imgUrl: "https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_1.png",
+                    questionText: '',
+                    imgUrl: 'https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_1.png',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 2,
-                    questionText: "",
-                    imgUrl: "https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_2.png",
+                    questionText: '',
+                    imgUrl: 'https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_2.png',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 3,
-                    questionText: "",
-                    imgUrl: "https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_3.png",
+                    questionText: '',
+                    imgUrl: 'https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_3.png',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 4,
-                    questionText: "",
-                    imgUrl: "https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_4.png",
+                    questionText: '',
+                    imgUrl: 'https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_4.png',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 5,
-                    questionText: "",
-                    imgUrl: "https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_5.png",
+                    questionText: '',
+                    imgUrl: 'https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_5.png',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 6,
-                    questionText: "",
-                    imgUrl: "https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_6.png",
+                    questionText: '',
+                    imgUrl: 'https://study4.com/media/tez_media1/img/ets_toeic_2022_test_1_6.png',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
@@ -181,576 +156,576 @@ const data = {
             listQuestion: [
                 {
                     questionNumber: 7,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 8,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 9,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 10,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 11,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 12,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 13,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 14,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 15,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 16,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 17,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 18,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 19,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 20,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 21,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 22,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 23,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 24,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 25,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 26,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 27,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 28,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 29,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 30,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
                 {
                     questionNumber: 31,
-                    imgUrl: "",
-                    questionText: "",
+                    imgUrl: '',
+                    questionText: '',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A.",
+                            textOption: 'A.',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B.",
+                            textOption: 'B.',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C.",
+                            textOption: 'C.',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D.",
+                            textOption: 'D.',
                         },
                     ],
                 },
@@ -761,24 +736,24 @@ const data = {
             listQuestion: [
                 {
                     questionNumber: 32,
-                    imgUrl: "",
-                    questionText: "What is the woman preparing for?",
+                    imgUrl: '',
+                    questionText: 'What is the woman preparing for?',
                     listOption: [
                         {
                             optionNumber: 1,
-                            textOption: "A. A move to a new a city",
+                            textOption: 'A. A move to a new a city',
                         },
                         {
                             optionNumber: 2,
-                            textOption: "B. A business trip",
+                            textOption: 'B. A business trip',
                         },
                         {
                             optionNumber: 3,
-                            textOption: "C. A building tour",
+                            textOption: 'C. A building tour',
                         },
                         {
                             optionNumber: 4,
-                            textOption: "D. A meeting with visiting colleagues",
+                            textOption: 'D. A meeting with visiting colleagues',
                         },
                     ],
                 },
@@ -794,3 +769,29 @@ const data = {
         //     listQuestionF: []}
     ],
 };
+
+export default function DetailPage() {
+    const id = useParams();
+    const [detailexam, setDetailexam] = useState();
+
+    useEffect(() => {
+        getExamById(id?.examId).then((res) => {
+            setDetailexam(res.body);
+        });
+    }, []);
+
+    const numberOfParts = 7;
+    return (
+        <>
+            <Grid style={{ justifyContent: 'center' }} container>
+                <Grid item m={2} xs={12}>
+                    <div style={{ width: '100' }}>
+                        <DetailContent numberOfParts={numberOfParts} exam={data} listExam={detailexam} />
+                    </div>
+                </Grid>
+            </Grid>
+        </>
+    );
+}
+
+// Data ảo

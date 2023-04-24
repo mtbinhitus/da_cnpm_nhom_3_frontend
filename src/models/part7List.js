@@ -6,20 +6,20 @@ const Part7ListModel = () => ({
                 {
                     id: 1,
                     options: {
-                        a: "",
-                        b: "",
-                        c: "",
-                        d: "",
+                        a: '',
+                        b: '',
+                        c: '',
+                        d: '',
                     },
-                    correctOption: "",
-                    explain: "",
-                    questionContent: "",
+                    correctOption: '',
+                    explain: '',
+                    questionContent: '',
                 },
             ],
             material: [],
         },
     ],
     size: 1,
-    type: "part7",
+    type: 'part7',
 });
 export default Part7ListModel;

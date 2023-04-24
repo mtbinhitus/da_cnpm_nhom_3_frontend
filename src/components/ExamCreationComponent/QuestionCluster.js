@@ -1,12 +1,8 @@
-import { SafetyDividerOutlined } from "@mui/icons-material";
-import { Divider } from "@mui/material";
-import { UploadDropzone } from "react-uploader";
-import { Uploader } from "uploader";
-import Part3Question from "./Part3Question";
-import { Dropzone, FileMosaic } from "@files-ui/react";
-import cloneDeep from "lodash/cloneDeep";
-import { useEffect, useState } from "react";
-import uploadFileFunc from "../../services/upload-file";
+import React, { useEffect, useState } from 'react';
+import cloneDeep from 'lodash/cloneDeep';
+import { Dropzone, FileMosaic } from '@files-ui/react';
+import Part3Question from './Part3Question';
+import uploadFileFunc from '../../services/uploadFile';
 
 const QuestionCluster = ({ index, question, part, previewFile, setPreviewFile, singleQList, setFunc }) => {
     const [materialUrl, setMaterialUrl] = useState();
@@ -15,23 +11,24 @@ const QuestionCluster = ({ index, question, part, previewFile, setPreviewFile, s
 
     const updateFiles = async (incommingFiles) => {
         // incommingFiles[0]?.name = "hello.jpg";
-        var previewClone = cloneDeep(previewFile);
-        if (part === "part3") {
-            if (typeof previewClone.part3[index - 1] === "undefined") previewClone.part3.push(incommingFiles);
+        const previewClone = cloneDeep(previewFile);
+        if (part === 'part3') {
+            if (typeof previewClone.part3[index - 1] === 'undefined') previewClone.part3.push(incommingFiles);
             else previewClone.part3[index - 1] = incommingFiles;
         } else {
-            if (typeof previewClone.part4[index - 1] === "undefined") previewClone.part4.push(incommingFiles);
+            if (typeof previewClone.part4[index - 1] === 'undefined') previewClone.part4.push(incommingFiles);
             else previewClone.part4[index - 1] = incommingFiles;
         }
 
         setPreviewFile(previewClone);
         // console.log(incommingFiles);
-        var imageUrl = [];
+        const imageUrl = [];
+        /* eslint-disable no-await-in-loop */
         for (let i = 0; i < incommingFiles.length; i++) {
             const nameFile = `${part}_${index}_${i}`;
-            var newFile = new File([incommingFiles[i].file], nameFile, { type: incommingFiles[i].type });
+            const newFile = new File([incommingFiles[i].file], nameFile, { type: incommingFiles[i].type });
             const url = await uploadFileFunc(newFile);
-            if (typeof url !== "undefined") imageUrl.push(url);
+            if (typeof url !== 'undefined') imageUrl.push(url);
             console.log(url);
             // const newFile = new File([incommingFiles[0].file.slice()], "newFileName.txt", { type: incommingFiles[0].file.type });
         }
@@ -39,7 +36,7 @@ const QuestionCluster = ({ index, question, part, previewFile, setPreviewFile, s
     };
 
     const updateFilesUrl = () => {
-        var clone = cloneDeep(singleQList);
+        const clone = cloneDeep(singleQList);
         clone.questionClusters[index - 1].material = materialUrl;
         setFunc(clone);
     };
@@ -52,7 +49,7 @@ const QuestionCluster = ({ index, question, part, previewFile, setPreviewFile, s
         <>
             <div>
                 <Dropzone onChange={updateFiles}>
-                    {part === "part3"
+                    {part === 'part3'
                         ? previewFile.part3[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)
                         : previewFile.part4[index - 1]?.map((file, i) => <FileMosaic key={i} {...file} preview />)}
                 </Dropzone>

@@ -1,12 +1,10 @@
-import * as Keycloak from "keycloak-js";
-import { useContext, useEffect, useRef, useState } from "react";
-import { AuthContext } from "../contexts/AuthContext";
-import initKeycloak from "../services/keycloak-service";
+import { useContext, useEffect, useRef, useState } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
+import initKeycloak from '../services/keycloakService';
 
 const useAuth = () => {
     const isRun = useRef(false);
     const [isLogin, setLogin] = useState(false);
-    const [render, setRender] = useState(false);
     const [token, setToken] = useState();
     const authContext = useContext(AuthContext);
 

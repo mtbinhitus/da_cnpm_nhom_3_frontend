@@ -1,15 +1,15 @@
 const QuestionModel = (id, a, b, c, d, correct, explain, questionContent) => {
     return {
-        id: id,
+        id,
         options: {
-            a: a,
-            b: b,
-            c: c,
-            d: d,
+            a,
+            b,
+            c,
+            d,
         },
         correctOption: correct,
-        explain: explain,
-        questionContent: questionContent,
+        explain,
+        questionContent,
     };
 };
 

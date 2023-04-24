@@ -16,6 +16,6 @@ const ExamModel = (id, part1List, part2List, part3List, part4List, part5List, pa
         part6List.size +
         part7List.size,
     createTime: Date.now(),
-    audioUrl: audioUrl,
+    audioUrl,
 });
 export default ExamModel;

@@ -1,13 +1,15 @@
-import { Card, Grid } from "@mui/material";
-import HeaderContaint from "../components/practiceComponent/HeaderContent";
-import PracticeContent from "../components/practiceComponent/PracticeContent";
-const practicePage = () => {
+import React from 'react';
+import { Card, Grid } from '@mui/material';
+import HeaderContaint from '../components/PracticeComponent/HeaderContent';
+import PracticeContent from '../components/PracticeComponent/PracticeContent';
+
+const PracticePage = () => {
     return (
         <>
-            <Grid style={{ justifyContent: "center" }} container>
+            <Grid style={{ justifyContent: 'center' }} container>
                 <Grid item xs={9}>
-                    <div style={{ width: "100" }}>
-                        <Card style={{ padding: "16px", marginTop: "16px" }}>
+                    <div style={{ width: '100' }}>
+                        <Card style={{ padding: '16px', marginTop: '16px' }}>
                             <HeaderContaint />
                             <PracticeContent />
                         </Card>
@@ -17,4 +19,4 @@ const practicePage = () => {
         </>
     );
 };
-export default practicePage;
+export default PracticePage;

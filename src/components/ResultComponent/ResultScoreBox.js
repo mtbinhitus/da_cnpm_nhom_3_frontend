@@ -1,51 +1,51 @@
-import styled from "@emotion/styled";
-import CancelIcon from "@mui/icons-material/Cancel";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import { Card } from "@mui/material";
+import React from 'react';
+import styled from '@emotion/styled';
+import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import { Card } from '@mui/material';
 
 const ResultScoreBox = ({ boxType, numberAnswer }) => {
-    var boxName = "";
-    const getIconOfBox = (boxType) => {
-        if (boxType === "correctType") {
-            boxName = "Trả lời đúng";
+    let boxName = '';
+    const getIconOfBox = () => {
+        if (boxType === 'correctType') {
+            boxName = 'Trả lời đúng';
             return (
                 <>
-                    <CheckCircleIcon style={{ color: "green" }} />
+                    <CheckCircleIcon style={{ color: 'green' }} />
                 </>
             );
-        } else if (boxType === "IncorrectType") {
-            boxName = "Trả lời sai";
-
+        } else if (boxType === 'IncorrectType') {
+            boxName = 'Trả lời sai';
             return (
                 <>
-                    <CancelIcon style={{ color: "red" }} />
+                    <CancelIcon style={{ color: 'red' }} />
                 </>
             );
         } else {
-            boxName = "Bỏ qua";
+            boxName = 'Bỏ qua';
             return (
                 <>
-                    <RemoveCircleIcon style={{ color: "grey" }} />
+                    <RemoveCircleIcon style={{ color: 'grey' }} />
                 </>
             );
         }
     };
 
     const MyCard = styled(Card)({
-        width: "200px",
-        height: "177px",
+        width: '200px',
+        height: '177px',
         padding: 16,
-        textAlign: "center",
+        textAlign: 'center',
     });
 
     return (
         <>
             <MyCard className="result-score-box">
-                <div>{getIconOfBox(boxType)}</div>
-                <div style={{ fontSize: "16px", fontWeight: "bold" }}>{boxName}</div>
-                <div style={{ fontSize: "23px", fontWeight: "bold" }}>{numberAnswer}</div>
-                <div style={{ fontSize: "16px" }}>Câu hỏi</div>
+                <div>{getIconOfBox()}</div>
+                <div style={{ fontSize: '16px', fontWeight: 'bold' }}>{boxName}</div>
+                <div style={{ fontSize: '23px', fontWeight: 'bold' }}>{numberAnswer}</div>
+                <div style={{ fontSize: '16px' }}>Câu hỏi</div>
             </MyCard>
         </>
     );

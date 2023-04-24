@@ -1,11 +1,10 @@
-import { Button, Grid, Stack, Typography } from "@mui/material";
-import { React } from "react";
-import { Link } from "react-router-dom";
-import AnswerBox from "../DetailComponent/AnswerBox";
-import Question from "./Question";
+import { Button, Grid, Stack, Typography } from '@mui/material';
+import { React } from 'react';
+import { Link } from 'react-router-dom';
+import AnswerBox from './AnswerBox';
+import Question from './Question';
 
 export default function DetailContent(props) {
-
     if (props.listExam === undefined) return <p>Loading...</p>;
     return (
         <>
@@ -16,8 +15,8 @@ export default function DetailContent(props) {
                             {props.exam.examName}
                         </Typography>
 
-                        <Link to={`../`} style={{ textDecoration: "none" }}>
-                            <Button sx={{ bgcolor: "#e8f2ff" }} size="small" variant="outlined">
+                        <Link to={`../`} style={{ textDecoration: 'none' }}>
+                            <Button sx={{ bgcolor: '#e8f2ff' }} size="small" variant="outlined">
                                 Thoát
                             </Button>
                         </Link>
@@ -26,12 +25,12 @@ export default function DetailContent(props) {
                         Bộ đề thi: {props.exam.examCol}
                     </Typography>
                 </Grid>
-                <Grid p={2} sx={{ border: 1, borderColor: "#e0e0e0" }} item xs={10.6}>
+                <Grid p={2} sx={{ border: 1, borderColor: '#e0e0e0' }} item xs={10.6}>
                     <Question listExam={props.listExam} />
                     {/* <QuestionBox numberOfParts={props.numberOfParts} listPart={props.exam.listPart} listExam={props.listExam}/> */}
                 </Grid>
-                <Grid p={2} sx={{ border: 1, borderColor: "#e0e0e0" }} item xs={1.4}>
-                    <AnswerBox listExam={props.listExam}/>
+                <Grid p={2} sx={{ border: 1, borderColor: '#e0e0e0' }} item xs={1.4}>
+                    <AnswerBox listExam={props.listExam} />
                 </Grid>
             </Grid>
         </>
