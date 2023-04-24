@@ -5,9 +5,8 @@ import initKeycloak from '../services/keycloakService';
 const useAuth = () => {
     const isRun = useRef(false);
     const isLogin = useState(false);
-    const token= useState();
+    const token = useState();
     const authContext = useContext(AuthContext);
-
     useEffect(() => {
         if (isRun.current) return;
         isRun.current = true;
