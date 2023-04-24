@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Grid } from '@mui/material';
-import HeaderContaint from '../components/PracticeComponent/HeaderContent';
+import HeaderContent from '../components/PracticeComponent/HeaderContent';
 import PracticeContent from '../components/PracticeComponent/PracticeContent';
 
 const PracticePage = () => {
@@ -10,7 +10,7 @@ const PracticePage = () => {
                 <Grid item xs={9}>
                     <div style={{ width: '100' }}>
                         <Card style={{ padding: '16px', marginTop: '16px' }}>
-                            <HeaderContaint />
+                            <HeaderContent />
                             <PracticeContent />
                         </Card>
                     </div>

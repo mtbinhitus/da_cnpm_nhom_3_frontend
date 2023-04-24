@@ -6,7 +6,7 @@ export default function QuestTab(props) {
     return (
         <div>
             {props.listQuestion.map((value, index) => (
-                <Question question={value} index={index} listExam={props.listExam} />
+                <Question key={index} question={value} index={index} listExam={props.listExam} />
             ))}
         </div>
     );

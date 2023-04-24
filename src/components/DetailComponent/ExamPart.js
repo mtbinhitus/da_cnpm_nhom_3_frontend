@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ExamPart(props) {
+export default function ExamPart() {
     return (
         <div>
             {/* <Stack justifyContent="center" spacing={2}>
