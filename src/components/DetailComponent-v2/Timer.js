@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Button, Stack, colors } from "@mui/material";
+import { purple } from "@mui/material/colors";
+import { Link, useParams } from "react-router-dom";
 
 const STATUS = {
     STARTED: "Started",
@@ -7,9 +10,10 @@ const STATUS = {
 
 const INITIAL_COUNT = 7200;
 
-export default function Timer() {
-    const [secondsRemaining, setSecondsRemaining] = useState(INITIAL_COUNT);
-    const [status, setStatus] = useState(STATUS.STOPPED);
+export default function Timer(props) {
+    const [secondsRemaining, setSecondsRemaining] = useState(props.time);
+    const [status, setStatus] = useState(props.status);
+    console.log(props.status);
 
     const secondsToDisplay = secondsRemaining % 60;
     const minutesRemaining = (secondsRemaining - secondsToDisplay) / 60;
@@ -19,11 +23,11 @@ export default function Timer() {
         setStatus(STATUS.STARTED);
     };
     const handleStop = () => {
-        setStatus(STATUS.STOPPED);
+        
     };
     const handleReset = () => {
         setStatus(STATUS.STOPPED);
-        setSecondsRemaining(INITIAL_COUNT);
+        setSecondsRemaining(props.time);
     };
     useInterval(
         () => {
@@ -31,27 +35,18 @@ export default function Timer() {
                 setSecondsRemaining(secondsRemaining - 1);
             } else {
                 setStatus(STATUS.STOPPED);
+                props.setEndFromTimer(STATUS.STOPPED);
             }
         },
         status === STATUS.STARTED ? 1000 : null,
         // passing null stops the interval
     );
     return (
-        <div className="Timer">
-            <button onClick={handleStart} type="button">
-                Start
-            </button>
-            <button onClick={handleStop} type="button">
-                Stop
-            </button>
-            <button onClick={handleReset} type="button">
-                Reset
-            </button>
-            <div style={{ padding: 20 }}>
+        <Stack mt={1} mb={1} className="Timer" alignItems="center" direction="row" spacing={2}>
+            <Button variant="contained" color={status === STATUS.STARTED ? "success" : "error"}>
                 {twoDigits(minutesToDisplay)}:{twoDigits(secondsToDisplay)}
-            </div>
-            <div>Status: {status}</div>
-        </div>
+            </Button>
+        </Stack>
     );
 }
 

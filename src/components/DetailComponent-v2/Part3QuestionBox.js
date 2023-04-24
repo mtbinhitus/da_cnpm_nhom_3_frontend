@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Container, Stack, Typography, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 
+const STATUS = {
+    STARTED: "Started",
+    STOPPED: "Stopped",
+};
+
 export default function QuestionBox(props) {
     // const [questionInfo, setQuestionInfo] = useState(props.data.questions[0]);
     // const [material, setMaterial] = useState(props.data.materials);
@@ -36,7 +41,7 @@ export default function QuestionBox(props) {
         console.log(event.target);
         console.log(index);
         listValue[index] = event.target.value;
-        const newListValue = listValue.map((value, offset) => offset === index ? event.target.value : value);
+        const newListValue = listValue.map((value, offset) => (offset === index ? event.target.value : value));
         setListValue(newListValue);
         console.log(newListValue);
         props.fillAnswerSheet({ id: parseInt(event.target.name), answer: event.target.value });
@@ -45,7 +50,7 @@ export default function QuestionBox(props) {
     const checkFill = () => {
         console.log("Check fill call");
         props.data.questions.forEach((question, index) => {
-            const offset = props.sheet.findIndex(answer => answer.id == question.id);
+            const offset = props.sheet.findIndex((answer) => answer.id == question.id);
             listValue[index] = props.sheet[offset].answer;
         });
         setListValue(listValue);
@@ -54,13 +59,13 @@ export default function QuestionBox(props) {
     if (props.data.questions[0] === undefined) return <p>Loading...</p>;
 
     return (
-        <Grid mt={4} container spacing={2} alignItems="center" justify="center">
+        <Grid mt={2} container spacing={2} alignItems="center" justify="center">
             <Grid
                 item
                 xs={12}
                 sm={12}
                 lg={12}
-                style={{ borderColor: "#1976d2", minHeight: "500px", maxHeight: "70vh", overflow: "auto"}}
+                style={{ borderColor: "#1976d2", minHeight: "500px", maxHeight: "70vh", overflow: "auto" }}
                 sx={{ border: 2 }}
             >
                 {props.data.questions.map((item, index) => (
@@ -71,16 +76,40 @@ export default function QuestionBox(props) {
                         {console.log(getHandle(index))}
                         <div style={{ paddingLeft: "1.5rem" }} className="option-list">
                             {item.question.length > 0 && <Typography variant="subtitle1">{item.question}</Typography>}
-                            <RadioGroup
-                                aria-labelledby="answer-radio-buttons-group-label"
-                                value={getHandle(index)}
-                                name={item.id}
-                                onChange={(event) => handleChange(event, index)}
-                            >
-                                {item.options.map((option) => (
-                                    <FormControlLabel value={option} control={<Radio />} label={option} key={option} />
-                                ))}
-                            </RadioGroup>
+                            {props.status === STATUS.STARTED ? (
+                                <RadioGroup
+                                    aria-labelledby="answer-radio-buttons-group-label"
+                                    value={getHandle(index)}
+                                    name={item.id}
+                                    onChange={(event) => handleChange(event, index)}
+                                >
+                                    {item.options.map((option) => (
+                                        <FormControlLabel
+                                            value={option}
+                                            control={<Radio />}
+                                            label={option}
+                                            key={option}
+                                        />
+                                    ))}
+                                </RadioGroup>
+                            ) : (
+                                <RadioGroup
+                                    aria-labelledby="answer-radio-buttons-group-label"
+                                    value={getHandle(index)}
+                                    name={item.id}
+                                    onChange={(event) => handleChange(event, index)}
+                                >
+                                    {item.options.map((option) => (
+                                        <FormControlLabel
+                                            value={option}
+                                            control={<Radio />}
+                                            label={option}
+                                            key={option}
+                                            disabled={true}
+                                        />
+                                    ))}
+                                </RadioGroup>
+                            )}
                         </div>
                     </Stack>
                 ))}

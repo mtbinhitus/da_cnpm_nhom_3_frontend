@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Card, Box, Typography, Button } from "@mui/material";
+import { Link, useParams } from "react-router-dom";
 import { Stack } from "@mui/system";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Part1QuestionBox from "../DetailComponent-v2/Part1QuestionBox";
@@ -8,6 +9,16 @@ import Part3QuestionBox from "../DetailComponent-v2/Part3QuestionBox";
 import Part6QuestionBox from "../DetailComponent-v2/Part6QuestionBox";
 import Timer from "../DetailComponent-v2/Timer";
 
+const NEXT = {
+    STARTED: "Started",
+    STOPPED: "Stopped",
+};
+
+const STATUS = {
+    STARTED: "Started",
+    STOPPED: "Stopped",
+};
+
 export default function DetailContent(props) {
     const [loading, setLoading] = useState(true);
     const [selectedPart, setSelectedPart] = useState(1);
@@ -15,6 +26,11 @@ export default function DetailContent(props) {
     const [question, setQuestion] = useState([]);
     const [bookMark, setBookMark] = useState(1);
     const [answerSheet, setAnswerSheet] = useState([]);
+    const [time, setTime] = useState(3);
+    const [next, setNext] = useState(NEXT.STARTED);
+    const [end, setEnd] = useState(STATUS.STARTED);
+    const examId = useParams();
+    const examResultId = 1;
     console.log(props.exam);
     console.log(question);
     console.log(answerSheet);
@@ -22,7 +38,7 @@ export default function DetailContent(props) {
     useEffect(() => {
         console.log("useEffect has been called!");
         showQuestion(selectedPart, selectedQuestion);
-    }, []);
+    }, [end]);
 
     if (props.exam === undefined) return <p>Loading...</p>;
 
@@ -166,6 +182,9 @@ export default function DetailContent(props) {
 
     const findQuestionByOffset = async (inventory, offset) => {
         let result = null;
+        if (inventory === undefined) {
+            return result;
+        }
         inventory.forEach((item) => {
             item.questions.forEach((question) => {
                 if (question.index === offset) {
@@ -195,11 +214,20 @@ export default function DetailContent(props) {
         }
     };
 
+    const setEndFromTimer = (childData) => {
+        console.log("Set end call");
+        setEnd(childData);
+    };
+
     const showQuestion = async (partIndex, questionIndex) => {
         console.log(partIndex);
         console.log(questionIndex);
         const part = await findPartByOffset(partIndex);
         const res = await findQuestionByOffset(part, questionIndex);
+        if (res === null) {
+            console.log(res);
+            setNext(NEXT.STOPPED);
+        }
         console.log(res);
         switch (partIndex) {
             case 1:
@@ -209,6 +237,7 @@ export default function DetailContent(props) {
                         fillAnswerSheet={fillAnswerSheet}
                         data={res}
                         sheet={answerSheet}
+                        status={end}
                     ></Part1QuestionBox>,
                 );
                 return res.questions.length;
@@ -219,6 +248,7 @@ export default function DetailContent(props) {
                         fillAnswerSheet={fillAnswerSheet}
                         data={res}
                         sheet={answerSheet}
+                        status={end}
                     ></Part2QuestionBox>,
                 );
                 return res.questions.length;
@@ -229,6 +259,7 @@ export default function DetailContent(props) {
                         fillAnswerSheet={fillAnswerSheet}
                         data={res}
                         sheet={answerSheet}
+                        status={end}
                     ></Part3QuestionBox>,
                 );
                 return res.questions.length;
@@ -239,6 +270,7 @@ export default function DetailContent(props) {
                         fillAnswerSheet={fillAnswerSheet}
                         data={res}
                         sheet={answerSheet}
+                        status={end}
                     ></Part3QuestionBox>,
                 );
                 return res.questions.length;
@@ -249,6 +281,7 @@ export default function DetailContent(props) {
                         fillAnswerSheet={fillAnswerSheet}
                         data={res}
                         sheet={answerSheet}
+                        status={end}
                     ></Part2QuestionBox>,
                 );
                 return res.questions.length;
@@ -259,6 +292,7 @@ export default function DetailContent(props) {
                         fillAnswerSheet={fillAnswerSheet}
                         data={res}
                         sheet={answerSheet}
+                        status={end}
                     ></Part6QuestionBox>,
                 );
                 return res.questions.length;
@@ -269,11 +303,16 @@ export default function DetailContent(props) {
                         fillAnswerSheet={fillAnswerSheet}
                         data={res}
                         sheet={answerSheet}
+                        status={end}
                     ></Part6QuestionBox>,
                 );
                 return res.questions.length;
         }
     };
+
+    const handleSubmit = (event) => {
+        console.log(answerSheet);
+    }
 
     return (
         <>
@@ -282,9 +321,17 @@ export default function DetailContent(props) {
                     <Typography textAlign="flex-start" fontWeight={500} variant="h6">
                         PART {selectedPart}
                     </Typography>
+                    <Stack direction="row" spacing={4} alignItems="center" justifyContent="center">
+                        <Link to={`/exam-detail/${examId.examId}/results/${examResultId}`} style={{ textDecoration: "none" }}>
+                            <Button variant="contained" onClick={handleSubmit} color="primary">
+                                Nộp Bài
+                            </Button>
+                        </Link>
+                        <Timer setEndFromTimer={setEndFromTimer} time={time} status={STATUS.STARTED}></Timer>
+                    </Stack>
                     {question}
                     {/* <Part2QuestionBox data={props.exam.part1[0]}></Part2QuestionBox> */}
-                    <Grid container mt={4} spacing={2} alignItems="center" justify="center">
+                    <Grid container mt={2} spacing={2} alignItems="center" justify="center">
                         <Grid item xs={6} md={6}>
                             <Stack direction="row" spacing={2} alignItems="center" justifyContent="flex-start">
                                 <Button variant="outlined">Book mark</Button>
@@ -293,9 +340,20 @@ export default function DetailContent(props) {
                         <Grid item xs={6} md={6}>
                             <Stack direction="row" spacing={4} alignItems="center" justifyContent="flex-end">
                                 <Button variant="outlined">Review answer</Button>
-                                <Button variant="contained" onClick={nextQuestion} endIcon={<NavigateNextIcon />}>
-                                    Câu tiếp theo
-                                </Button>
+                                {next === NEXT.STARTED ? (
+                                    <Button variant="contained" onClick={nextQuestion} endIcon={<NavigateNextIcon />}>
+                                        Câu tiếp theo
+                                    </Button>
+                                ) : (
+                                    <Button
+                                        disabled
+                                        variant="contained"
+                                        onClick={nextQuestion}
+                                        endIcon={<NavigateNextIcon />}
+                                    >
+                                        Câu tiếp theo
+                                    </Button>
+                                )}
                             </Stack>
                         </Grid>
                     </Grid>

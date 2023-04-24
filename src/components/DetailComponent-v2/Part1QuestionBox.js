@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Box, Container, Stack, Typography, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 
+const STATUS = {
+    STARTED: "Started",
+    STOPPED: "Stopped",
+};
+
 export default function QuestionBox(props) {
     // const [questionInfo, setQuestionInfo] = useState(props.data.questions[0]);
     // const [material, setMaterial] = useState(props.data.materials);
@@ -11,7 +16,7 @@ export default function QuestionBox(props) {
 
     useEffect(() => {
         checkFill();
-    }, [props.data]);
+    }, [props.data, props.status]);
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -29,8 +34,8 @@ export default function QuestionBox(props) {
     if (props.data.questions[0] === undefined) return <p>Loading...</p>;
 
     return (
-        <Grid mt={4} container spacing={2} alignItems="center" justify="center">
-            <Grid item xs={12} sm={12} lg={6} style={{ minHeight: "500px",  maxHeight: "70vh", overflow: "auto"}}>
+        <Grid mt={2} container spacing={2} alignItems="center" justify="center">
+            <Grid item xs={12} sm={12} lg={6} style={{ minHeight: "500px", maxHeight: "70vh", overflow: "auto" }}>
                 {props.data.materials.length > 0 &&
                     props.data.materials.map(
                         (item, index) =>
@@ -42,7 +47,14 @@ export default function QuestionBox(props) {
                     )}
             </Grid>
 
-            <Grid item xs={12} sm={12} lg={6} style={{ borderColor: "#1976d2", minHeight: "500px",  maxHeight: "70vh", overflow: "auto"}} sx={{ border: 2 }}>
+            <Grid
+                item
+                xs={12}
+                sm={12}
+                lg={6}
+                style={{ borderColor: "#1976d2", minHeight: "500px", maxHeight: "70vh", overflow: "auto" }}
+                sx={{ border: 2 }}
+            >
                 <Stack pt={1} justifyContent="flex-start" spacing={2} mt={2}>
                     <div className="questionNumber">
                         <strong> Câu {props.data.questions[0].index}</strong>
@@ -51,17 +63,29 @@ export default function QuestionBox(props) {
                         {props.data.questions[0].question !== null > 0 && (
                             <Typography variant="subtitle1">{props.data.questions[0].question}</Typography>
                         )}
-
-                        <RadioGroup
-                            aria-labelledby="answer-radio-buttons-group-label"
-                            value={value}
-                            name="radio-buttons-group"
-                            onChange={handleChange}
-                        >
-                            {props.data.questions[0].options.map((option, index) => (
-                                <FormControlLabel value={option} control={<Radio />} label={option} key={index} />
-                            ))}
-                        </RadioGroup>
+                        {props.status === STATUS.STARTED ? (
+                            <RadioGroup
+                                aria-labelledby="answer-radio-buttons-group-label"
+                                value={value}
+                                name="radio-buttons-group"
+                                onChange={handleChange}
+                            >
+                                {props.data.questions[0].options.map((option, index) => (
+                                    <FormControlLabel value={option} control={<Radio />} label={option} key={index} />
+                                ))}
+                            </RadioGroup>
+                        ) : (
+                            <RadioGroup
+                                aria-labelledby="answer-radio-buttons-group-label"
+                                value={value}
+                                name="radio-buttons-group"
+                                onChange={handleChange}
+                            >
+                                {props.data.questions[0].options.map((option, index) => (
+                                    <FormControlLabel disabled={true} value={option} control={<Radio />} label={option} key={index} />
+                                ))}
+                            </RadioGroup>
+                        )}
                     </div>
                 </Stack>
             </Grid>
