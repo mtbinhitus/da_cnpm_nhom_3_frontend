@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import {
     Grid,
     Card,
@@ -12,16 +12,22 @@ import {
     DialogTitle,
     Slide,
     IconButton,
+    Alert,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Stack } from "@mui/system";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Part1QuestionBox from "../DetailComponent-v2/Part1QuestionBox";
 import Part2QuestionBox from "../DetailComponent-v2/Part2QuestionBox";
 import Part3QuestionBox from "../DetailComponent-v2/Part3QuestionBox";
+import Part4QuestionBox from "../DetailComponent-v2/Part4QuestionBox";
+import Part5QuestionBox from "../DetailComponent-v2/Part5QuestionBox";
 import Part6QuestionBox from "../DetailComponent-v2/Part6QuestionBox";
+import Part7QuestionBox from "../DetailComponent-v2/Part7QuestionBox";
 import Timer from "../DetailComponent-v2/Timer";
+import ReactAudioPlayer from "react-audio-player";
+import { submitExam } from "../../services/ExamService";
 
 const NEXT = {
     STARTED: "Started",
@@ -44,22 +50,130 @@ export default function DetailContent(props) {
     const [question, setQuestion] = useState([]);
     const [bookMark, setBookMark] = useState(1);
     const [answerSheet, setAnswerSheet] = useState([]);
-    const [time, setTime] = useState(3);
+    const [time, setTime] = useState(60);
     const [next, setNext] = useState(NEXT.STARTED);
     const [end, setEnd] = useState(STATUS.STARTED);
     const [open, setOpen] = useState(false);
     const examId = useParams();
-    const examResultId = 1;
+    const navigate = useNavigate();
+    const [, forceUpdate] = useReducer((x) => x + 1, 0);
+
+    const audioUrl = "https://study4.com/media/tez_media1/sound/ets_toeic_2022_test_1_ets_2022_test01.mp3";
+
     console.log(props.exam);
     console.log(question);
     console.log(answerSheet);
 
+    const handleReload = () => {
+        setLoading(false);
+    };
+
+    const showQuestion = async (partIndex, questionIndex) => {
+        console.log("Show Question Call");
+        console.log(partIndex);
+        console.log(questionIndex);
+        const part = await findPartByOffset(partIndex);
+        const res = await findQuestionByOffset(part, questionIndex);
+        if (res === null) {
+            console.log(res);
+            setNext(NEXT.STOPPED);
+        }
+        console.log(res);
+        switch (partIndex) {
+            case 1:
+                console.log("Return Question Box 1");
+                var temp = (
+                    <Part1QuestionBox
+                        fillAnswerSheet={fillAnswerSheet}
+                        data={res}
+                        sheet={answerSheet}
+                        status={end}
+                    ></Part1QuestionBox>
+                );
+                setQuestion(temp);
+                return res.questions.length;
+            case 2:
+                console.log("Return Question Box 2");
+                var temp = (
+                    <Part2QuestionBox
+                        fillAnswerSheet={fillAnswerSheet}
+                        data={res}
+                        sheet={answerSheet}
+                        status={end}
+                    ></Part2QuestionBox>
+                );
+                setQuestion(temp);
+                return res.questions.length;
+            case 3:
+                console.log("Return Question Box 3");
+                var temp = (
+                    <Part3QuestionBox
+                        fillAnswerSheet={fillAnswerSheet}
+                        data={res}
+                        sheet={answerSheet}
+                        status={end}
+                    ></Part3QuestionBox>
+                );
+                setQuestion(temp);
+                return res.questions.length;
+            case 4:
+                console.log("Return Question Box 4");
+                var temp = (
+                    <Part4QuestionBox
+                        fillAnswerSheet={fillAnswerSheet}
+                        data={res}
+                        sheet={answerSheet}
+                        status={end}
+                    ></Part4QuestionBox>
+                );
+                setQuestion(temp);
+                return res.questions.length;
+            case 5:
+                console.log("Return Question Box 5");
+                var temp = (
+                    <Part5QuestionBox
+                        fillAnswerSheet={fillAnswerSheet}
+                        data={res}
+                        sheet={answerSheet}
+                        status={end}
+                    ></Part5QuestionBox>
+                );
+                setQuestion(temp);
+                return res.questions.length;
+            case 6:
+                console.log("Return Question Box 6");
+                var temp = (
+                    <Part6QuestionBox
+                        fillAnswerSheet={fillAnswerSheet}
+                        data={res}
+                        sheet={answerSheet}
+                        status={end}
+                    ></Part6QuestionBox>
+                );
+                setQuestion(temp);
+                return res.questions.length;
+            case 7:
+                console.log("Return Question Box 7");
+                var temp = (
+                    <Part7QuestionBox
+                        fillAnswerSheet={fillAnswerSheet}
+                        data={res}
+                        sheet={answerSheet}
+                        status={end}
+                    ></Part7QuestionBox>
+                );
+                setQuestion(temp);
+                return res.questions.length;
+        }
+    };
+
     useEffect(() => {
         console.log("useEffect has been called!");
         showQuestion(selectedPart, selectedQuestion);
-    }, [end]);
+    }, [end, answerSheet]);
 
     if (props.exam === undefined) return <p>Loading...</p>;
+    if (props.exam.part1.length === 0) return <Alert severity="error">Exam information is not available!</Alert>;
 
     const createAnswerSheet = async () => {
         var i = 1;
@@ -172,7 +286,7 @@ export default function DetailContent(props) {
         let count = 0;
         if (isNext === true) {
             count = await showQuestion(selectedPart + 1, selectedQuestion + 1);
-            setSelectedPart(selectedPart + 1);
+            if (selectedPart < 7) setSelectedPart(selectedPart + 1);
         } else {
             count = await showQuestion(selectedPart, selectedQuestion + 1);
         }
@@ -238,99 +352,30 @@ export default function DetailContent(props) {
         setEnd(childData);
     };
 
-    const showQuestion = async (partIndex, questionIndex) => {
-        console.log(partIndex);
-        console.log(questionIndex);
-        const part = await findPartByOffset(partIndex);
-        const res = await findQuestionByOffset(part, questionIndex);
-        if (res === null) {
-            console.log(res);
-            setNext(NEXT.STOPPED);
-        }
-        console.log(res);
-        switch (partIndex) {
-            case 1:
-                console.log("Return Question Box 1");
-                setQuestion(
-                    <Part1QuestionBox
-                        fillAnswerSheet={fillAnswerSheet}
-                        data={res}
-                        sheet={answerSheet}
-                        status={end}
-                    ></Part1QuestionBox>,
-                );
-                return res.questions.length;
-            case 2:
-                console.log("Return Question Box 2");
-                setQuestion(
-                    <Part2QuestionBox
-                        fillAnswerSheet={fillAnswerSheet}
-                        data={res}
-                        sheet={answerSheet}
-                        status={end}
-                    ></Part2QuestionBox>,
-                );
-                return res.questions.length;
-            case 3:
-                console.log("Return Question Box 3");
-                setQuestion(
-                    <Part3QuestionBox
-                        fillAnswerSheet={fillAnswerSheet}
-                        data={res}
-                        sheet={answerSheet}
-                        status={end}
-                    ></Part3QuestionBox>,
-                );
-                return res.questions.length;
-            case 4:
-                console.log("Return Question Box 4");
-                setQuestion(
-                    <Part3QuestionBox
-                        fillAnswerSheet={fillAnswerSheet}
-                        data={res}
-                        sheet={answerSheet}
-                        status={end}
-                    ></Part3QuestionBox>,
-                );
-                return res.questions.length;
-            case 5:
-                console.log("Return Question Box 5");
-                setQuestion(
-                    <Part2QuestionBox
-                        fillAnswerSheet={fillAnswerSheet}
-                        data={res}
-                        sheet={answerSheet}
-                        status={end}
-                    ></Part2QuestionBox>,
-                );
-                return res.questions.length;
-            case 6:
-                console.log("Return Question Box 6");
-                setQuestion(
-                    <Part6QuestionBox
-                        fillAnswerSheet={fillAnswerSheet}
-                        data={res}
-                        sheet={answerSheet}
-                        status={end}
-                    ></Part6QuestionBox>,
-                );
-                return res.questions.length;
-            case 7:
-                console.log("Return Question Box 7");
-                setQuestion(
-                    <Part6QuestionBox
-                        fillAnswerSheet={fillAnswerSheet}
-                        data={res}
-                        sheet={answerSheet}
-                        status={end}
-                    ></Part6QuestionBox>,
-                );
-                return res.questions.length;
-        }
-    };
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         console.log(answerSheet);
+        const listening = [];
+        const reading = [];
+        answerSheet.forEach((element) => {
+            switch (element.part) {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    listening.push(element);
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                    reading.push(element);
+                    break;
+            }
+        });
+        // get respone
+        submitExam(examId.examId, listening, reading);
+        const examResultId = 1;
+
+        navigate(`/exam-detail/${examId.examId}/results/${examResultId}`);
     };
 
     const handleClickOpen = () => {
@@ -349,7 +394,9 @@ export default function DetailContent(props) {
         console.log(count);
         setSelectedPart(value.part);
         setSelectedQuestion(count.questions[count.questions.length - 1].index);
-    }
+        setOpen(false);
+        setNext(NEXT.STARTED);
+    };
 
     return (
         <>
@@ -358,17 +405,17 @@ export default function DetailContent(props) {
                     <Typography textAlign="flex-start" fontWeight={500} variant="h6">
                         PART {selectedPart}
                     </Typography>
-                    <Stack direction="row" spacing={4} alignItems="center" justifyContent="center">
-                        <Link
+                    <Stack mt={1} direction="row" spacing={4} alignItems="center" justifyContent="center">
+                        {/* <Link
                             to={`/exam-detail/${examId.examId}/results/${examResultId}`}
                             style={{ textDecoration: "none" }}
-                        >
-                            <Button variant="contained" onClick={handleSubmit} color="primary">
-                                Nộp Bài
-                            </Button>
-                        </Link>
+                        ></Link> */}
+                        <Button variant="contained" onClick={handleSubmit} color="primary">
+                            Nộp Bài
+                        </Button>
                         <Timer setEndFromTimer={setEndFromTimer} time={time} status={STATUS.STARTED}></Timer>
                     </Stack>
+                    <ReactAudioPlayer style={{ marginTop: "1rem" }} src={audioUrl} autoPlay controls />
                     {question}
                     {/* <Part2QuestionBox data={props.exam.part1[0]}></Part2QuestionBox> */}
                     <Grid container mt={2} spacing={2} alignItems="center" justify="center">
@@ -419,10 +466,7 @@ export default function DetailContent(props) {
                                             ))}
                                         </Grid>
                                     </DialogContent>
-                                    <DialogActions>
-                                        <Button onClick={handleClose}>Disagree</Button>
-                                        <Button onClick={handleClose}>Agree</Button>
-                                    </DialogActions>
+                                    <DialogActions></DialogActions>
                                 </Dialog>
 
                                 {next === NEXT.STARTED ? (

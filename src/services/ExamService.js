@@ -23,3 +23,19 @@ export async function getListExam() {
       });
     return response;
 }
+
+export async function submitExam(examId, listening, reading) {
+  return await request.post(
+      "/exam/submit",
+      {
+          examId: examId,
+          listening: listening,
+          reading: reading
+      },
+      {
+          headers: {
+              "Content-type": "application/json; charset=UTF-8",
+          },
+      }
+  );
+}

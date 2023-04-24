@@ -1,0 +1,175 @@
+{
+    "examId": "6",
+    "listening": [
+        {
+            "part": 1,
+            "id": 36,
+            "answer": "3",
+            "index": 1
+        },
+        {
+            "part": 1,
+            "id": 56,
+            "answer": "4",
+            "index": 2
+        },
+        {
+            "part": 2,
+            "id": 33,
+            "answer": "8",
+            "index": 3
+        },
+        {
+            "part": 2,
+            "id": 38,
+            "answer": "",
+            "index": 4
+        },
+        {
+            "part": 2,
+            "id": 46,
+            "answer": "7",
+            "index": 5
+        },
+        {
+            "part": 2,
+            "id": 52,
+            "answer": "",
+            "index": 6
+        },
+        {
+            "part": 3,
+            "id": 29,
+            "answer": "15",
+            "index": 7
+        },
+        {
+            "part": 3,
+            "id": 32,
+            "answer": "19",
+            "index": 8
+        },
+        {
+            "part": 3,
+            "id": 37,
+            "answer": "21",
+            "index": 9
+        },
+        {
+            "part": 3,
+            "id": 48,
+            "answer": "15",
+            "index": 10
+        },
+        {
+            "part": 3,
+            "id": 50,
+            "answer": "20",
+            "index": 11
+        },
+        {
+            "part": 3,
+            "id": 53,
+            "answer": "22",
+            "index": 12
+        },
+        {
+            "part": 4,
+            "id": 35,
+            "answer": "fdsa",
+            "index": 13
+        },
+        {
+            "part": 4,
+            "id": 40,
+            "answer": "fdsa",
+            "index": 14
+        },
+        {
+            "part": 4,
+            "id": 41,
+            "answer": "fdsafsad",
+            "index": 15
+        },
+        {
+            "part": 4,
+            "id": 47,
+            "answer": "fdsa",
+            "index": 16
+        },
+        {
+            "part": 4,
+            "id": 51,
+            "answer": "fdsa",
+            "index": 17
+        },
+        {
+            "part": 4,
+            "id": 54,
+            "answer": "fdsafsd",
+            "index": 18
+        }
+    ],
+    "reading": [
+        {
+            "part": 5,
+            "id": 31,
+            "answer": "fdsa",
+            "index": 19
+        },
+        {
+            "part": 5,
+            "id": 43,
+            "answer": "fdsa",
+            "index": 20
+        },
+        {
+            "part": 6,
+            "id": 30,
+            "answer": "fdsa",
+            "index": 21
+        },
+        {
+            "part": 6,
+            "id": 34,
+            "answer": "fdsa",
+            "index": 22
+        },
+        {
+            "part": 6,
+            "id": 39,
+            "answer": "fdsa",
+            "index": 23
+        },
+        {
+            "part": 6,
+            "id": 45,
+            "answer": "fdsa",
+            "index": 24
+        },
+        {
+            "part": 6,
+            "id": 44,
+            "answer": "fdsa",
+            "index": 25
+        },
+        {
+            "part": 6,
+            "id": 49,
+            "answer": "fdsa",
+            "index": 26
+        },
+        {
+            "part": 7,
+            "id": 42,
+            "answer": "fdsa",
+            "index": 27
+        },
+        {
+            "part": 7,
+            "id": 55,
+            "answer": "fdsa",
+            "index": 28
+        }
+    ]
+}

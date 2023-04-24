@@ -13,10 +13,10 @@ export default function QuestionBox(props) {
 
     console.log(props.data);
     console.log(value);
-   
+
     useEffect(() => {
         checkFill();
-    }, [props.data, props.status]);
+    }, [props.data]);
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -35,23 +35,11 @@ export default function QuestionBox(props) {
 
     return (
         <Grid mt={2} container spacing={2} alignItems="center" justify="center">
-            <Grid item xs={12} sm={12} lg={6} style={{ minHeight: "500px", maxHeight: "70vh", overflow: "auto" }}>
-                {props.data.materials.length > 0 &&
-                    props.data.materials.map(
-                        (item, index) =>
-                            item.length > 0 && (
-                                <Container key={index} sx={{ maxWidth: "500px" }}>
-                                    <img src={item} alt={item} loading="lazy" style={{ maxWidth: "500px" }} />
-                                </Container>
-                            ),
-                    )}
-            </Grid>
-
             <Grid
                 item
                 xs={12}
                 sm={12}
-                lg={6}
+                lg={12}
                 style={{ borderColor: "#1976d2", minHeight: "500px", maxHeight: "70vh", overflow: "auto" }}
                 sx={{ border: 2 }}
             >
@@ -60,9 +48,10 @@ export default function QuestionBox(props) {
                         <strong> Câu {props.data.questions[0].index}</strong>
                     </div>
                     <div style={{ paddingLeft: "1.5rem" }} className="option-list">
-                        {props.data.questions[0].question !== null > 0 && (
+                        {props.data.questions[0].question !== null && (
                             <Typography variant="subtitle1">{props.data.questions[0].question}</Typography>
                         )}
+
                         {props.status === STATUS.STARTED ? (
                             <RadioGroup
                                 aria-labelledby="answer-radio-buttons-group-label"

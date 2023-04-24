@@ -11,12 +11,11 @@ export default function DetailPage() {
     const [detailexam, setDetailexam] = useState();
 
     useEffect(() => {
-        // getExamById(id?.examId).then((res) => {
-        //     setDetailexam(res.body);
-        //     console.log("DetailPage");
-        //     console.log(res.body);
-        // });
-        console.log(data);
+        getExamById(id?.examId).then((res) => {
+            setDetailexam(res.body);
+            console.log("DetailPage");
+            console.log(res.body);
+        });
     }, []);
 
     const numberOfParts = 7;
@@ -25,7 +24,7 @@ export default function DetailPage() {
             <Grid style={{ justifyContent: "center" }} container>
                 <Grid item m={2} xs={12}>
                     <div style={{ width: "100" }}>
-                        <DetailContent numberOfParts={numberOfParts} exam={data.body} />
+                        <DetailContent examId={id.examId} numberOfParts={numberOfParts} exam={data.body} />
                     </div>
                 </Grid>
             </Grid>

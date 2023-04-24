@@ -86,7 +86,7 @@ export default function QuestionBox(props) {
                                     name={item.id}
                                     onChange={(event) => handleChange(event, index)}
                                 >
-                                    {item.options.map((option, index) => (
+                                    {item.options.map((option) => (
                                         <FormControlLabel
                                             value={option}
                                             control={<Radio />}
