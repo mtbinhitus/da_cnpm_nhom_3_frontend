@@ -63,19 +63,28 @@ export async function getCollections() {
 }
 
 export async function submitExam(id, listeningQues, readingQues) {
-    return await request.post(
-        '/exam/submit',
-        {
-            examId: id,
-            listening: listeningQues,
-            reading: readingQues,
-        },
-        {
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
+    const respone = await request
+        .post(
+            '/exam/submit',
+            {
+                examId: id,
+                listening: listeningQues,
+                reading: readingQues,
             },
-        },
-    );
+            {
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            },
+        )
+        .then((res) => {
+            return res.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+
+    return respone;
 }
 export async function createCollection(name) {
     return await request.post(

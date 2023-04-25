@@ -51,13 +51,13 @@ export default function QuestionBox(props) {
 
     return (
         <Grid mt={2} container spacing={2} alignItems="center" justify="center">
-            <Grid item xs={12} sm={12} lg={6} style={{ minHeight: '500px', maxHeight: '60vh', overflow: 'auto' }}>
+            <Grid item xs={12} sm={12} lg={7} style={{ minHeight: '500px', maxHeight: '60vh', overflow: 'auto' }}>
                 {props.data.materials.length > 0 &&
                     props.data.materials.map(
                         (item, index) =>
                             item.length > 0 && (
-                                <Container key={index} sx={{ maxWidth: '500px', marginBottom: '2rem' }}>
-                                    <img src={item} alt={item} loading="lazy" style={{ maxWidth: '500px' }} />
+                                <Container key={index} sx={{ maxWidth: '800px', marginBottom: '2rem' }}>
+                                    <img src={item} alt={item} loading="lazy" style={{ maxWidth: '800px' }} />
                                 </Container>
                             ),
                     )}
@@ -67,7 +67,7 @@ export default function QuestionBox(props) {
                 item
                 xs={12}
                 sm={12}
-                lg={6}
+                lg={5}
                 style={{ borderColor: '#1976d2', minHeight: '500px', maxHeight: '60vh', overflow: 'auto' }}
                 sx={{ border: 2 }}
             >

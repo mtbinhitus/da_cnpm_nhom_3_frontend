@@ -58,7 +58,11 @@ export default function DetailContent(props) {
     const navigate = useNavigate();
     // const [, forceUpdate] = useReducer((x) => x + 1, 0);
 
-    const audioUrl = 'https://study4.com/media/tez_media1/sound/ets_toeic_2022_test_1_ets_2022_test01.mp3';
+    const [audioUrl, setAudioUrl] = useState('');
+
+    useEffect(() => {
+        setAudioUrl(props.exam.media);
+    }, []);
 
     console.log(props.exam);
     console.log(question);
@@ -87,7 +91,7 @@ export default function DetailContent(props) {
 
     const findQuestionByOffset = async (inventory, offset) => {
         let result = null;
-        if (inventory === undefined) {
+        if (inventory === undefined || inventory === null) {
             return result;
         }
         inventory.forEach((item) => {
@@ -143,10 +147,12 @@ export default function DetailContent(props) {
             }
         });
         // get respone
-        submitExam(examId.examId, listening, reading);
+        const res = await submitExam(examId.examId, listening, reading);
         const examResultId = 1;
 
-        navigate(`/exam-detail/${examId.examId}/results/${examResultId}`);
+        navigate(`/exam-detail/${examId.examId}/results/${examResultId}`, {
+            state: { lScore: res.body.listening, rScore: res.body.reading },
+        });
     };
 
     const showQuestion = async (partIndex, questionIndex) => {

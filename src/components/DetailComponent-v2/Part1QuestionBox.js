@@ -40,8 +40,8 @@ export default function QuestionBox(props) {
                     props.data.materials.map(
                         (item, index) =>
                             item.length > 0 && (
-                                <Container key={index} sx={{ maxWidth: '500px' }}>
-                                    <img src={item} alt={item} loading="lazy" style={{ maxWidth: '500px' }} />
+                                <Container key={index} sx={{ maxWidth: '700px' }}>
+                                    <img src={item} alt={item} loading="lazy" style={{ maxWidth: '700px' }} />
                                 </Container>
                             ),
                     )}
