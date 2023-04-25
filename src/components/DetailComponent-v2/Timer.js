@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Button, Stack, colors } from "@mui/material";
-import { purple } from "@mui/material/colors";
-import { Link, useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { Button, Stack, colors } from '@mui/material';
 
 const STATUS = {
-    STARTED: "Started",
-    STOPPED: "Stopped",
+    STARTED: 'Started',
+    STOPPED: 'Stopped',
 };
-
-const INITIAL_COUNT = 7200;
 
 export default function Timer(props) {
     const [secondsRemaining, setSecondsRemaining] = useState(props.time);
@@ -22,9 +18,7 @@ export default function Timer(props) {
     const handleStart = () => {
         setStatus(STATUS.STARTED);
     };
-    const handleStop = () => {
-        
-    };
+    const handleStop = () => {};
     const handleReset = () => {
         setStatus(STATUS.STOPPED);
         setSecondsRemaining(props.time);
@@ -43,7 +37,7 @@ export default function Timer(props) {
     );
     return (
         <Stack mt={1} mb={1} className="Timer" alignItems="center" direction="row" spacing={2}>
-            <Button variant="contained" color={status === STATUS.STARTED ? "success" : "error"}>
+            <Button variant="contained" color={status === STATUS.STARTED ? 'success' : 'error'}>
                 {twoDigits(minutesToDisplay)}:{twoDigits(secondsToDisplay)}
             </Button>
         </Stack>
@@ -72,4 +66,4 @@ function useInterval(callback, delay) {
 }
 
 // https://stackoverflow.com/a/2998874/1673761
-const twoDigits = (num) => String(num).padStart(2, "0");
+const twoDigits = (num) => String(num).padStart(2, '0');
