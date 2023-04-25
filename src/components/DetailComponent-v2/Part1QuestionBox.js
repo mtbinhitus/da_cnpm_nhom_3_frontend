@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, Container, Stack, Typography, RadioGroup, FormControlLabel, Radio } from '@mui/material';
+import { Grid, Container, Stack, Typography, RadioGroup, FormControlLabel, Radio } from '@mui/material';
 
 const STATUS = {
     STARTED: 'Started',
@@ -14,6 +14,14 @@ export default function QuestionBox(props) {
     console.log(props.data);
     console.log(value);
 
+    const checkFill = () => {
+        const index = props.sheet.findIndex((answer) => answer.id === props.data.questions[0].id);
+        console.log(index);
+        if (index !== -1) {
+            setValue(props.sheet[index].answer);
+        } else setValue('');
+    };
+
     useEffect(() => {
         checkFill();
     }, [props.data, props.status]);
@@ -21,14 +29,6 @@ export default function QuestionBox(props) {
     const handleChange = (event) => {
         setValue(event.target.value);
         props.fillAnswerSheet({ id: props.data.questions[0].id, answer: event.target.value });
-    };
-
-    const checkFill = () => {
-        const index = props.sheet.findIndex((answer) => answer.id == props.data.questions[0].id);
-        console.log(index);
-        if (index !== -1) {
-            setValue(props.sheet[index].answer);
-        } else setValue('');
     };
 
     if (props.data.questions[0] === undefined) return <p>Loading...</p>;

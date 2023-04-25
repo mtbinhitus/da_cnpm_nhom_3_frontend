@@ -16,7 +16,7 @@ export default function DetailPage() {
         });
     }, []);
 
-    if(loading === true) return <>Loading</>
+    if (loading === true) return <>Loading</>;
 
     return (
         <>
