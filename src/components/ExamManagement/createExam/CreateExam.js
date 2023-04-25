@@ -43,7 +43,7 @@ export default function CreateExam(props) {
         createExam(choiceColec, nameExam).then((res) => {
             setNameColect('');
             console.log(res);
-            if (res.status === 200) {
+            if (res.status === 200 || res.status === 201) {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -52,10 +52,10 @@ export default function CreateExam(props) {
                 });
                 handleCancel();
                 props.onRender();
-                props.useNavigate(`/admin/exams/${res.data.body.id}`, {
+                props.useNavigate(`/admin/exams/${res.data}`, {
                     state: {
-                        examId: res.data.body.id,
-                        examName: res.data.body.name,
+                        examId: res.data,
+                        examName: nameExam,
                     },
                     replace: true,
                 });

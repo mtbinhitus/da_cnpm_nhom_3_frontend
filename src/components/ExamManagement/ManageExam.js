@@ -41,10 +41,12 @@ function ManageExam() {
             navigate('/');
         }
         getListExam(page).then((res) => {
+            console.log(res);
             setExams(res.body);
             setLoading(false);
         });
         getCollections().then((res) => {
+            console.log(res);
             setColections(res.body);
         });
         setRenderPage(false);
@@ -264,7 +266,7 @@ function ManageExam() {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {exams.data.map((row) => (
+                                        {exams.map((row) => (
                                             <TableRow
                                                 key={row.id}
                                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

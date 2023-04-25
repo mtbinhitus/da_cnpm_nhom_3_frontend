@@ -3,7 +3,7 @@ import ExamCreationPage from '../pages/ExamCreationPage';
 import PracticePage from '../pages/PracticePage';
 import TestList from '../pages/TestList';
 import TestResult from '../pages/TestResult';
-import ManageExam from '../components/examManagement/ManageExam';
+import ManageExam from '../components/ExamManagement/ManageExam';
 
 const privateRoutes = [
     { path: '/exam-detail/:examId', element: PracticePage },

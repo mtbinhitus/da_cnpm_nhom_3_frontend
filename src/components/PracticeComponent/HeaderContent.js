@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import '../../style/PracticePage.css';
 
-const HeaderContaint = () => {
+const HeaderContent = () => {
     return (
         <>
             <Button
@@ -54,4 +54,4 @@ const HeaderContaint = () => {
         </>
     );
 };
-export default HeaderContaint;
+export default HeaderContent;
