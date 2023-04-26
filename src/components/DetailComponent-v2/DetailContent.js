@@ -151,7 +151,7 @@ export default function DetailContent(props) {
         const examResultId = 1;
 
         navigate(`/exam-detail/${examId.examId}/results/${examResultId}`, {
-            state: { lScore: res.body.listening, rScore: res.body.reading },
+            state: { lScore: res.body.listening, rScore: res.body.writing },
         });
     };
 
