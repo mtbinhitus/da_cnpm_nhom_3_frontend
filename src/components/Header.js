@@ -65,6 +65,7 @@ const Header = () => {
                         >
                             {authContext.auth?.tokenParsed.realm_access.roles.includes('admin') ? (
                                 <NavDropdown.Item
+                                    id="create_exams"
                                     onClick={() => {
                                         navigate('/admin/exams', {
                                             state: {
@@ -81,6 +82,7 @@ const Header = () => {
                             )}
 
                             <NavDropdown.Item
+                                id="logout"
                                 onClick={() => {
                                     authContext.auth.logout({ redirectUri: baseUrl });
                                     // authContext.auth.logout();
@@ -92,6 +94,7 @@ const Header = () => {
                         </NavDropdown>
                     ) : (
                         <Button
+                            id="login"
                             className="signin-btn"
                             variant="contained"
                             onClick={() => {
