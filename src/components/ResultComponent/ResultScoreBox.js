@@ -1,32 +1,32 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import CancelIcon from '@mui/icons-material/Cancel';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import { Card } from '@mui/material';
+import HeadphonesIcon from '@mui/icons-material/Headphones';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import DisplaySettingsIcon from '@mui/icons-material/DisplaySettings';
+import { Card, Stack } from '@mui/material';
 
 const ResultScoreBox = ({ boxType, numberAnswer }) => {
     let boxName = '';
     const getIconOfBox = () => {
         if (boxType === 'correctType') {
-            boxName = 'Trả lời đúng';
+            boxName = 'Listening';
             return (
                 <>
-                    <CheckCircleIcon style={{ color: 'green' }} />
+                    <HeadphonesIcon style={{ color: 'green' }} />
                 </>
             );
         } else if (boxType === 'IncorrectType') {
-            boxName = 'Trả lời sai';
+            boxName = 'Reading';
             return (
                 <>
-                    <CancelIcon style={{ color: 'red' }} />
+                    <LibraryBooksIcon style={{ color: 'green' }} />
                 </>
             );
         } else {
-            boxName = 'Bỏ qua';
+            boxName = 'Total Score';
             return (
                 <>
-                    <RemoveCircleIcon style={{ color: 'grey' }} />
+                    <DisplaySettingsIcon style={{ color: 'green' }} />
                 </>
             );
         }
@@ -42,10 +42,11 @@ const ResultScoreBox = ({ boxType, numberAnswer }) => {
     return (
         <>
             <MyCard className="result-score-box">
-                <div>{getIconOfBox()}</div>
-                <div style={{ fontSize: '16px', fontWeight: 'bold' }}>{boxName}</div>
-                <div style={{ fontSize: '23px', fontWeight: 'bold' }}>{numberAnswer}</div>
-                <div style={{ fontSize: '16px' }}>Câu hỏi</div>
+                <Stack spacing={1} alignItems="center" justifyContent="flex-end">
+                    <div>{getIconOfBox()}</div>
+                    <div style={{ fontSize: '16px', fontWeight: 'bold' }}>{boxName}</div>
+                    <div style={{ fontSize: '23px', fontWeight: 'bold' }}>{numberAnswer}</div>
+                </Stack>
             </MyCard>
         </>
     );

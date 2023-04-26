@@ -61,6 +61,31 @@ export async function getCollections() {
         });
     return response;
 }
+
+export async function submitExam(id, listeningQues, readingQues) {
+    const respone = await request
+        .post(
+            '/exam/submit',
+            {
+                examId: id,
+                listening: listeningQues,
+                reading: readingQues,
+            },
+            {
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            },
+        )
+        .then((res) => {
+            return res.data;
+        })
+        .catch((error) => {
+            return error;
+        });
+
+    return respone;
+}
 export async function createCollection(name) {
     return await request.post(
         '/collection',
