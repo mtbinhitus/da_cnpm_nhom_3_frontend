@@ -133,8 +133,8 @@ const NavPractice = () => {
             <div className="practice-test">
                 <span>Chọn phần thi bạn muốn làm</span>
             </div>
-            {listData.map((data) => (
-                <ChoicePractice name={data.part.name} list={data.part.list} />
+            {listData.map((data, index) => (
+                <ChoicePractice key={index} name={data.part.name} list={data.part.list} />
             ))}
             <div className="practice-test" style={{ marginTop: '15px' }}>
                 <span>Giới hạn thời gian (Để trống để làm bài không giới hạn)</span>
