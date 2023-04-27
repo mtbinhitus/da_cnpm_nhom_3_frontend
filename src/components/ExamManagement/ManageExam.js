@@ -42,7 +42,7 @@ function ManageExam() {
         }
         getListExam(page).then((res) => {
             console.log(res);
-            setExams(res.body);
+            setExams(res.body.data);
             setLoading(false);
         });
         getCollections().then((res) => {
