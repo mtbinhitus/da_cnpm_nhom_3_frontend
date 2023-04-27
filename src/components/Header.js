@@ -11,7 +11,7 @@ const Header = () => {
     const navigate = useNavigate();
     const params = new URLSearchParams(window.location.pathname);
     console.log(params);
-    const baseUrl = 'http://localhost:3000/';
+    const baseUrl = 'https://da-cnpm-nhom-3-frontend-ruby.vercel.app/';
 
     // console.log('Header: ' + localStorage.getItem('id_token')?.toString());
     useEffect(() => {
