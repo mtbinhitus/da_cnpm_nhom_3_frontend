@@ -16,6 +16,7 @@ function ListContent() {
 
     useEffect(() => {
         getListExam(page).then((res) => {
+            console.log(res);
             setExams(res.body);
         });
     }, [page]);
